@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ColorScheme" load_steps=2 format=3 uid="uid://conbbdr8dp1bh"]
+
+[ext_resource type="Script" uid="uid://chn1qj0dj3ao1" path="res://Scripts/ColorScheme.gd" id="1_u3svk"]
+
+[resource]
+script = ExtResource("1_u3svk")
+main = Array[Color]([Color(0.03529412, 0.99607843, 0.67058825, 1), Color(0.5186011, 0.9441929, 0.7745082, 1)])
+secondary = Array[Color]([Color(0.23137255, 0.023529412, 0.15686275, 1), Color(0.20784314, 0.078431375, 0.1882353, 1), Color(0.5686275, 0.21176471, 0.41960785, 1), Color(0.44705883, 0.19607843, 0.36078432, 1), Color(0.3764706, 0.13333334, 0.2901961, 1), Color(1, 0.101960786, 0.61960787, 1), Color(1, 0.5058824, 0.8117647, 1)])
+metadata/_custom_type_script = "uid://chn1qj0dj3ao1"

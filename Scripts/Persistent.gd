@@ -3,6 +3,7 @@ extends Node2D
 var layoutPacked : PackedScene
 var layoutCords : Vector2i
 var celebrate : bool = false
+var c : ColorScheme = load("res://ColorScheme/col_0.tres")
 
 func LevelCleared():
     if not Save.clearedLevels.has(layoutCords):

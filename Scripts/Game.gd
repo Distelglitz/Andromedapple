@@ -192,6 +192,11 @@ func setGameState(newState : GameState):
 		GameState.GameOver:
 			cam.zoomFullLayout()
 	updateAimVisuals()
+	
+	if gameState==GameState.Aim:
+		Input.mouse_mode=Input.MOUSE_MODE_HIDDEN
+	else:
+		Input.mouse_mode=Input.MOUSE_MODE_VISIBLE
 
 func onLevelSetup():
 	level.spawnTree(packedTree, level.planets[0], Vector2.ZERO+level.planets[0].radius*Vector2.UP,0)
@@ -253,6 +258,7 @@ func updateAimVisuals():
 		if selectedFruit!=null:
 			aimVisualsInstance=packedAimVisuals.instantiate()
 			aimVisualsInstance.position=selectedFruit.global_position-level.planetOfFruit(selectedFruit).global_position
+			aimVisualsInstance.cam=cam.camera
 			level.planetOfFruit(selectedFruit).add_child(aimVisualsInstance)
 	else:
 		if gameState!=GameState.Aim:

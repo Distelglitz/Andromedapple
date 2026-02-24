@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsh3a8uh2s6xp"
-path="res://.godot/imported/Tex_PlanetTest.png-7074e91ec904c9d1138c2c8199d1f042.ctex"
+uid="uid://hf6migvf7mrl"
+path="res://.godot/imported/Tex_Line.png-ce2755b0de519ad2e1857037be9035f1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Tex_PlanetTest.png"
-dest_files=["res://.godot/imported/Tex_PlanetTest.png-7074e91ec904c9d1138c2c8199d1f042.ctex"]
+source_file="res://Sprites/Tex_Line.png"
+dest_files=["res://.godot/imported/Tex_Line.png-ce2755b0de519ad2e1857037be9035f1.ctex"]
 
 [params]
 

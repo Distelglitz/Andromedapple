@@ -1,11 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0tf80qo3vqi3"]
+[gd_scene load_steps=6 format=3 uid="uid://c0tf80qo3vqi3"]
 
 [ext_resource type="Script" uid="uid://br5ab08qlugmk" path="res://Scripts/AimVisuals.gd" id="1_6vq4j"]
+[ext_resource type="Texture2D" uid="uid://hf6migvf7mrl" path="res://Sprites/Tex_Line.png" id="2_a8bxj"]
+[ext_resource type="Texture2D" uid="uid://bcxpvadfdoj61" path="res://Sprites/Tex_LineTip.png" id="2_wtlhj"]
 
-[node name="AimVisuals" type="Node2D" node_paths=PackedStringArray("line")]
+[sub_resource type="Curve" id="Curve_a8bxj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.6730829), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_a8bxj"]
+offsets = PackedFloat32Array(0, 0.06906907, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.43137255, 1, 1, 1, 1)
+
+[node name="AimVisuals" type="Node2D" node_paths=PackedStringArray("lineInner", "spTip")]
 z_index = 100
 script = ExtResource("1_6vq4j")
-line = NodePath("Line2D")
+lineInner = NodePath("inner")
+width = 28.0
+spTip = NodePath("Tip")
+tipScaleMod = 0.35
 
-[node name="Line2D" type="Line2D" parent="."]
+[node name="inner" type="Line2D" parent="."]
+texture_repeat = 2
 points = PackedVector2Array(0, 0, 0, 0)
+width_curve = SubResource("Curve_a8bxj")
+gradient = SubResource("Gradient_a8bxj")
+texture = ExtResource("2_a8bxj")
+texture_mode = 1
+
+[node name="Tip" type="Sprite2D" parent="."]
+texture = ExtResource("2_wtlhj")

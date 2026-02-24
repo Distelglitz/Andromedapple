@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b44qd16p07vcq"]
+[gd_scene load_steps=18 format=3 uid="uid://b44qd16p07vcq"]
 
 [ext_resource type="Script" uid="uid://dijj1sm15hano" path="res://Scripts/Game.gd" id="1_r150o"]
 [ext_resource type="PackedScene" uid="uid://bj1gbp4tnts84" path="res://Scenes/FruitTree.tscn" id="2_pbw6q"]
@@ -11,6 +11,19 @@
 [ext_resource type="Script" uid="uid://bia7cibytvky8" path="res://Scripts/GameUi.gd" id="8_50glp"]
 [ext_resource type="Script" uid="uid://lbjv0cttoeh" path="res://TAOFUS/SmoothModulate.gd" id="8_bmxlf"]
 [ext_resource type="Texture2D" uid="uid://k3hgmr5i4af8" path="res://Sprites/Tex_Rect.png" id="9_4kpch"]
+[ext_resource type="Script" uid="uid://ckf0kw5suq1w3" path="res://Scripts/GameBg.gd" id="12_grg3l"]
+[ext_resource type="Shader" uid="uid://bxemqiadchccn" path="res://Shader/Gradient.gdshader" id="13_frkhe"]
+[ext_resource type="PackedScene" uid="uid://dfcubywdtvn64" path="res://Scenes/Stars.tscn" id="14_h1m7h"]
+[ext_resource type="Texture2D" uid="uid://jul1ofybdqa" path="res://Sprites/Stars/Tex_Star_Spikey.png" id="15_h1m7h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1p5hy"]
+shader = ExtResource("13_frkhe")
+shader_parameter/top = Color(0.23137255, 0.023529412, 0.15686275, 1)
+shader_parameter/bottom = Color(0.20784314, 0.078431375, 0.1882353, 1)
+
+[sub_resource type="Gradient" id="Gradient_1p5hy"]
+resource_local_to_scene = true
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [node name="Main" type="Node2D"]
 
@@ -104,3 +117,79 @@ offset_right = 498.0
 offset_bottom = 498.0
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 40
+
+[node name="GameBg" type="Node2D" parent="Cam" node_paths=PackedStringArray("rect", "cam", "zoomScaler", "starHolder")]
+script = ExtResource("12_grg3l")
+rect = NodePath("Scale/ColorRect")
+cam = NodePath("..")
+zoomScaler = NodePath("Scale")
+starHolder = NodePath("StarHolder")
+
+[node name="Scale" type="Node2D" parent="Cam/GameBg"]
+
+[node name="ColorRect" type="ColorRect" parent="Cam/GameBg/Scale"]
+z_index = -2000
+material = SubResource("ShaderMaterial_1p5hy")
+offset_left = -1008.0
+offset_top = -572.0
+offset_right = 992.0
+offset_bottom = 588.0
+
+[node name="StarHolder" type="Node2D" parent="Cam/GameBg"]
+z_index = -1900
+
+[node name="BackStarsRoundSec2" parent="Cam/GameBg/StarHolder" instance=ExtResource("14_h1m7h")]
+color_initial_ramp = SubResource("Gradient_1p5hy")
+densityPer10000 = 0.103
+parallax = 0.125
+opacity = 0.2
+colorIdxA = 2
+colorIdxB = 3
+
+[node name="StarsRoundMain" parent="Cam/GameBg/StarHolder" instance=ExtResource("14_h1m7h")]
+color_initial_ramp = SubResource("Gradient_1p5hy")
+densityPer10000 = 0.005
+parallax = 0.2
+opacity = 0.2
+
+[node name="StarsRoundSec" parent="Cam/GameBg/StarHolder" instance=ExtResource("14_h1m7h")]
+color_initial_ramp = SubResource("Gradient_1p5hy")
+densityPer10000 = 0.01
+parallax = 0.2
+opacity = 0.25
+colorIdxA = 2
+colorIdxB = 3
+
+[node name="FrontStarsRoundMain2" parent="Cam/GameBg/StarHolder" instance=ExtResource("14_h1m7h")]
+color_initial_ramp = SubResource("Gradient_1p5hy")
+densityPer10000 = 0.01
+parallax = 0.275
+opacity = 0.2
+sizeMod = 1.2
+
+[node name="FrontStarsRoundSec2" parent="Cam/GameBg/StarHolder" instance=ExtResource("14_h1m7h")]
+color_initial_ramp = SubResource("Gradient_1p5hy")
+densityPer10000 = 0.01
+parallax = 0.275
+opacity = 0.6
+colorIdxA = 2
+colorIdxB = 3
+sizeMod = 1.2
+
+[node name="FrontStarsSpikeyMain" parent="Cam/GameBg/StarHolder" instance=ExtResource("14_h1m7h")]
+color_initial_ramp = SubResource("Gradient_1p5hy")
+densityPer10000 = 0.007
+parallax = 0.245
+tex = ExtResource("15_h1m7h")
+opacity = 0.2
+sizeMod = 1.5
+
+[node name="FrontStarsSpikeySec" parent="Cam/GameBg/StarHolder" instance=ExtResource("14_h1m7h")]
+color_initial_ramp = SubResource("Gradient_1p5hy")
+densityPer10000 = 0.007
+parallax = 0.245
+tex = ExtResource("15_h1m7h")
+opacity = 0.6
+colorIdxA = 2
+colorIdxB = 3
+sizeMod = 1.5

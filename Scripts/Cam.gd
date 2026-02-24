@@ -7,19 +7,28 @@ extends Node2D
 
 var _zoomT : float
 @export var stepZoom : float
-@export var minZoom : float
+@export var minZoom : float # TODO min and max are swapped?
 @export var maxZoom : float
 @export var defaultZoom : float
 @export var speedZoom : float
 @export var zoomPow : float
 
 @export var speedMove : float
+var maxZoomBounds : Vector2
+var clampBounds : Vector2
+
+func _enter_tree():
+	maxZoomBounds=Vector2(1920,1080)/minZoom/2
 
 func _ready():
 	_layoutZoomMode=true
 	camera.zoom.x=float(1920)/level.layout.boundsDim.x
 	camera.zoom.y=camera.zoom.x
 	position=level.layout.boundsCenter
+	
+	clampBounds=maxZoomBounds+level.layout.boundsDim*0.5
+
+
 func setZoomT(newT : float, instant : bool = false):
 	newT=MathS.Clamp01(newT)
 	_zoomT=newT
@@ -60,6 +69,10 @@ func _process(delta):
 	if relativeTo!=null:
 		position+=relativeTo.position-relativeToPosPrev
 		relativeToPosPrev=relativeTo.position
+	
+	position.x=clamp(position.x,-clampBounds.x,clampBounds.x)
+	position.y=clamp(position.y,-clampBounds.y,clampBounds.y)
+
 
 var _layoutZoomMode : bool
 
@@ -93,3 +106,9 @@ func moveRelativeTo(_relativeTo : Node2D):
 	relativeTo=_relativeTo
 	if relativeTo!=null:
 		relativeToPosPrev=relativeTo.position
+
+func getPercentageInBounds():
+	var result : Vector2
+	result.x=inverse_lerp(-clampBounds.x,clampBounds.x,position.x)
+	result.y=inverse_lerp(-clampBounds.y,clampBounds.y,position.y)
+	return result

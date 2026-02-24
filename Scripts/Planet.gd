@@ -15,7 +15,7 @@ func isOccupied():
 func treeOccupiedSetup(_tree : FruitTree):
 	tree=_tree
 	level.occupiedPlanets+=1
-	sp.modulate=Color(0,1,0,1)
+	sp.modulate=Persistent.c.foliage()
 
 func _enter_tree():
 	var colShape : CollisionShape2D = get_child(0)
@@ -23,7 +23,7 @@ func _enter_tree():
 	sp=get_child(1)
 
 func _ready():
-	sp.modulate=Color(1,0.5,0.5,1)
+	sp.modulate=Persistent.c.fruitDetail()
 	setRadius(scale.x*100)
 	scale=Vector2.ONE
 

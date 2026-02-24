@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfcubywdtvn64"]
+
+[ext_resource type="Texture2D" uid="uid://cd67jno3ay213" path="res://Sprites/Stars/Tex_Star_Round.png" id="1_kpoyb"]
+[ext_resource type="Script" uid="uid://cdw3jdh6lrlfr" path="res://Scripts/Stars.gd" id="1_ugkqd"]
+
+[sub_resource type="Curve" id="Curve_ugkqd"]
+_limits = [0.0, 1.25, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.05188679, 1.0769898), 0.0, 0.0, 0, 0, Vector2(0.10141509, 0.95371985), 0.0, 0.0, 0, 0, Vector2(0.18632075, 0.9958175), 0.0, 0.0, 0, 0, Vector2(0.3926887, 1.0012977), 0.0, 0.0, 0, 0, Vector2(0.40566036, 1.0930699), 0.0, 0.0, 0, 0, Vector2(0.41273585, 1.0012977), 0.0, 0.0, 0, 0, Vector2(0.6568396, 1.0012977), 0.0, 0.0, 0, 0, Vector2(0.6698113, 0.8764622), 0.0, 0.0, 0, 0, Vector2(0.692217, 1.0024483), 0.0, 0.0, 0, 0, Vector2(0.9268868, 1.0012977), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 12
+
+[sub_resource type="Gradient" id="Gradient_kpoyb"]
+resource_local_to_scene = true
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[node name="Stars" type="CPUParticles2D"]
+lifetime = 30.0
+preprocess = 60.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1)
+gravity = Vector2(0, 0)
+angle_max = 360.0
+scale_amount_min = 2.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_ugkqd")
+color_initial_ramp = SubResource("Gradient_kpoyb")
+script = ExtResource("1_ugkqd")
+parallax = 1.0
+tex = ExtResource("1_kpoyb")
+opacity = 0.8
+colorIdxB = 1
