@@ -15,10 +15,13 @@ var _zoomT : float
 
 @export var speedMove : float
 var maxZoomBounds : Vector2
+var layoutZoomBounds : Vector2
 var clampBounds : Vector2
 
 func _enter_tree():
 	maxZoomBounds=Vector2(1920,1080)/minZoom/2
+	layoutZoomBounds=level.layout.boundsDim/2
+
 
 func _ready():
 	_layoutZoomMode=true

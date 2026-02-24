@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b44qd16p07vcq"]
+[gd_scene load_steps=24 format=3 uid="uid://b44qd16p07vcq"]
 
 [ext_resource type="Script" uid="uid://dijj1sm15hano" path="res://Scripts/Game.gd" id="1_r150o"]
 [ext_resource type="PackedScene" uid="uid://bj1gbp4tnts84" path="res://Scenes/FruitTree.tscn" id="2_pbw6q"]
@@ -22,6 +22,30 @@ shader_parameter/top = Color(0.23137255, 0.023529412, 0.15686275, 1)
 shader_parameter/bottom = Color(0.20784314, 0.078431375, 0.1882353, 1)
 
 [sub_resource type="Gradient" id="Gradient_1p5hy"]
+resource_local_to_scene = true
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_h1m7h"]
+resource_local_to_scene = true
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_erwvk"]
+resource_local_to_scene = true
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_2w5on"]
+resource_local_to_scene = true
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_346fj"]
+resource_local_to_scene = true
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_0sclb"]
+resource_local_to_scene = true
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_sxkr1"]
 resource_local_to_scene = true
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
@@ -140,20 +164,20 @@ z_index = -1900
 
 [node name="BackStarsRoundSec2" parent="Cam/GameBg/StarHolder" instance=ExtResource("14_h1m7h")]
 color_initial_ramp = SubResource("Gradient_1p5hy")
-densityPer10000 = 0.103
+densityPer10000 = 0.001
 parallax = 0.125
 opacity = 0.2
 colorIdxA = 2
 colorIdxB = 3
 
 [node name="StarsRoundMain" parent="Cam/GameBg/StarHolder" instance=ExtResource("14_h1m7h")]
-color_initial_ramp = SubResource("Gradient_1p5hy")
+color_initial_ramp = SubResource("Gradient_h1m7h")
 densityPer10000 = 0.005
 parallax = 0.2
 opacity = 0.2
 
 [node name="StarsRoundSec" parent="Cam/GameBg/StarHolder" instance=ExtResource("14_h1m7h")]
-color_initial_ramp = SubResource("Gradient_1p5hy")
+color_initial_ramp = SubResource("Gradient_erwvk")
 densityPer10000 = 0.01
 parallax = 0.2
 opacity = 0.25
@@ -161,14 +185,14 @@ colorIdxA = 2
 colorIdxB = 3
 
 [node name="FrontStarsRoundMain2" parent="Cam/GameBg/StarHolder" instance=ExtResource("14_h1m7h")]
-color_initial_ramp = SubResource("Gradient_1p5hy")
+color_initial_ramp = SubResource("Gradient_2w5on")
 densityPer10000 = 0.01
 parallax = 0.275
 opacity = 0.2
 sizeMod = 1.2
 
 [node name="FrontStarsRoundSec2" parent="Cam/GameBg/StarHolder" instance=ExtResource("14_h1m7h")]
-color_initial_ramp = SubResource("Gradient_1p5hy")
+color_initial_ramp = SubResource("Gradient_346fj")
 densityPer10000 = 0.01
 parallax = 0.275
 opacity = 0.6
@@ -177,7 +201,7 @@ colorIdxB = 3
 sizeMod = 1.2
 
 [node name="FrontStarsSpikeyMain" parent="Cam/GameBg/StarHolder" instance=ExtResource("14_h1m7h")]
-color_initial_ramp = SubResource("Gradient_1p5hy")
+color_initial_ramp = SubResource("Gradient_0sclb")
 densityPer10000 = 0.007
 parallax = 0.245
 tex = ExtResource("15_h1m7h")
@@ -185,7 +209,7 @@ opacity = 0.2
 sizeMod = 1.5
 
 [node name="FrontStarsSpikeySec" parent="Cam/GameBg/StarHolder" instance=ExtResource("14_h1m7h")]
-color_initial_ramp = SubResource("Gradient_1p5hy")
+color_initial_ramp = SubResource("Gradient_sxkr1")
 densityPer10000 = 0.007
 parallax = 0.245
 tex = ExtResource("15_h1m7h")

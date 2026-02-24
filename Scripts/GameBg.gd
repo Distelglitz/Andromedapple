@@ -8,19 +8,13 @@ extends Node2D
 var stars : Array[Stars]
 
 @export var parallax : float
-var starBounds : Vector2
-var starParallaxBounds : Vector2
 
 func _ready():
 
-	starParallaxBounds=cam.maxZoomBounds
-	starBounds = cam.maxZoomBounds+cam.level.layout.boundsDim
-
-	print(starHolder.get_child_count())
 	for c : Stars in starHolder.get_children():
 		stars.append(c)
 	for s in stars:
-		s.setup(cam.maxZoomBounds)
+		s.setup(cam.maxZoomBounds,cam.clampBounds , cam.layoutZoomBounds)
 
 func _process(delta):
 	zoomScaler.scale=Vector2.ONE/cam.camera.zoom.x
