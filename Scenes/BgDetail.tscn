@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d18blnn6jqd2i"]
+
+[ext_resource type="Script" uid="uid://cy00ysvwv60gs" path="res://Scripts/BgDetail.gd" id="1_kfl7j"]
+
+[node name="BgDetail" type="Sprite2D"]
+script = ExtResource("1_kfl7j")

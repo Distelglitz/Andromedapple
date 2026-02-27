@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b44qd16p07vcq"]
+[gd_scene load_steps=28 format=3 uid="uid://b44qd16p07vcq"]
 
 [ext_resource type="Script" uid="uid://dijj1sm15hano" path="res://Scripts/Game.gd" id="1_r150o"]
 [ext_resource type="PackedScene" uid="uid://bj1gbp4tnts84" path="res://Scenes/FruitTree.tscn" id="2_pbw6q"]
@@ -12,9 +12,13 @@
 [ext_resource type="Script" uid="uid://lbjv0cttoeh" path="res://TAOFUS/SmoothModulate.gd" id="8_bmxlf"]
 [ext_resource type="Texture2D" uid="uid://k3hgmr5i4af8" path="res://Sprites/Tex_Rect.png" id="9_4kpch"]
 [ext_resource type="Script" uid="uid://ckf0kw5suq1w3" path="res://Scripts/GameBg.gd" id="12_grg3l"]
+[ext_resource type="PackedScene" uid="uid://d18blnn6jqd2i" path="res://Scenes/BgDetail.tscn" id="13_346fj"]
 [ext_resource type="Shader" uid="uid://bxemqiadchccn" path="res://Shader/Gradient.gdshader" id="13_frkhe"]
+[ext_resource type="Texture2D" uid="uid://drdkfflu30g15" path="res://Sprites/BgDetail/Tex_BgDetail_Saturn.png" id="14_0sclb"]
 [ext_resource type="PackedScene" uid="uid://dfcubywdtvn64" path="res://Scenes/Stars.tscn" id="14_h1m7h"]
+[ext_resource type="Texture2D" uid="uid://bm8ixm8kut78a" path="res://Sprites/Stars/Tex_Star_Cluster.png" id="15_erwvk"]
 [ext_resource type="Texture2D" uid="uid://jul1ofybdqa" path="res://Sprites/Stars/Tex_Star_Spikey.png" id="15_h1m7h"]
+[ext_resource type="Texture2D" uid="uid://bmdui4234hje2" path="res://Sprites/Stars/Tex_Star_Cluster_B.png" id="16_2w5on"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1p5hy"]
 shader = ExtResource("13_frkhe")
@@ -142,12 +146,16 @@ offset_bottom = 498.0
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 40
 
-[node name="GameBg" type="Node2D" parent="Cam" node_paths=PackedStringArray("rect", "cam", "zoomScaler", "starHolder")]
+[node name="GameBg" type="Node2D" parent="Cam" node_paths=PackedStringArray("rect", "cam", "zoomScaler", "starHolder", "bgDetailHolder")]
 script = ExtResource("12_grg3l")
 rect = NodePath("Scale/ColorRect")
 cam = NodePath("..")
 zoomScaler = NodePath("Scale")
 starHolder = NodePath("StarHolder")
+bgDetailHolder = NodePath("BgDetailHolder")
+bgDetailPacked = ExtResource("13_346fj")
+bgDetailCount = 6
+bgDetailTex = Array[Texture2D]([ExtResource("14_0sclb")])
 
 [node name="Scale" type="Node2D" parent="Cam/GameBg"]
 
@@ -164,22 +172,34 @@ z_index = -1900
 
 [node name="BackStarsRoundSec2" parent="Cam/GameBg/StarHolder" instance=ExtResource("14_h1m7h")]
 color_initial_ramp = SubResource("Gradient_1p5hy")
-densityPer10000 = 0.001
-parallax = 0.125
-opacity = 0.2
+densityPer10000 = 0.008
+parallax = 0.2
+tex = ExtResource("15_erwvk")
+opacity = 0.15
 colorIdxA = 2
 colorIdxB = 3
+sizeMod = 1.25
+
+[node name="BackStarsRoundSec3" parent="Cam/GameBg/StarHolder" instance=ExtResource("14_h1m7h")]
+color_initial_ramp = SubResource("Gradient_1p5hy")
+densityPer10000 = 0.008
+parallax = 0.2
+tex = ExtResource("16_2w5on")
+opacity = 0.15
+colorIdxA = 2
+colorIdxB = 3
+sizeMod = 1.25
 
 [node name="StarsRoundMain" parent="Cam/GameBg/StarHolder" instance=ExtResource("14_h1m7h")]
 color_initial_ramp = SubResource("Gradient_h1m7h")
 densityPer10000 = 0.005
-parallax = 0.2
+parallax = 0.25
 opacity = 0.2
 
 [node name="StarsRoundSec" parent="Cam/GameBg/StarHolder" instance=ExtResource("14_h1m7h")]
 color_initial_ramp = SubResource("Gradient_erwvk")
 densityPer10000 = 0.01
-parallax = 0.2
+parallax = 0.25
 opacity = 0.25
 colorIdxA = 2
 colorIdxB = 3
@@ -203,7 +223,7 @@ sizeMod = 1.2
 [node name="FrontStarsSpikeyMain" parent="Cam/GameBg/StarHolder" instance=ExtResource("14_h1m7h")]
 color_initial_ramp = SubResource("Gradient_0sclb")
 densityPer10000 = 0.007
-parallax = 0.245
+parallax = 0.3
 tex = ExtResource("15_h1m7h")
 opacity = 0.2
 sizeMod = 1.5
@@ -217,3 +237,5 @@ opacity = 0.6
 colorIdxA = 2
 colorIdxB = 3
 sizeMod = 1.5
+
+[node name="BgDetailHolder" type="Node2D" parent="Cam/GameBg"]
