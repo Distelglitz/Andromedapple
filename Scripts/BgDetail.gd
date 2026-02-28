@@ -6,7 +6,7 @@ var parallaxBounds : Vector2
 
 @export var baseZIndex : int
 @export var baseScale : float
-@export var titeRange : float
+@export var tiltRange : float
 @export var backFrontParallax : Vector2
 @export var backFrontOpacity : Vector2
 @export var backFrontZAdd : int
@@ -30,7 +30,7 @@ func setup(bounds : Vector2, _parallaxBounds : Vector2, tex : Texture2D, colIdx 
     modulate=Persistent.c.bgDetailColor(colIdx)
     modulate.a=lerp(backFrontOpacity.x,backFrontOpacity.y,backFront)
     z_index=baseZIndex+int(backFront*backFrontZAdd)
-    rotation_degrees=MathS.RandSigned()*titeRange
+    rotation_degrees=MathS.RandSigned()*tiltRange
     texture=tex
     flip_h=randf()>0.5
 
