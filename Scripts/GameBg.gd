@@ -13,6 +13,7 @@ var stars : Array[Stars]
 @export var bgDetailPacked : PackedScene
 @export var bgDetailCount : int
 @export var bgDetailTex : Array[Texture2D]
+
 var bgDetails : Array[BgDetail]
 
 
@@ -29,7 +30,7 @@ func _ready():
 		bgDetails.append(cur)
 		bgDetailHolder.add_child(cur)
 	for b in bgDetails:
-		b.setup(bgBounds, cam.maxZoomBounds,bgDetailTex.pick_random())
+		b.setup(bgBounds, cam.maxZoomBounds,bgDetailTex.pick_random(),0 if randf()>0.5 else 1)
 
 
 func _process(delta):

@@ -4,3 +4,10 @@
 
 [node name="BgDetail" type="Sprite2D"]
 script = ExtResource("1_kfl7j")
+baseZIndex = -1850
+baseScale = 1.5
+titeRange = 35.0
+backFrontParallax = Vector2(0.3, 0.4)
+backFrontOpacity = Vector2(0.3, 0.4)
+backFrontZAdd = 20
+backFrontScale = Vector2(1, 1.5)
