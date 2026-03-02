@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://ckwnvddwa86ht"]
+
+[ext_resource type="Texture2D" uid="uid://cie1q0om16jaq" path="res://Sprites/Leaves/LeavesSheet.png" id="1_ndyoc"]
+
+[resource]
+atlas = ExtResource("1_ndyoc")
+region = Rect2(300, 0, 300, 300)

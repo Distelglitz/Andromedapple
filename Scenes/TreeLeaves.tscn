@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://dm3x5ewluhia"]
+
+[ext_resource type="Script" uid="uid://1q3j56yo0nh5" path="res://TAOFUS/VisualEffects/SmoothScale.gd" id="1_b1vfu"]
+[ext_resource type="Script" uid="uid://1xq02f2og5d5" path="res://Scripts/TreeLeaves.gd" id="2_rra75"]
+[ext_resource type="Texture2D" uid="uid://cicxng13u5ots" path="res://Sprites/Leaves/Tex_Leaves_0.tres" id="3_ris41"]
+[ext_resource type="Texture2D" uid="uid://ckwnvddwa86ht" path="res://Sprites/Leaves/Tex_Leaves_1.tres" id="4_8qgbe"]
+[ext_resource type="Texture2D" uid="uid://c8gp275f04ws2" path="res://Sprites/Leaves/Tex_Leaves_2.tres" id="5_bkbey"]
+
+[node name="Scale" type="Node2D"]
+script = ExtResource("1_b1vfu")
+startMode = 2
+a = Vector2(1.5, 1.5)
+b = Vector2(1, 1)
+easeAtoB = 4
+metadata/_custom_type_script = "uid://1q3j56yo0nh5"
+
+[node name="TreeLeaves" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+script = ExtResource("2_rra75")
+possibleTextures = Array[Texture2D]([ExtResource("3_ris41"), ExtResource("4_8qgbe"), ExtResource("5_bkbey")])

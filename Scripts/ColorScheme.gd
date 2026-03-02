@@ -20,6 +20,7 @@ func bgLayers(idx : int):
         3:
             return secondary[4]
 func bgDetailColor(idx : int):
+    return secondary[3]
     match idx:
         0:
             return main[0]
@@ -36,3 +37,6 @@ func flower():
 
 func flowerDetail():
     return fruitDetail()
+
+func wood():
+    return secondary[3]

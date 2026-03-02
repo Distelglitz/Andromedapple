@@ -1,16 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://bj1gbp4tnts84"]
+[gd_scene load_steps=8 format=3 uid="uid://bj1gbp4tnts84"]
 
 [ext_resource type="Script" uid="uid://dgson5vl2s750" path="res://Scripts/FruitTree.gd" id="1_pl817"]
-[ext_resource type="Texture2D" uid="uid://5kl0dp8r4hdi" path="res://Sprites/Tex_TreeTest.png" id="2_ibw46"]
 [ext_resource type="PackedScene" uid="uid://dol66ko3q7a5x" path="res://Scenes/Fruit.tscn" id="2_ym3g0"]
 [ext_resource type="Script" uid="uid://2jrrh6gpg23n" path="res://TAOFUS/VisualEffects/SmoothToggle.gd" id="3_4ff7j"]
+[ext_resource type="PackedScene" uid="uid://dm3x5ewluhia" path="res://Scenes/TreeLeaves.tscn" id="3_ei3gi"]
+[ext_resource type="Texture2D" uid="uid://uy0mfqskp52k" path="res://Sprites/Trunk/Tex_Trunk_0.tres" id="5_4ff7j"]
+[ext_resource type="Texture2D" uid="uid://b2ann07gjskl5" path="res://Sprites/Trunk/Tex_Trunk_1.tres" id="7_v48xs"]
+[ext_resource type="Texture2D" uid="uid://dbnebe1lml3xx" path="res://Sprites/Trunk/Tex_Trunk_2.tres" id="8_2ocgo"]
 
-[node name="FruitTree" type="Node2D" node_paths=PackedStringArray("spawnPoints", "tog")]
+[node name="FruitTree" type="Node2D" node_paths=PackedStringArray("spawnPoints", "trunkHolder", "tog")]
 z_index = -10
 script = ExtResource("1_pl817")
 cameraHeight = 250.0
 packedFruit = ExtResource("2_ym3g0")
 spawnPoints = NodePath("FruitSpawns")
+trunkHolder = NodePath("SmoothToggle/TrunkHolder")
+leafPacked = ExtResource("3_ei3gi")
 tog = NodePath("SmoothToggle")
 
 [node name="FruitSpawns" type="Node2D" parent="."]
@@ -27,10 +32,90 @@ position = Vector2(91, -146)
 [node name="SmoothToggle" type="Node2D" parent="."]
 script = ExtResource("3_4ff7j")
 _startMode = 1
-speedIn = 6.0
+speedIn = 5.0
 _easeIn = 1
 metadata/_custom_type_script = "uid://2jrrh6gpg23n"
 
-[node name="Sprite2D" type="Sprite2D" parent="SmoothToggle"]
-position = Vector2(4, -149)
-texture = ExtResource("2_ibw46")
+[node name="TrunkHolder" type="Node2D" parent="SmoothToggle"]
+position = Vector2(0, -117)
+
+[node name="Trunk" type="Sprite2D" parent="SmoothToggle/TrunkHolder"]
+visible = false
+texture = ExtResource("5_4ff7j")
+
+[node name="Node2D" type="Node2D" parent="SmoothToggle/TrunkHolder/Trunk"]
+position = Vector2(81, -96)
+
+[node name="Node2D5" type="Node2D" parent="SmoothToggle/TrunkHolder/Trunk"]
+position = Vector2(7, -113)
+
+[node name="Node2D6" type="Node2D" parent="SmoothToggle/TrunkHolder/Trunk"]
+position = Vector2(28, -147)
+
+[node name="Node2D7" type="Node2D" parent="SmoothToggle/TrunkHolder/Trunk"]
+position = Vector2(-39, -154)
+
+[node name="Node2D3" type="Node2D" parent="SmoothToggle/TrunkHolder/Trunk"]
+position = Vector2(128, -49)
+
+[node name="Node2D2" type="Node2D" parent="SmoothToggle/TrunkHolder/Trunk"]
+position = Vector2(-106, -102)
+
+[node name="Node2D4" type="Node2D" parent="SmoothToggle/TrunkHolder/Trunk"]
+position = Vector2(-141, -43)
+
+[node name="Trunk1" type="Sprite2D" parent="SmoothToggle/TrunkHolder"]
+visible = false
+texture = ExtResource("7_v48xs")
+
+[node name="Node2D" type="Node2D" parent="SmoothToggle/TrunkHolder/Trunk1"]
+position = Vector2(-94, -48)
+
+[node name="Node2D2" type="Node2D" parent="SmoothToggle/TrunkHolder/Trunk1"]
+position = Vector2(-71, -112)
+
+[node name="Node2D3" type="Node2D" parent="SmoothToggle/TrunkHolder/Trunk1"]
+position = Vector2(105, -60)
+
+[node name="Node2D4" type="Node2D" parent="SmoothToggle/TrunkHolder/Trunk1"]
+position = Vector2(44, -92)
+
+[node name="Node2D7" type="Node2D" parent="SmoothToggle/TrunkHolder/Trunk1"]
+position = Vector2(-14, -81)
+
+[node name="Node2D5" type="Node2D" parent="SmoothToggle/TrunkHolder/Trunk1"]
+position = Vector2(19, -129)
+
+[node name="Node2D6" type="Node2D" parent="SmoothToggle/TrunkHolder/Trunk1"]
+position = Vector2(-33, -180)
+
+[node name="Node2D8" type="Node2D" parent="SmoothToggle/TrunkHolder/Trunk1"]
+position = Vector2(-50, -169)
+
+[node name="Trunk2" type="Sprite2D" parent="SmoothToggle/TrunkHolder"]
+visible = false
+texture = ExtResource("8_2ocgo")
+
+[node name="Node2D" type="Node2D" parent="SmoothToggle/TrunkHolder/Trunk2"]
+position = Vector2(0, -29)
+
+[node name="Node2D2" type="Node2D" parent="SmoothToggle/TrunkHolder/Trunk2"]
+position = Vector2(-84, -47)
+
+[node name="Node2D6" type="Node2D" parent="SmoothToggle/TrunkHolder/Trunk2"]
+position = Vector2(84, -47)
+
+[node name="Node2D3" type="Node2D" parent="SmoothToggle/TrunkHolder/Trunk2"]
+position = Vector2(-42, -117)
+
+[node name="Node2D7" type="Node2D" parent="SmoothToggle/TrunkHolder/Trunk2"]
+position = Vector2(42, -117)
+
+[node name="Node2D4" type="Node2D" parent="SmoothToggle/TrunkHolder/Trunk2"]
+position = Vector2(-18, -172)
+
+[node name="Node2D8" type="Node2D" parent="SmoothToggle/TrunkHolder/Trunk2"]
+position = Vector2(18, -172)
+
+[node name="Node2D5" type="Node2D" parent="SmoothToggle/TrunkHolder/Trunk2"]
+position = Vector2(0, -188)
