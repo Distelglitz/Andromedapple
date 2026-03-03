@@ -11,7 +11,7 @@ var stars : Array[Stars]
 
 @export var bgDetailHolder : Node2D
 @export var bgDetailPacked : PackedScene
-@export var bgDetailCount : int
+@export var bgDetailPer1000000 : float
 @export var bgDetailTex : Array[Texture2D]
 
 var bgDetails : Array[BgDetail]
@@ -19,18 +19,23 @@ var bgDetails : Array[BgDetail]
 
 func _ready():
 	var clampBoundsExtended=cam.clampBounds+cam.maxZoomBounds
-	bgBounds=cam.layoutZoomBounds if cam.layoutZoomBounds>clampBoundsExtended else clampBoundsExtended
 	for c : Stars in starHolder.get_children():
 		stars.append(c)
 	for s in stars:
-		s.setup(bgBounds,cam.maxZoomBounds)
+		s.setup(cam.maxZoomBounds, cam.clampBounds, cam.layoutZoomBounds)
 	
+
+	var boundsA = cam.maxZoomBounds+cam.maxZoomBounds*BgDetail.maxParallax+Cam.padding
+	var boundsB = cam.layoutZoomBounds+Cam.padding
+	var selectedBounds=boundsA if boundsA.x>boundsB.x else boundsB
+	var selectedSurface=selectedBounds.x*selectedBounds.y
+	var bgDetailCount = ceili((selectedSurface/1000000)*bgDetailPer1000000)
 	for i in range(bgDetailCount):
 		var cur : BgDetail = bgDetailPacked.instantiate()
 		bgDetails.append(cur)
 		bgDetailHolder.add_child(cur)
 	for b in bgDetails:
-		b.setup(bgBounds, cam.maxZoomBounds,bgDetailTex.pick_random(),0 if randf()>0.5 else 1)
+		b.setup(selectedBounds, cam.maxZoomBounds, bgDetailTex.pick_random(), 0 if randf()>0.5 else 1)
 
 
 func _process(delta):

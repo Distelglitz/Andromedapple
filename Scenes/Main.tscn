@@ -163,7 +163,7 @@ zoomScaler = NodePath("Scale")
 starHolder = NodePath("StarHolder")
 bgDetailHolder = NodePath("BgDetailHolder")
 bgDetailPacked = ExtResource("13_346fj")
-bgDetailCount = 6
+bgDetailPer1000000 = 0.06
 bgDetailTex = Array[Texture2D]([ExtResource("14_0sclb"), ExtResource("14_0sclb"), ExtResource("15_sxkr1"), ExtResource("16_fq0cl"), ExtResource("17_hwpts"), ExtResource("20_c4ay3"), ExtResource("18_jyqft"), ExtResource("18_jyqft"), ExtResource("18_jyqft")])
 
 [node name="Scale" type="Node2D" parent="Cam/GameBg"]

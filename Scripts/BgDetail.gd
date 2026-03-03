@@ -4,6 +4,8 @@ extends Sprite2D
 var startPos : Vector2
 var parallaxBounds : Vector2
 
+const maxParallax : float = 0.5
+
 @export var baseZIndex : int
 @export var baseScale : float
 @export var tiltRange : float

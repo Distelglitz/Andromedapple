@@ -18,6 +18,8 @@ var maxZoomBounds : Vector2
 var layoutZoomBounds : Vector2
 var clampBounds : Vector2
 
+const padding : Vector2 = Vector2(400,400)
+
 func _enter_tree():
 	maxZoomBounds=Vector2(1920,1080)/minZoom/2
 	layoutZoomBounds=level.layout.boundsDim/2
