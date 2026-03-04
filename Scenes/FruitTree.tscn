@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bj1gbp4tnts84"]
+[gd_scene load_steps=9 format=3 uid="uid://bj1gbp4tnts84"]
 
 [ext_resource type="Script" uid="uid://dgson5vl2s750" path="res://Scripts/FruitTree.gd" id="1_pl817"]
 [ext_resource type="PackedScene" uid="uid://dol66ko3q7a5x" path="res://Scenes/Fruit.tscn" id="2_ym3g0"]
 [ext_resource type="Script" uid="uid://2jrrh6gpg23n" path="res://TAOFUS/VisualEffects/SmoothToggle.gd" id="3_4ff7j"]
 [ext_resource type="PackedScene" uid="uid://dm3x5ewluhia" path="res://Scenes/TreeLeaves.tscn" id="3_ei3gi"]
+[ext_resource type="PackedScene" uid="uid://bebdabvlgr4pa" path="res://Scenes/Particles/ParticleLeaf.tscn" id="4_2ocgo"]
 [ext_resource type="Texture2D" uid="uid://uy0mfqskp52k" path="res://Sprites/Trunk/Tex_Trunk_0.tres" id="5_4ff7j"]
 [ext_resource type="Texture2D" uid="uid://b2ann07gjskl5" path="res://Sprites/Trunk/Tex_Trunk_1.tres" id="7_v48xs"]
 [ext_resource type="Texture2D" uid="uid://dbnebe1lml3xx" path="res://Sprites/Trunk/Tex_Trunk_2.tres" id="8_2ocgo"]
@@ -17,6 +18,7 @@ spawnPoints = NodePath("FruitSpawns")
 trunkHolder = NodePath("SmoothToggle/TrunkHolder")
 leafPacked = ExtResource("3_ei3gi")
 tog = NodePath("SmoothToggle")
+parPacked = ExtResource("4_2ocgo")
 
 [node name="FruitSpawns" type="Node2D" parent="."]
 
