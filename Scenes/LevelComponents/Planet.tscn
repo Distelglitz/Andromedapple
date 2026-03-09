@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cadkk3oc7vvwk"]
+[gd_scene load_steps=9 format=3 uid="uid://cadkk3oc7vvwk"]
 
 [ext_resource type="Script" uid="uid://cwxnw3iosaxy1" path="res://Scripts/Planet.gd" id="1_pcoqr"]
 [ext_resource type="Script" uid="uid://d32ri4dl0odrr" path="res://TAOFUS/VisualEffects/SquashAnchor.gd" id="2_7h6fb"]
 [ext_resource type="Texture2D" uid="uid://bsh3a8uh2s6xp" path="res://Sprites/Tex_PlanetBlank.png" id="2_dtgdw"]
+[ext_resource type="PackedScene" uid="uid://dg0tui2b575o5" path="res://Scenes/Grass.tscn" id="2_mc08n"]
 [ext_resource type="Shader" uid="uid://n28rowritj34" path="res://Shader/PlanetCracks.gdshader" id="3_dtgdw"]
 [ext_resource type="Texture2D" uid="uid://w13gu10qwoy8" path="res://Sprites/Tex_Planet_Cracks.png" id="4_qw63s"]
 
@@ -22,6 +23,7 @@ script = ExtResource("1_pcoqr")
 spSolid = NodePath("VisualHolder/SquashAnchor/Sp_Solid")
 spCracks = NodePath("VisualHolder/SquashAnchor/Sp_Cracks")
 squash = NodePath("VisualHolder/SquashAnchor")
+grassPacked = ExtResource("2_mc08n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pcoqr")

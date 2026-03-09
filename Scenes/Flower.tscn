@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpf4mk4k7sohp"]
+
+[ext_resource type="Script" uid="uid://by421xhry7gs" path="res://Scripts/Flower.gd" id="1_bm4ub"]
+[ext_resource type="Script" uid="uid://2jrrh6gpg23n" path="res://TAOFUS/VisualEffects/SmoothToggle.gd" id="2_2qnmj"]
+[ext_resource type="Texture2D" uid="uid://cerp4kgiwjy8j" path="res://Sprites/Tex_Flower.png" id="3_bc42p"]
+[ext_resource type="Texture2D" uid="uid://j604clj3y8fc" path="res://Sprites/Tex_FlowerStem.png" id="3_ekod6"]
+
+[node name="Flower" type="Node2D" node_paths=PackedStringArray("tog", "spMain", "spStem")]
+script = ExtResource("1_bm4ub")
+tog = NodePath("SmoothToggle")
+spMain = NodePath("SmoothToggle/SpMain")
+spStem = NodePath("SmoothToggle/SpStem")
+minScale = 0.8
+maxHeight = 130.0
+swaySpeed = 0.75
+swayMag = 10.0
+metadata/_custom_type_script = "uid://by421xhry7gs"
+
+[node name="SmoothToggle" type="Node2D" parent="."]
+script = ExtResource("2_2qnmj")
+_startMode = 1
+speedIn = 5.0
+_easeIn = 3
+metadata/_custom_type_script = "uid://2jrrh6gpg23n"
+
+[node name="SpStem" type="Sprite2D" parent="SmoothToggle"]
+z_index = -1
+position = Vector2(-2, 92)
+scale = Vector2(0.35, 0.5)
+texture = ExtResource("3_ekod6")
+
+[node name="SpMain" type="Sprite2D" parent="SmoothToggle"]
+scale = Vector2(0.38240305, 0.38240305)
+texture = ExtResource("3_bc42p")
+
+[node name="SpFoliage" type="Sprite2D" parent="SmoothToggle"]

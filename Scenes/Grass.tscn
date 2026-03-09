@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://dg0tui2b575o5"]
+
+[ext_resource type="Script" uid="uid://dl5dd84mhcg4o" path="res://Scripts/Grass.gd" id="1_w34vg"]
+[ext_resource type="PackedScene" uid="uid://dpf4mk4k7sohp" path="res://Scenes/Flower.tscn" id="2_6dki7"]
+[ext_resource type="Texture2D" uid="uid://c3hrf57ddgo4e" path="res://Sprites/Tex_Grass.png" id="2_543xm"]
+[ext_resource type="Shader" uid="uid://b7xxgbvj58lu4" path="res://Shader/Grass.gdshader" id="2_k1ews"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6dki7"]
+resource_local_to_scene = true
+shader = ExtResource("2_k1ews")
+shader_parameter/speed = 0.4
+shader_parameter/height = 0.04
+shader_parameter/radius = 100.0
+
+[node name="Grass" type="Node2D" node_paths=PackedStringArray("line")]
+script = ExtResource("1_w34vg")
+line = NodePath("Line2D")
+pointFrequency = 0.015
+flowerPacked = ExtResource("2_6dki7")
+flowerSurfaceFrequency = 0.003
+flowerInsideFrequencyPer10k = 0.125
+sproutDuration = 0.2
+metadata/_custom_type_script = "uid://dl5dd84mhcg4o"
+
+[node name="Line2D" type="Line2D" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_6dki7")
+width = 120.0
+texture = ExtResource("2_543xm")
+texture_mode = 1

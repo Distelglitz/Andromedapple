@@ -14,6 +14,9 @@ var shape : CircleShape2D
 @export var squash : SquashAnchor
 var cracksMat : ShaderMaterial
 
+@export var grassPacked : PackedScene
+
+
 func isOccupied():
 	return tree!=null
 
@@ -23,6 +26,10 @@ func treeOccupiedSetup(_tree : FruitTree):
 	spSolid.modulate=Persistent.c.foliage()
 	spCracks.visible=false
 	squash.TriggerSquash(SquashAnchor.Small*0.85)
+
+	var grass : Grass = grassPacked.instantiate()
+	grass.setup(self)
+	squash.add_child(grass)
 
 func _enter_tree():
 	var colShape : CollisionShape2D = get_child(0)
