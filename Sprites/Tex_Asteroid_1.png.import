@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://w13gu10qwoy8"
-path="res://.godot/imported/Tex_Planet_Cracks.png-ea88f2fa27025c88bd4f4dd1f7cfdfe4.ctex"
+uid="uid://dr7cin8w27nen"
+path="res://.godot/imported/Tex_Asteroid_1.png-a474f24a00b2c0bff6c0c1d9f9550eaf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Tex_Planet_Cracks.png"
-dest_files=["res://.godot/imported/Tex_Planet_Cracks.png-ea88f2fa27025c88bd4f4dd1f7cfdfe4.ctex"]
+source_file="res://Sprites/Tex_Asteroid_1.png"
+dest_files=["res://.godot/imported/Tex_Asteroid_1.png-a474f24a00b2c0bff6c0c1d9f9550eaf.ctex"]
 
 [params]
 

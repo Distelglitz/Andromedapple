@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://cadkk3oc7vvwk"]
+[gd_scene load_steps=11 format=3 uid="uid://cadkk3oc7vvwk"]
 
 [ext_resource type="Script" uid="uid://cwxnw3iosaxy1" path="res://Scripts/Planet.gd" id="1_pcoqr"]
 [ext_resource type="Script" uid="uid://d32ri4dl0odrr" path="res://TAOFUS/VisualEffects/SquashAnchor.gd" id="2_7h6fb"]
 [ext_resource type="Texture2D" uid="uid://bsh3a8uh2s6xp" path="res://Sprites/Tex_PlanetBlank.png" id="2_dtgdw"]
 [ext_resource type="PackedScene" uid="uid://dg0tui2b575o5" path="res://Scenes/Grass.tscn" id="2_mc08n"]
-[ext_resource type="Shader" uid="uid://n28rowritj34" path="res://Shader/PlanetCracks.gdshader" id="3_dtgdw"]
-[ext_resource type="Texture2D" uid="uid://w13gu10qwoy8" path="res://Sprites/Tex_Planet_Cracks.png" id="4_qw63s"]
+[ext_resource type="Shader" uid="uid://n28rowritj34" path="res://Shader/Pattern.gdshader" id="3_dtgdw"]
+[ext_resource type="Texture2D" uid="uid://b6xj00rtga3mk" path="res://Sprites/Tex_PlanetPatternBack.png" id="6_mc08n"]
+[ext_resource type="Texture2D" uid="uid://cq208cnq6vvhc" path="res://Sprites/Tex_PlanetPatternFront.png" id="7_fbkom"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pcoqr"]
 resource_local_to_scene = true
@@ -14,14 +15,21 @@ radius = 100.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qw63s"]
 resource_local_to_scene = true
 shader = ExtResource("3_dtgdw")
-shader_parameter/cracks = ExtResource("4_qw63s")
-shader_parameter/crackUvOffset = Vector2(0, 0)
+shader_parameter/tex = ExtResource("6_mc08n")
+shader_parameter/uvOffset = Vector2(0, 0)
 
-[node name="Planet" type="Area2D" node_paths=PackedStringArray("spSolid", "spCracks", "squash")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mc08n"]
+shader = ExtResource("3_dtgdw")
+shader_parameter/tex = ExtResource("7_fbkom")
+shader_parameter/uvOffset = Vector2(0, 0)
+
+[node name="Planet" type="Area2D" node_paths=PackedStringArray("spSolid", "spPatternBack", "spPatternFront", "squash")]
+z_index = 1
 z_as_relative = false
 script = ExtResource("1_pcoqr")
 spSolid = NodePath("VisualHolder/SquashAnchor/Sp_Solid")
-spCracks = NodePath("VisualHolder/SquashAnchor/Sp_Cracks")
+spPatternBack = NodePath("VisualHolder/SquashAnchor/Sp_PatternBack")
+spPatternFront = NodePath("VisualHolder/SquashAnchor/Sp_PatternFront")
 squash = NodePath("VisualHolder/SquashAnchor")
 grassPacked = ExtResource("2_mc08n")
 
@@ -40,9 +48,15 @@ metadata/_custom_type_script = "uid://d32ri4dl0odrr"
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_dtgdw")
 
-[node name="Sp_Cracks" type="Sprite2D" parent="VisualHolder/SquashAnchor"]
-modulate = Color(0.6745098, 0.3254902, 0.3254902, 1)
+[node name="Sp_PatternBack" type="Sprite2D" parent="VisualHolder/SquashAnchor"]
 z_index = 1
 material = SubResource("ShaderMaterial_qw63s")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_dtgdw")
+
+[node name="Sp_PatternFront" type="Sprite2D" parent="VisualHolder/SquashAnchor"]
+modulate = Color(0.6745098, 0.3254902, 0.3254902, 1)
+z_index = 1
+material = SubResource("ShaderMaterial_mc08n")
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_dtgdw")

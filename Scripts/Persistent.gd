@@ -6,13 +6,17 @@ var celebrate : bool = false
 var c : ColorScheme = load("res://ColorScheme/col_0.tres")
 
 func LevelCleared():
-    if not Save.clearedLevels.has(layoutCords):
-        print("NEW UNLOCK")
-        celebrate=true
-        Save.clearedLevels.append(layoutCords)
-        Save.updateSave()
+	if not Save.clearedLevels.has(layoutCords):
+		print("NEW UNLOCK")
+		celebrate=true
+		Save.clearedLevels.append(layoutCords)
+		Save.updateSave()
 
 func TransitionGame():
-    TransitionManager.TransitionScene("res://Scenes/Main.tscn")
+	TransitionManager.TransitionScene("res://Scenes/Main.tscn")
 func TransitionMenu():
-    TransitionManager.TransitionScene("res://Scenes/Menu.tscn")
+	TransitionManager.TransitionScene("res://Scenes/Menu.tscn")
+
+func setupPattern(sp : Sprite2D, offset : Vector2):
+	var mat : ShaderMaterial = sp.material
+	mat.set_shader_parameter("uvOffset", offset)

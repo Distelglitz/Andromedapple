@@ -1,15 +1,36 @@
-[gd_scene load_steps=5 format=3 uid="uid://bl6s2d2ov8no3"]
+[gd_scene load_steps=12 format=3 uid="uid://bl6s2d2ov8no3"]
 
 [ext_resource type="Script" uid="uid://b85x3hknxj3do" path="res://Scripts/Asteroid.gd" id="1_ppm8i"]
-[ext_resource type="Texture2D" uid="uid://nynnchoyd3ov" path="res://Sprites/Tex_Asteroid.png" id="2_3lcxl"]
 [ext_resource type="Script" uid="uid://3uow3ihp353v" path="res://TAOFUS/VisualEffects/Shaker.gd" id="2_hesds"]
+[ext_resource type="Texture2D" uid="uid://dr7cin8w27nen" path="res://Sprites/Tex_Asteroid_1.png" id="3_ivkq2"]
+[ext_resource type="Texture2D" uid="uid://d4n0v2nbeaudl" path="res://Sprites/Tex_Asteroid_2.png" id="4_bvm0p"]
+[ext_resource type="Texture2D" uid="uid://bvmy7pg2l14ag" path="res://Sprites/Tex_Asteroid_0.png" id="4_ivkq2"]
+[ext_resource type="Shader" uid="uid://n28rowritj34" path="res://Shader/Pattern.gdshader" id="4_t3c88"]
+[ext_resource type="Texture2D" uid="uid://cotcdesus5461" path="res://Sprites/Tex_AsteroidPatternBack.png" id="7_bvm0p"]
+[ext_resource type="Texture2D" uid="uid://bijf4e7d3r2a1" path="res://Sprites/Tex_AsteroidPatternFront.png" id="9_4xcw1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hesds"]
 resource_local_to_scene = true
 radius = 87.14356
 
-[node name="Asteroid" type="Area2D"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ivkq2"]
+resource_local_to_scene = true
+shader = ExtResource("4_t3c88")
+shader_parameter/tex = ExtResource("7_bvm0p")
+shader_parameter/uvOffset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t3c88"]
+resource_local_to_scene = true
+shader = ExtResource("4_t3c88")
+shader_parameter/tex = ExtResource("9_4xcw1")
+shader_parameter/uvOffset = Vector2(0, 0)
+
+[node name="Asteroid" type="Area2D" node_paths=PackedStringArray("spSolid", "spPatternBack", "spPatternFront")]
 script = ExtResource("1_ppm8i")
+spSolid = NodePath("Shaker/Scale/Sp_Solid")
+spPatternBack = NodePath("Shaker/Scale/Sp_PatternBack")
+spPatternFront = NodePath("Shaker/Scale/Sp_PatternFront")
+textures = Array[Texture2D]([ExtResource("4_ivkq2"), ExtResource("3_ivkq2"), ExtResource("4_bvm0p")])
 metadata/_custom_type_script = "uid://b85x3hknxj3do"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -19,5 +40,17 @@ shape = SubResource("CircleShape2D_hesds")
 script = ExtResource("2_hesds")
 metadata/_custom_type_script = "uid://3uow3ihp353v"
 
-[node name="Sprite2D" type="Sprite2D" parent="Shaker"]
-texture = ExtResource("2_3lcxl")
+[node name="Scale" type="Node2D" parent="Shaker"]
+scale = Vector2(0.5, 0.5)
+
+[node name="Sp_Solid" type="Sprite2D" parent="Shaker/Scale"]
+texture = ExtResource("4_ivkq2")
+
+[node name="Sp_PatternBack" type="Sprite2D" parent="Shaker/Scale"]
+material = SubResource("ShaderMaterial_ivkq2")
+texture = ExtResource("4_ivkq2")
+
+[node name="Sp_PatternFront" type="Sprite2D" parent="Shaker/Scale"]
+z_index = 1
+material = SubResource("ShaderMaterial_t3c88")
+texture = ExtResource("4_ivkq2")

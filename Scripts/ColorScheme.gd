@@ -19,7 +19,7 @@ func bgLayers(idx : int):
             return secondary[3]
         3:
             return secondary[4]
-func bgDetailColor(idx : int):
+func bgDetail(idx : int):
     return secondary[3]
     match idx:
         0:
@@ -40,3 +40,13 @@ func flowerDetail():
 
 func wood():
     return secondary[3]
+
+# back to front
+func rock(idx : int):
+    match idx:
+        0:
+            return secondary[6]
+        1:
+            return secondary[7]
+        _:
+            return secondary[8]

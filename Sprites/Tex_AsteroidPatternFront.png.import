@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5kl0dp8r4hdi"
-path="res://.godot/imported/Tex_TreeTest.png-0c2f4617b42d73ef188e16b1cc3a9505.ctex"
+uid="uid://bijf4e7d3r2a1"
+path="res://.godot/imported/Tex_AsteroidPatternFront.png-4a7a1c7713db43a7d3f9d541e9edf215.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Tex_TreeTest.png"
-dest_files=["res://.godot/imported/Tex_TreeTest.png-0c2f4617b42d73ef188e16b1cc3a9505.ctex"]
+source_file="res://Sprites/Tex_AsteroidPatternFront.png"
+dest_files=["res://.godot/imported/Tex_AsteroidPatternFront.png-4a7a1c7713db43a7d3f9d541e9edf215.ctex"]
 
 [params]
 
