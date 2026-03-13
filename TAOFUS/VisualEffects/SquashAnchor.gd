@@ -39,4 +39,5 @@ func _process(delta):
 
 	_remainingDuration-=delta
 	if _remainingDuration <= 0:
+		scale=Vector2.ONE
 		set_process(false)

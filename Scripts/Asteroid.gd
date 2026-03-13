@@ -31,9 +31,9 @@ func _enter_tree():
 	var uvOffset : Vector2 = Vector2(randf(),randf())*0.75
 	Persistent.setupPattern(spPatternBack, Vector2(randf(),randf())*0.75)
 	Persistent.setupPattern(spPatternFront, Vector2(randf(),randf())*0.75)
-	spSolid.modulate=Persistent.c.rock(0)
+	spSolid.modulate=Persistent.c.rock(2)
 	spPatternBack.modulate=Persistent.c.rock(1)
-	spPatternFront.modulate=Persistent.c.rock(2)
+	spPatternFront.modulate=Persistent.c.rock(0)
 
 func _ready():
 	setRadius(scale.x*100)
