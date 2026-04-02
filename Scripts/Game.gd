@@ -255,7 +255,7 @@ func updateFruit(_selectedFruit : Fruit):
 	cam.targetPosition=aimCamTarget+preservedPanOffset
 func updateAimVisuals():
 	if aimVisualsInstance==null:
-		if selectedFruit!=null:
+		if selectedFruit!=null and gameState==GameState.Aim:
 			aimVisualsInstance=packedAimVisuals.instantiate()
 			aimVisualsInstance.position=selectedFruit.global_position-level.planetOfFruit(selectedFruit).global_position
 			aimVisualsInstance.cam=cam.camera

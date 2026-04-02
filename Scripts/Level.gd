@@ -83,7 +83,7 @@ func spawnProjectile(fruit : Fruit, position : Vector2, direction : Vector2):
 	projectiles.append(projectile)
 	projectile.position=position
 	holderProjectile.add_child(projectile)
-	projectile.setup(direction, planetOfFruit(fruit).grav)
+	projectile.setup(direction, planetOfFruit(fruit).grav, fruit.spMain.texture, fruit.spDetail.texture)
 
 	var packedTrail : PackedScene = load(packedProjectilePathPath)
 	var trail : ProjectileTrail = packedTrail.instantiate()

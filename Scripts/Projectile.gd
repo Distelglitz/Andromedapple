@@ -20,11 +20,20 @@ var _freezeT : float
 @export var area : Area2D
 @export var areaColShape : CollisionShape2D
 
+@export var spMain : Sprite2D
+@export var spDetail : Sprite2D
 
+var rotDir : int
+@export var baseRotSpeed : float
+@export var rotSpeedScale : float
+@export var spHolder : Node2D
 
 func _enter_tree():
 	areaColShape.shape=colShape.shape
 	area.area_entered.connect(onAreaEntered)
+	spMain.modulate=Persistent.c.fruit()
+	spDetail.modulate=Persistent.c.fruitDetail()
+	rotDir=1 if randf()>0.5 else -1
 func _ready():
 	startPos=global_position
 
@@ -43,10 +52,13 @@ func onAreaEntered(other : Area2D):
 		var asteroid : Asteroid = other
 		asteroid.hitByProj(self)
 		level.removeProjectile(self,true,other)
-func setup(_initialDirection : Vector2, _ignoredOrigin : GravitySource):
+func setup(_initialDirection : Vector2, _ignoredOrigin : GravitySource, texMain : Texture2D, texDetail : Texture2D):
 	ignoredOrigin=_ignoredOrigin
 	initialDirection=_initialDirection
 	linear_velocity=initialDirection*initialSpeed
+	spMain.texture=texMain
+	spDetail.texture=texDetail
+	level.EV_ProjectileRemoved.connect(_onProjectileRemoved)
 
 var totalGravStep : Vector2
 
@@ -76,6 +88,7 @@ func _physics_process(delta):
 
 func _process(delta):
 	modulate=Color(1,1,1,1).lerp(Color(0,0,1,1),freezeP())
+	spHolder.rotation_degrees+=rotDir*(baseRotSpeed+rotSpeedScale*linear_velocity.length())*delta
 
 func _onGravitySourceEntered(gravitySource:GravitySource):
 	print("Gravity Source Enter")
@@ -86,6 +99,24 @@ func _onGravitySourceExited(gravitySource:GravitySource):
 		print("Left origin gravity zone")
 	else:
 		pass
+func _onProjectileRemoved(projectile : Projectile, destroyed, other):
+	if projectile!=self:
+		return
+	var parPath : String = "FruitDestroyed" if destroyed else "FruitImpact"
+	var parPos = position
+	if other is Planet:
+		var planet : Planet = other
+		parPos = planet.global_position-position.direction_to(planet.global_position)*(planet.radius+25) # makes particle spawn on planet surface
+	var pMain : Node2D = ParticleSpawner.SpawnFromName(parPath,parPos)
+	pMain.modulate=Persistent.c.fruit()
+	
+	var pDetail : Node2D = ParticleSpawner.SpawnFromName(parPath,parPos)
+	if destroyed:
+		pDetail.modulate=Persistent.c.fruitDetail()
+	else:
+		pDetail.modulate=Persistent.c.fruit()
+	level.EV_ProjectileRemoved.disconnect(_onProjectileRemoved)
+
 
 func gravStep(amount : Vector2, delta : float, gravSource : GravitySource):
 	totalGravStep+=amount*delta

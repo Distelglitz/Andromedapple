@@ -1,27 +1,69 @@
-[gd_scene load_steps=3 format=3 uid="uid://dol66ko3q7a5x"]
+[gd_scene load_steps=11 format=3 uid="uid://dol66ko3q7a5x"]
 
 [ext_resource type="Script" uid="uid://d0vodvo3gg3" path="res://Scripts/Fruit.gd" id="1_hkvwh"]
-[ext_resource type="Texture2D" uid="uid://danx6j83bau84" path="res://Sprites/Tex_FruitTest.png" id="2_jhvyw"]
+[ext_resource type="Texture2D" uid="uid://bcmfddmjdtpi2" path="res://Sprites/Fruit/Tex_Fruit_0.tres" id="2_jhvyw"]
+[ext_resource type="Texture2D" uid="uid://csuqmjtq7cx7i" path="res://Sprites/Fruit/Tex_Stem.png" id="2_jldrw"]
+[ext_resource type="Texture2D" uid="uid://8oimw6g1ur8y" path="res://Sprites/Fruit/Tex_Fruit_1.tres" id="3_a3gcr"]
+[ext_resource type="Texture2D" uid="uid://bhx6mainek1xa" path="res://Sprites/Fruit/Tex_Fruit_Detail_0.tres" id="3_mtlh5"]
+[ext_resource type="Texture2D" uid="uid://c7w8vkrfntwo7" path="res://Sprites/Fruit/Tex_Fruit_2.tres" id="4_yxhfs"]
+[ext_resource type="Texture2D" uid="uid://co8k6m666sev7" path="res://Sprites/Fruit/Tex_Fruit_Detail_1.tres" id="6_bt2nf"]
+[ext_resource type="Texture2D" uid="uid://cxn0y8p54a0gu" path="res://Sprites/Fruit/Tex_Fruit_Detail_2.tres" id="7_vb76i"]
+[ext_resource type="Script" uid="uid://2jrrh6gpg23n" path="res://TAOFUS/VisualEffects/SmoothToggle.gd" id="8_yxhfs"]
+[ext_resource type="Script" uid="uid://1q3j56yo0nh5" path="res://TAOFUS/VisualEffects/SmoothScale.gd" id="10_bt2nf"]
 
-[node name="Fruit" type="Node2D" node_paths=PackedStringArray("sp", "control", "testSelectedBackdrop")]
+[node name="Fruit" type="Node2D" node_paths=PackedStringArray("tog", "selectScale", "rotPoint", "spStem", "spMain", "spDetail")]
 z_index = 10
+scale = Vector2(1.16, 1.16)
 script = ExtResource("1_hkvwh")
-sp = NodePath("Sprite2D")
-control = NodePath("Control")
-testSelectedBackdrop = NodePath("Sprite2D/Backdrop")
+tog = NodePath("SmoothScale/SmoothToggle")
+selectScale = NodePath("SmoothScale")
+togSpeedRange = Vector2(4, 4)
+rotPoint = NodePath("SmoothScale/SmoothToggle/RotationPoint")
+spStem = NodePath("SmoothScale/SmoothToggle/spStem")
+spMain = NodePath("SmoothScale/SmoothToggle/RotationPoint/Flip/spMain")
+spDetail = NodePath("SmoothScale/SmoothToggle/RotationPoint/Flip/spDetail")
+textures = Array[Texture2D]([ExtResource("2_jhvyw"), ExtResource("3_a3gcr"), ExtResource("4_yxhfs")])
+texturesDetail = Array[Texture2D]([ExtResource("3_mtlh5"), ExtResource("6_bt2nf"), ExtResource("7_vb76i")])
+sinMag = 12.0
+sinSpeed = 0.5
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.7289331, 0.7289331)
+[node name="SmoothScale" type="Node2D" parent="."]
+script = ExtResource("10_bt2nf")
+a = Vector2(0.9, 0.9)
+b = Vector2(1.3, 1.3)
+speedAtoB = 8.0
+speedBtoA = 1.5
+easeAtoB = 1
+easeBtoA = 2
+metadata/_custom_type_script = "uid://1q3j56yo0nh5"
+
+[node name="SmoothToggle" type="Node2D" parent="SmoothScale"]
+scale = Vector2(1.0000001, 1.0000001)
+script = ExtResource("8_yxhfs")
+_easeIn = 3
+metadata/_custom_type_script = "uid://2jrrh6gpg23n"
+
+[node name="spStem" type="Sprite2D" parent="SmoothScale/SmoothToggle"]
+position = Vector2(-2.0000002, -26)
+scale = Vector2(0.46, 0.46)
+texture = ExtResource("2_jldrw")
+
+[node name="RotationPoint" type="Node2D" parent="SmoothScale/SmoothToggle"]
+position = Vector2(-1, -16)
+
+[node name="Flip" type="Node2D" parent="SmoothScale/SmoothToggle/RotationPoint"]
+position = Vector2(1, 16)
+
+[node name="spMain" type="Sprite2D" parent="SmoothScale/SmoothToggle/RotationPoint/Flip"]
+scale = Vector2(0.499, 0.499)
 texture = ExtResource("2_jhvyw")
 
-[node name="Backdrop" type="Sprite2D" parent="Sprite2D"]
-modulate = Color(0, 0, 0, 0.5176471)
-z_index = -5
-z_as_relative = false
-scale = Vector2(1.6034586, 1.6034586)
-texture = ExtResource("2_jhvyw")
+[node name="spDetail" type="Sprite2D" parent="SmoothScale/SmoothToggle/RotationPoint/Flip"]
+modulate = Color(0.63920635, 0.63920635, 0.6392063, 1)
+scale = Vector2(0.499, 0.499)
+texture = ExtResource("3_mtlh5")
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="SmoothScale/SmoothToggle"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -63.0

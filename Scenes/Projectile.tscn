@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://hfja8tg0onrs"]
+[gd_scene load_steps=6 format=3 uid="uid://hfja8tg0onrs"]
 
 [ext_resource type="Script" uid="uid://p3ouf06w16n5" path="res://Scripts/Projectile.gd" id="1_k1cl8"]
-[ext_resource type="Texture2D" uid="uid://danx6j83bau84" path="res://Sprites/Tex_FruitTest.png" id="1_lal66"]
+[ext_resource type="Texture2D" uid="uid://8oimw6g1ur8y" path="res://Sprites/Fruit/Tex_Fruit_1.tres" id="2_0tri7"]
+[ext_resource type="Script" uid="uid://d32ri4dl0odrr" path="res://TAOFUS/VisualEffects/SquashAnchor.gd" id="2_ds7j7"]
+[ext_resource type="Texture2D" uid="uid://co8k6m666sev7" path="res://Sprites/Fruit/Tex_Fruit_Detail_1.tres" id="3_ds7j7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k1cl8"]
 radius = 30.0
 
-[node name="Projectile" type="RigidBody2D" node_paths=PackedStringArray("colShape", "area", "areaColShape")]
+[node name="Projectile" type="RigidBody2D" node_paths=PackedStringArray("colShape", "area", "areaColShape", "spMain", "spDetail", "spHolder")]
 z_index = 5
 gravity_scale = 0.0
 linear_damp_mode = 1
@@ -18,10 +20,27 @@ timeToFreeze = 1.5
 colShape = NodePath("CollisionShape2D")
 area = NodePath("Area2D")
 areaColShape = NodePath("Area2D/CollisionShape2D")
+spMain = NodePath("SquashAnchor/SpriteHolder/spMain")
+spDetail = NodePath("SquashAnchor/SpriteHolder/spDetail")
+baseRotSpeed = 70.0
+rotSpeedScale = 0.1
+spHolder = NodePath("SquashAnchor/SpriteHolder")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -7)
-texture = ExtResource("1_lal66")
+[node name="SquashAnchor" type="Node2D" parent="."]
+script = ExtResource("2_ds7j7")
+metadata/_custom_type_script = "uid://d32ri4dl0odrr"
+
+[node name="SpriteHolder" type="Node2D" parent="SquashAnchor"]
+scale = Vector2(0.8, 0.8)
+
+[node name="spMain" type="Sprite2D" parent="SquashAnchor/SpriteHolder"]
+position = Vector2(4, -16)
+texture = ExtResource("2_0tri7")
+
+[node name="spDetail" type="Sprite2D" parent="SquashAnchor/SpriteHolder"]
+modulate = Color(0.7274283, 0.7274284, 0.7274283, 1)
+position = Vector2(4, -16)
+texture = ExtResource("3_ds7j7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_k1cl8")
