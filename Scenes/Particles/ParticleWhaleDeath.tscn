@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://88kam4bvlbwh"]
+
+[ext_resource type="Texture2D" uid="uid://cd67jno3ay213" path="res://Sprites/Stars/Tex_Star_Round.png" id="1_4ncs4"]
+[ext_resource type="Script" uid="uid://3mlt7nrr3vr0" path="res://TAOFUS/VisualEffects/ParSelfFreeCPU.gd" id="1_nil86"]
+
+[sub_resource type="Curve" id="Curve_sif1e"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.6603774, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="ParticleWhaleDeath" type="CPUParticles2D"]
+amount = 10
+texture = ExtResource("1_4ncs4")
+lifetime = 1.4000000000000001
+explosiveness = 1.0
+lifetime_randomness = 0.35
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 400.0
+initial_velocity_max = 1400.0
+angular_velocity_min = -300.0
+angular_velocity_max = 300.0
+scale_amount_min = 3.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_sif1e")
+script = ExtResource("1_nil86")
+metadata/_custom_type_script = "uid://3mlt7nrr3vr0"

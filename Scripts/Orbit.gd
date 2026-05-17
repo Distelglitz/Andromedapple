@@ -20,6 +20,8 @@ func _enter_tree():
 func addSatellite(child : Node2D):
 	if satellites.has(child):
 		return
+	if child is Planet:
+		child.moving = true
 	satellites.append(child)
 	satelliteOffsets.append(global_position-child.global_position)
 	var dist = global_position.distance_to(child.global_position)

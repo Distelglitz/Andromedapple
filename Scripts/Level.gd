@@ -110,6 +110,7 @@ func removeProjectile(projectile : Projectile, destroyed : bool, other : Node2D 
 func spawnGravitySource(attachTo : Node2D, position : Vector2, mass : float, hasAtmosphere : bool):
 	var packed : PackedScene = load(packedGravitySourcePath)
 	var gravitySource : GravitySource = packed.instantiate()
+	gravitySource.position = position
 	gravitySources.append(gravitySource)
 	gravitySource.updateMass(mass)
 	gravitySource.updateAtmosphere(hasAtmosphere)
@@ -119,6 +120,12 @@ func spawnGravitySource(attachTo : Node2D, position : Vector2, mass : float, has
 		attachTo.add_child(gravitySource)
 	EV_GravitySourceSpawned.emit(gravitySource)
 	return gravitySource
+
+func removeGravitySource(grav : GravitySource):
+	if not gravitySources.has(grav):
+		return
+	gravitySources.erase(grav)
+	grav.queue_free()
 
 func _physics_process(delta: float):
 	for proj in projectiles:

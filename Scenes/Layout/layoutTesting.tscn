@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cadkk3oc7vvwk" path="res://Scenes/LevelComponents/Planet.tscn" id="2_k8k6l"]
 [ext_resource type="PackedScene" uid="uid://qd5ytovhj6af" path="res://Scenes/LevelComponents/Reflector.tscn" id="3_k8k6l"]
 [ext_resource type="PackedScene" uid="uid://bmfrh80s51fly" path="res://Scenes/LevelComponents/Booster.tscn" id="4_dn2ii"]
-[ext_resource type="PackedScene" uid="uid://cp1jkqpjw8wgf" path="res://Scenes/LevelComponents/WhaleBloat.tscn" id="6_n6ebu"]
+[ext_resource type="PackedScene" uid="uid://bcb7mx6bduvo4" path="res://Scenes/LevelComponents/Whale.tscn" id="5_v45ah"]
 
 [node name="Layout7" type="Node2D" node_paths=PackedStringArray("rect")]
 script = ExtResource("1_606uh")
@@ -39,23 +39,6 @@ rotation = 1.5707964
 [node name="Booster" parent="." instance=ExtResource("4_dn2ii")]
 position = Vector2(-463, 633)
 
-[node name="Booster2" parent="." instance=ExtResource("4_dn2ii")]
-position = Vector2(-699, 614)
-
-[node name="Booster3" parent="." instance=ExtResource("4_dn2ii")]
-position = Vector2(-936, 639)
-
-[node name="Booster4" parent="." instance=ExtResource("4_dn2ii")]
-position = Vector2(-1173, 641)
-
-[node name="Booster5" parent="." instance=ExtResource("4_dn2ii")]
-position = Vector2(-1433, 636)
-
-[node name="Booster6" parent="." instance=ExtResource("4_dn2ii")]
-position = Vector2(-1686, 638)
-
-[node name="Booster7" parent="." instance=ExtResource("4_dn2ii")]
-position = Vector2(-1917, 636)
-
-[node name="WhaleBloat" parent="." instance=ExtResource("6_n6ebu")]
-position = Vector2(-1961, -489)
+[node name="Whale" parent="." instance=ExtResource("5_v45ah")]
+position = Vector2(-1449, 796.99994)
+rotation = -1.5707964

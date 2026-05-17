@@ -12,7 +12,7 @@ const dist : float = 450000
 
 var bloated : bool
 const mass : float = 13000000
-const removedEatThreshold : float = 700
+const removedEatThreshold : float = 1000
 
 @export var colShape : CollisionShape2D
 var shape : CircleShape2D
@@ -47,6 +47,8 @@ var hasEaten : bool
 
 var movingPrev : bool
 var moving : bool
+
+var grav : GravitySource
 
 @export var eatenRotSpeed : float
 var eatenRotDir : float
@@ -89,6 +91,12 @@ func _physics_process(delta):
 				velocity=Vector2.ZERO
 		finT+=delta*finSpeed
 		rotFin.rotation_degrees = sin(finT)*finSwingMagnitude
+		
+		# correct orientation
+		if MathS.DegToVec(rotHungry.rotation_degrees).y < 0:
+			rotHungry.scale = Vector2.ONE
+		else:
+			rotHungry.scale = Vector2(1,-1)
 
 
 	if velocity.length()>20:
@@ -107,6 +115,11 @@ func _process(delta):
 		pass
 	else:
 		pass
+
+func die():
+	ParticleSpawner.SpawnFromName("WhaleDeath",position).modulate = Persistent.c.foliage()
+	level.removeGravitySource(grav)
+	queue_free()
 
 func updateVisuals():
 	spBody.texture = texBodyChase if moving else texBodyIdle
@@ -143,7 +156,9 @@ func onProjectileRemoved(projectile : Projectile, destroyed : bool, other : Node
 	proj=null
 
 func onAreaEntered(area : Area2D):
-	pass
+	if area is Planet:
+		if not area.moving:
+			die()
 func onBodyEntered(body : Node2D):
 	if body is Projectile:
 		level.removeProjectile(body,true,self)
@@ -152,7 +167,7 @@ func onBodyEntered(body : Node2D):
 func eat(projectile : Projectile):
 	if hasEaten:
 		return
-	level.spawnGravitySource(self,Vector2.ZERO,mass, true)
+	grav = level.spawnGravitySource(self,Vector2.ZERO,mass, true)
 	hasEaten=true
 	squash.TriggerSquash(SquashAnchor.Large)
 

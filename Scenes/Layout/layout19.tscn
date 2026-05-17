@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtjy3rklenx3j"]
+
+[ext_resource type="Script" uid="uid://c8c7hb5aaqtru" path="res://Scripts/Layout.gd" id="1_h04qw"]
+[ext_resource type="PackedScene" uid="uid://cadkk3oc7vvwk" path="res://Scenes/LevelComponents/Planet.tscn" id="2_ttn8u"]
+
+[node name="Layout19" type="Node2D" node_paths=PackedStringArray("rect")]
+script = ExtResource("1_h04qw")
+rect = NodePath("ColorRect")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -7842.0
+offset_top = -4867.0
+offset_right = -6191.547
+offset_bottom = -3938.6206
+scale = Vector2(9.269917, 9.269917)
+color = Color(1, 0, 0, 0.1764706)
+
+[node name="Planet" parent="." instance=ExtResource("2_ttn8u")]
+scale = Vector2(2, 2)

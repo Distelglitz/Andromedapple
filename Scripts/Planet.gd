@@ -16,6 +16,7 @@ var shape : CircleShape2D
 
 @export var grassPacked : PackedScene
 
+var moving : bool
 
 func isOccupied():
 	return tree!=null

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c8c7hb5aaqtru" path="res://Scripts/Layout.gd" id="1_stfrf"]
 [ext_resource type="PackedScene" uid="uid://cadkk3oc7vvwk" path="res://Scenes/LevelComponents/Planet.tscn" id="2_fxqfy"]
 [ext_resource type="PackedScene" uid="uid://bcsujg1vnnwgj" path="res://Scenes/LevelComponents/Debree/DebreeRect.tscn" id="3_fxqfy"]
-[ext_resource type="PackedScene" uid="uid://cp1jkqpjw8wgf" path="res://Scenes/LevelComponents/WhaleBloat.tscn" id="4_74763"]
+[ext_resource type="PackedScene" uid="uid://bcb7mx6bduvo4" path="res://Scenes/LevelComponents/Whale.tscn" id="4_74763"]
 
 [node name="Layout11" type="Node2D" node_paths=PackedStringArray("rect")]
 script = ExtResource("1_stfrf")
@@ -42,10 +42,10 @@ scale = Vector2(2, 2)
 position = Vector2(-789.00037, 1795.0001)
 scale = Vector2(2.4673843, 2.4673843)
 
-[node name="WhaleBloat" parent="." instance=ExtResource("4_74763")]
+[node name="Whale" parent="." instance=ExtResource("4_74763")]
 position = Vector2(-2429, 296)
 rotation = -1.5707964
 
-[node name="WhaleBloat2" parent="." instance=ExtResource("4_74763")]
+[node name="Whale2" parent="." instance=ExtResource("4_74763")]
 position = Vector2(1060, -1124)
-rotation = -5.736897
+rotation = -5.7368975

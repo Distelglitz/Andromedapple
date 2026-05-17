@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cew01kmmnyve5"]
+[gd_scene load_steps=32 format=3 uid="uid://cew01kmmnyve5"]
 
 [ext_resource type="Script" uid="uid://c2o5r133q1hpu" path="res://Scripts/Menu.gd" id="1_3kf3n"]
 [ext_resource type="PackedScene" uid="uid://dk1pr857ty6xo" path="res://Scenes/MenuLine.tscn" id="2_aobxe"]
@@ -23,7 +23,10 @@
 [ext_resource type="PackedScene" uid="uid://brddy3bhqtrdo" path="res://Scenes/Layout/layout14.tscn" id="19_dm44m"]
 [ext_resource type="Resource" uid="uid://c12qwi1lr2hdn" path="res://ColorScheme/col_2.tres" id="20_c0stj"]
 [ext_resource type="PackedScene" uid="uid://ccx5xp24xrqpn" path="res://Scenes/Layout/layout15.tscn" id="20_n3nbb"]
+[ext_resource type="PackedScene" uid="uid://coggj7r50ntu" path="res://Scenes/Layout/layout10.tscn" id="23_ka6xg"]
 [ext_resource type="Script" uid="uid://bpfh661l3kge5" path="res://Scripts/MenuColorDetector.gd" id="24_3feh0"]
+[ext_resource type="PackedScene" uid="uid://byqvwy80qmrva" path="res://Scenes/Layout/layout16.tscn" id="24_08kpj"]
+[ext_resource type="PackedScene" uid="uid://b0t24uvjdcni1" path="res://Scenes/Layout/layout17.tscn" id="25_qwkn0"]
 [ext_resource type="Script" uid="uid://dfdb31fe1djno" path="res://Scripts/MenuColorSprite.gd" id="26_o00om"]
 [ext_resource type="Shader" uid="uid://bxemqiadchccn" path="res://Shader/Gradient.gdshader" id="27_ka6xg"]
 [ext_resource type="Script" uid="uid://che1t7ay258ev" path="res://Scripts/MenuBgRect.gd" id="28_cdx8w"]
@@ -170,12 +173,28 @@ offset_bottom = 93.0
 layout = ExtResource("16_dsmso")
 unlocks = [NodePath("../2_MenuLevel3")]
 
-[node name="2_MenuLevel3" parent="WorldHolder/MenuWorld2" instance=ExtResource("3_syfuq")]
+[node name="2_MenuLevel3" parent="WorldHolder/MenuWorld2" node_paths=PackedStringArray("unlocks") instance=ExtResource("3_syfuq")]
 offset_left = 672.0
 offset_top = -64.0
 offset_right = 772.0
 offset_bottom = 36.0
-layout = ExtResource("17_dd46u")
+layout = ExtResource("23_ka6xg")
+unlocks = [NodePath("../2_MenuLevel4")]
+
+[node name="2_MenuLevel4" parent="WorldHolder/MenuWorld2" node_paths=PackedStringArray("unlocks") instance=ExtResource("3_syfuq")]
+offset_left = 918.0
+offset_top = 107.0
+offset_right = 1018.0
+offset_bottom = 207.0
+layout = ExtResource("24_08kpj")
+unlocks = [NodePath("../2_MenuLevel5")]
+
+[node name="2_MenuLevel5" parent="WorldHolder/MenuWorld2" instance=ExtResource("3_syfuq")]
+offset_left = 1203.0
+offset_top = 112.0
+offset_right = 1303.0
+offset_bottom = 212.0
+layout = ExtResource("25_qwkn0")
 
 [node name="MenuWorld3" type="Node2D" parent="WorldHolder"]
 position = Vector2(-1171, 526)
