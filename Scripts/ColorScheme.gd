@@ -21,11 +21,6 @@ func bgLayers(idx : int):
             return secondary[4]
 func bgDetail(idx : int):
     return secondary[3]
-    match idx:
-        0:
-            return main[0]
-        1:
-            return secondary[3]
 func fruit():
     return secondary[5]
 
@@ -50,3 +45,21 @@ func rock(idx : int):
             return secondary[7]
         _:
             return secondary[8]
+
+func lineOrbit():
+    return secondary[6]
+
+func lineGravity(inside : bool):
+    if inside:
+        return secondary[7]
+    else:
+        return secondary[6]
+
+func lineTrail():
+    return secondary[6]
+
+func ui():
+    return main[2]
+
+func freezing():
+    return main[0]

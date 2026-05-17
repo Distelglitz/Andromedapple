@@ -17,6 +17,7 @@ func _enter_tree():
 	level.EV_ProjectileSpawned.connect(onProjectileSpawned)
 	level.EV_ProjectileRemoved.connect(onProjectileRemoved)
 	z_index=-400
+	modulate=Persistent.c.lineTrail()
 	modulate.a=maxOpacity
 
 func onProjectileSpawned(_projectile : Projectile):

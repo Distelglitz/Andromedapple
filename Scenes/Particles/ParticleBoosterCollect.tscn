@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwnrkf7kx75e7"]
+
+[ext_resource type="Script" uid="uid://3mlt7nrr3vr0" path="res://TAOFUS/VisualEffects/ParSelfFreeCPU.gd" id="1_jh1qq"]
+[ext_resource type="Texture2D" uid="uid://be8xwexlpofbt" path="res://Sprites/Tex_Booster.png" id="1_sif1e"]
+
+[sub_resource type="Curve" id="Curve_sif1e"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.4941038, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="ParticleBoosterCollect" type="CPUParticles2D"]
+amount = 4
+texture = ExtResource("1_sif1e")
+lifetime = 0.7
+explosiveness = 1.0
+lifetime_randomness = 0.35
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 800.0
+initial_velocity_max = 1400.0
+angular_velocity_min = -300.0
+angular_velocity_max = 300.0
+scale_amount_min = 0.4
+scale_amount_max = 0.6
+scale_amount_curve = SubResource("Curve_sif1e")
+script = ExtResource("1_jh1qq")
+metadata/_custom_type_script = "uid://3mlt7nrr3vr0"

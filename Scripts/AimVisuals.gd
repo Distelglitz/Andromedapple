@@ -11,8 +11,8 @@ var cam : Camera2D
 var animP : float = 0
 
 func _ready():
-	lineInner.modulate=Persistent.c.fruit()
-	spTip.modulate=Persistent.c.fruit()
+	lineInner.modulate=Persistent.c.ui()
+	spTip.modulate=Persistent.c.ui()
 	lineInner.width=width
 
 var destroying : bool = false

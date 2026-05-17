@@ -1,31 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://qd5ytovhj6af"]
+[gd_scene load_steps=6 format=3 uid="uid://qd5ytovhj6af"]
 
 [ext_resource type="Script" uid="uid://d1btj8xdc7c16" path="res://Scripts/Reflector.gd" id="1_nvmca"]
-[ext_resource type="Texture2D" uid="uid://k3hgmr5i4af8" path="res://Sprites/Tex_Rect.png" id="2_0yktn"]
+[ext_resource type="Script" uid="uid://d32ri4dl0odrr" path="res://TAOFUS/VisualEffects/SquashAnchor.gd" id="2_ncjjk"]
+[ext_resource type="Texture2D" uid="uid://be8xwexlpofbt" path="res://Sprites/Tex_Booster.png" id="3_0yktn"]
+[ext_resource type="Texture2D" uid="uid://bcs0r10j08yxb" path="res://Sprites/Tex_ReflectorLine.png" id="3_ncjjk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvmca"]
 resource_local_to_scene = true
 size = Vector2(100, 100)
 
-[node name="Reflector" type="Node2D"]
+[node name="Reflector" type="Node2D" node_paths=PackedStringArray("area", "line", "tip0", "tip1", "squash")]
 script = ExtResource("1_nvmca")
+area = NodePath("Area2D")
+line = NodePath("SquashAnchor/Line2D")
+tip0 = NodePath("SquashAnchor/Tip0")
+tip1 = NodePath("SquashAnchor/Tip1")
+dur = 0.75
+animEase = 1
+squash = NodePath("SquashAnchor")
+
+[node name="SquashAnchor" type="Node2D" parent="."]
+script = ExtResource("2_ncjjk")
+duration = 0.2
+metadata/_custom_type_script = "uid://d32ri4dl0odrr"
+
+[node name="Line2D" type="Line2D" parent="SquashAnchor"]
+texture_repeat = 2
+points = PackedVector2Array(-500, 0, 500, 0)
+width = 240.0
+texture = ExtResource("3_ncjjk")
+texture_mode = 1
+
+[node name="Tip0" type="Sprite2D" parent="SquashAnchor"]
+position = Vector2(-500, 0)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_0yktn")
+
+[node name="Tip1" type="Sprite2D" parent="SquashAnchor"]
+position = Vector2(500, 0)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_0yktn")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_nvmca")
-
-[node name="Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(-500, 0, 500, 0)
-width = 50.63
-
-[node name="Tip0" type="Sprite2D" parent="."]
-position = Vector2(-500, 0)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_0yktn")
-
-[node name="Tip1" type="Sprite2D" parent="."]
-position = Vector2(500, 0)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_0yktn")

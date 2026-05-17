@@ -4,11 +4,13 @@ extends Node2D
 const orbitCirclePath : String = "res://Scenes/OrbitCircle.tscn"
 @export var clockwise : bool = true
 @export var cycleDuration : float = 10
+const opacity = 0.35
 var cycleT : float
 
 @export var satellites : Array[Node2D]
 var satelliteOffsets : Array[Vector2]
-
+var circles : Array[DrawCircle]
+var distances : Array[float]
 
 func _enter_tree():
 	var temp : Array[Node2D] = satellites.duplicate()
@@ -20,9 +22,17 @@ func addSatellite(child : Node2D):
 		return
 	satellites.append(child)
 	satelliteOffsets.append(global_position-child.global_position)
-	var circ : DrawCircle = load(orbitCirclePath).instantiate()
-	circ.Radius(global_position.distance_to(child.global_position))
-	add_child(circ)
+	var dist = global_position.distance_to(child.global_position)
+	if not MathS.HasDistance(distances, dist, 10):
+		var circ : DrawCircle = load(orbitCirclePath).instantiate()
+		circ.Radius(dist)
+		if not clockwise:
+			circ.scale*=Vector2(-1,1)
+		add_child(circ)
+		circ.modulate=Persistent.c.lineOrbit()
+		circ.modulate.a=opacity
+		circles.append(circ)
+		distances.append(dist)
 
 func _physics_process(delta):
 	cycleT+=delta
@@ -33,6 +43,7 @@ func _physics_process(delta):
 		rad=deg_to_rad((cycleT/cycleDuration)*360)
 	else:
 		rad=deg_to_rad((1-(cycleT/cycleDuration))*360)
-
+	for c : DrawCircle in circles:
+		c.rotation=rad*1
 	for i in range(satellites.size()):
 		satellites[i].position=position+satelliteOffsets[i].rotated(rad)

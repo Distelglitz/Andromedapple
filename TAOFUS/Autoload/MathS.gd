@@ -82,3 +82,14 @@ func RaycastLines(spaceState : PhysicsDirectSpaceState2D, points : Array[Vector2
 		var result : Dictionary = spaceState.intersect_ray(query)
 		resultFull.append(result)
 	return resultFull
+
+#array has a value within a certain absolute distance of checkFor
+func HasDistance(arr : Array, checkFor, dist):
+	for i in arr:
+		if abs(i-checkFor)<=dist:
+			return true
+	return false
+
+func SpriteFlipRand(sp : Sprite2D):
+	sp.flip_h = randf() > 0.5
+	sp.flip_v = randf() > 0.5

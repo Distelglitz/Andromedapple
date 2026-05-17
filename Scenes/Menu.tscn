@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://cew01kmmnyve5"]
+[gd_scene load_steps=29 format=3 uid="uid://cew01kmmnyve5"]
 
 [ext_resource type="Script" uid="uid://c2o5r133q1hpu" path="res://Scripts/Menu.gd" id="1_3kf3n"]
 [ext_resource type="PackedScene" uid="uid://dk1pr857ty6xo" path="res://Scenes/MenuLine.tscn" id="2_aobxe"]
 [ext_resource type="PackedScene" uid="uid://cjwjjy82y1o6t" path="res://Scenes/Layout/layout3.tscn" id="2_s2c3o"]
 [ext_resource type="PackedScene" uid="uid://5ttqy5qjrvfx" path="res://Scenes/MenuLevel.tscn" id="3_syfuq"]
+[ext_resource type="Resource" uid="uid://conbbdr8dp1bh" path="res://ColorScheme/col_0.tres" id="4_du1yi"]
 [ext_resource type="PackedScene" uid="uid://xrng5jub4pqh" path="res://Scenes/Layout/layout1.tscn" id="4_ma218"]
 [ext_resource type="PackedScene" uid="uid://bqt4bnak1eaul" path="res://Scenes/Layout/layout2.tscn" id="5_idohh"]
 [ext_resource type="PackedScene" uid="uid://gv70gjvlkr3" path="res://Scenes/Layout/layout5.tscn" id="6_3jcrr"]
@@ -14,18 +15,30 @@
 [ext_resource type="Script" uid="uid://6psc0r0nkxgi" path="res://Scripts/MenuWorld.gd" id="11_sjh0l"]
 [ext_resource type="PackedScene" uid="uid://dcvunestvmuap" path="res://Scenes/Layout/layoutTesting.tscn" id="12_qki4b"]
 [ext_resource type="PackedScene" uid="uid://bg2iw84xca8ey" path="res://Scenes/Layout/layout8.tscn" id="13_a8aa6"]
+[ext_resource type="Resource" uid="uid://dxs34030pkmtu" path="res://ColorScheme/col_1.tres" id="14_c0stj"]
 [ext_resource type="PackedScene" uid="uid://bulrqbjtfg6vv" path="res://Scenes/Layout/layout9.tscn" id="14_x0ao6"]
 [ext_resource type="PackedScene" uid="uid://xb481qon6ajq" path="res://Scenes/Layout/layout11.tscn" id="16_dsmso"]
 [ext_resource type="PackedScene" uid="uid://biww7jygshcdd" path="res://Scenes/Layout/layout12.tscn" id="17_dd46u"]
 [ext_resource type="PackedScene" uid="uid://dkt3f0gx7it43" path="res://Scenes/Layout/layout13.tscn" id="18_n3nbb"]
 [ext_resource type="PackedScene" uid="uid://brddy3bhqtrdo" path="res://Scenes/Layout/layout14.tscn" id="19_dm44m"]
+[ext_resource type="Resource" uid="uid://c12qwi1lr2hdn" path="res://ColorScheme/col_2.tres" id="20_c0stj"]
 [ext_resource type="PackedScene" uid="uid://ccx5xp24xrqpn" path="res://Scenes/Layout/layout15.tscn" id="20_n3nbb"]
+[ext_resource type="Script" uid="uid://bpfh661l3kge5" path="res://Scripts/MenuColorDetector.gd" id="24_3feh0"]
+[ext_resource type="Script" uid="uid://dfdb31fe1djno" path="res://Scripts/MenuColorSprite.gd" id="26_o00om"]
+[ext_resource type="Shader" uid="uid://bxemqiadchccn" path="res://Shader/Gradient.gdshader" id="27_ka6xg"]
+[ext_resource type="Script" uid="uid://che1t7ay258ev" path="res://Scripts/MenuBgRect.gd" id="28_cdx8w"]
 
-[node name="Menu" type="Node2D" node_paths=PackedStringArray("worldHolder", "controlBlock")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_08kpj"]
+shader = ExtResource("27_ka6xg")
+shader_parameter/top = Color(0, 0, 0, 1)
+shader_parameter/bottom = Color(0, 0, 0, 1)
+
+[node name="Menu" type="Node2D" node_paths=PackedStringArray("worldHolder", "controlBlock", "cam")]
 script = ExtResource("1_3kf3n")
 worldHolder = NodePath("WorldHolder")
 linePacked = ExtResource("2_aobxe")
 controlBlock = NodePath("ControlBlock")
+cam = NodePath("Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.68, 0.68)
@@ -34,6 +47,7 @@ zoom = Vector2(0.68, 0.68)
 
 [node name="MenuWorld0" parent="WorldHolder" instance=ExtResource("7_wfhf6")]
 position = Vector2(-151, -451)
+colors = ExtResource("4_du1yi")
 
 [node name="MenuLevel" parent="WorldHolder/MenuWorld0" node_paths=PackedStringArray("unlocks") instance=ExtResource("3_syfuq")]
 offset_left = 637.0
@@ -92,6 +106,7 @@ unlocks = [NodePath("../../MenuWorld1/1_MenuLevel")]
 [node name="MenuWorld1" type="Node2D" parent="WorldHolder"]
 position = Vector2(533, 311)
 script = ExtResource("11_sjh0l")
+colors = ExtResource("14_c0stj")
 metadata/_custom_type_script = "uid://6psc0r0nkxgi"
 
 [node name="1_MenuLevel" parent="WorldHolder/MenuWorld1" node_paths=PackedStringArray("unlocks") instance=ExtResource("3_syfuq")]
@@ -136,6 +151,7 @@ layout = ExtResource("18_n3nbb")
 [node name="MenuWorld2" type="Node2D" parent="WorldHolder"]
 position = Vector2(-1174, -380)
 script = ExtResource("11_sjh0l")
+colors = ExtResource("20_c0stj")
 metadata/_custom_type_script = "uid://6psc0r0nkxgi"
 
 [node name="2_MenuLevel" parent="WorldHolder/MenuWorld2" node_paths=PackedStringArray("unlocks") instance=ExtResource("3_syfuq")]
@@ -164,6 +180,7 @@ layout = ExtResource("17_dd46u")
 [node name="MenuWorld3" type="Node2D" parent="WorldHolder"]
 position = Vector2(-1171, 526)
 script = ExtResource("11_sjh0l")
+colors = ExtResource("4_du1yi")
 metadata/_custom_type_script = "uid://6psc0r0nkxgi"
 
 [node name="3_MenuLevel" parent="WorldHolder/MenuWorld3" node_paths=PackedStringArray("unlocks") instance=ExtResource("3_syfuq")]
@@ -172,7 +189,7 @@ offset_top = 2.0
 offset_right = 166.0
 offset_bottom = 102.0
 layout = ExtResource("12_qki4b")
-unlocks = [NodePath("")]
+unlocks = [null]
 
 [node name="ControlBlock" type="Control" parent="."]
 layout_mode = 3
@@ -181,3 +198,27 @@ offset_left = -2365.0
 offset_top = -1699.0
 offset_right = 2631.0
 offset_bottom = 1769.0
+
+[node name="MenuColorDetector" type="Node2D" parent="."]
+script = ExtResource("24_3feh0")
+
+[node name="ColorRect" type="ColorRect" parent="." node_paths=PackedStringArray("top", "bottom")]
+z_index = -1000
+material = SubResource("ShaderMaterial_08kpj")
+offset_left = -2000.0
+offset_top = -1100.0
+offset_right = 2000.0
+offset_bottom = 1100.0
+mouse_filter = 2
+script = ExtResource("28_cdx8w")
+top = NodePath("top")
+bottom = NodePath("bottom")
+
+[node name="top" type="Sprite2D" parent="ColorRect"]
+script = ExtResource("26_o00om")
+metadata/_custom_type_script = "uid://dfdb31fe1djno"
+
+[node name="bottom" type="Sprite2D" parent="ColorRect"]
+script = ExtResource("26_o00om")
+idx = 1
+metadata/_custom_type_script = "uid://dfdb31fe1djno"

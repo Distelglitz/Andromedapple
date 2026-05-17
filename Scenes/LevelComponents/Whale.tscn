@@ -1,39 +1,92 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcb7mx6bduvo4"]
+[gd_scene load_steps=13 format=3 uid="uid://bcb7mx6bduvo4"]
 
 [ext_resource type="Script" uid="uid://bikrdpkatfhhu" path="res://Scripts/Whale.gd" id="1_gcinb"]
 [ext_resource type="Script" uid="uid://d32ri4dl0odrr" path="res://TAOFUS/VisualEffects/SquashAnchor.gd" id="2_3w2o0"]
-[ext_resource type="Texture2D" uid="uid://k3hgmr5i4af8" path="res://Sprites/Tex_Rect.png" id="2_ffk02"]
+[ext_resource type="Texture2D" uid="uid://40ollxti4kh8" path="res://Sprites/Whale/Tex_WhaleEyes.png" id="3_gkw0k"]
 [ext_resource type="Script" uid="uid://3uow3ihp353v" path="res://TAOFUS/VisualEffects/Shaker.gd" id="3_ok1py"]
+[ext_resource type="Texture2D" uid="uid://qkoidvolivwq" path="res://Sprites/Whale/Tex_WhaleBody1.png" id="4_uxpf4"]
+[ext_resource type="Texture2D" uid="uid://dt0k6nncm7q4i" path="res://Sprites/Whale/Tex_WhaleEyes1.png" id="5_gmuk8"]
+[ext_resource type="Script" uid="uid://dfdb31fe1djno" path="res://Scripts/MenuColorSprite.gd" id="5_ok1py"]
+[ext_resource type="Texture2D" uid="uid://b18rkbdt2x4gy" path="res://Sprites/Whale/Tex_WhaleFin0.png" id="6_gkw0k"]
+[ext_resource type="Texture2D" uid="uid://beog43wgg2x2n" path="res://Sprites/Whale/Tex_WhaleBody.png" id="6_k67am"]
+[ext_resource type="Texture2D" uid="uid://b1t61kw4my3lh" path="res://Sprites/Whale/Tex_WhaleBody2.png" id="10_r8gdv"]
+[ext_resource type="Texture2D" uid="uid://djav8oxu6q57q" path="res://Sprites/Whale/Tex_WhaleEyes2.png" id="11_jcino"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ffk02"]
 radius = 91.01
 
-[node name="Whale" type="Area2D"]
+[node name="Whale" type="Area2D" node_paths=PackedStringArray("colShape", "squash", "shaker", "rotEaten", "rotHungry", "spBody", "spEyes", "rotFin")]
 collision_layer = 0
 input_pickable = false
 linear_damp = 0.0
 angular_damp = 0.0
 script = ExtResource("1_gcinb")
+colShape = NodePath("CollisionShape2D")
+squash = NodePath("SquashAnchor")
+shaker = NodePath("SquashAnchor/Shaker")
+rotEaten = NodePath("SquashAnchor/Shaker/RotEaten")
+rotHungry = NodePath("SquashAnchor/Shaker/StateHungry/RotHungry")
+spBody = NodePath("SquashAnchor/Shaker/StateHungry/RotHungry/Body")
+spEyes = NodePath("SquashAnchor/Shaker/StateHungry/RotHungry/Eyes")
+texBodyIdle = ExtResource("6_k67am")
+texEyesIdle = ExtResource("3_gkw0k")
+texBodyChase = ExtResource("4_uxpf4")
+texEyesChase = ExtResource("5_gmuk8")
+rotFin = NodePath("SquashAnchor/Shaker/StateHungry/RotHungry/FinRot")
+finSwingSpeedMoving = 10.0
+finSwingSpeedIdle = 2.0
+finSwingMagnitude = 20.0
+eatenRotSpeed = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ffk02")
 
 [node name="SquashAnchor" type="Node2D" parent="."]
 script = ExtResource("2_3w2o0")
+duration = 0.35
 metadata/_custom_type_script = "uid://d32ri4dl0odrr"
 
 [node name="Shaker" type="Node2D" parent="SquashAnchor"]
 script = ExtResource("3_ok1py")
 metadata/_custom_type_script = "uid://3uow3ihp353v"
 
-[node name="Rot" type="Node2D" parent="SquashAnchor/Shaker"]
+[node name="StateHungry" type="Node2D" parent="SquashAnchor/Shaker"]
 
-[node name="Sprite2D" type="Sprite2D" parent="SquashAnchor/Shaker/Rot"]
-modulate = Color(0.9844155, 0, 0.28253046, 1)
-texture = ExtResource("2_ffk02")
+[node name="RotHungry" type="Node2D" parent="SquashAnchor/Shaker/StateHungry"]
 
-[node name="Sprite2D2" type="Sprite2D" parent="SquashAnchor/Shaker/Rot"]
-modulate = Color(0.9844155, 0, 0.28253046, 1)
-position = Vector2(181.00002, -5)
-scale = Vector2(0.5814656, 0.6309006)
-texture = ExtResource("2_ffk02")
+[node name="Body" type="Sprite2D" parent="SquashAnchor/Shaker/StateHungry/RotHungry"]
+z_index = 2
+position = Vector2(-24, 1)
+texture = ExtResource("6_k67am")
+script = ExtResource("5_ok1py")
+main = true
+metadata/_custom_type_script = "uid://dfdb31fe1djno"
+
+[node name="Eyes" type="Sprite2D" parent="SquashAnchor/Shaker/StateHungry/RotHungry"]
+z_index = 3
+position = Vector2(-24, 1)
+script = ExtResource("5_ok1py")
+metadata/_custom_type_script = "uid://dfdb31fe1djno"
+
+[node name="FinRot" type="Node2D" parent="SquashAnchor/Shaker/StateHungry/RotHungry"]
+position = Vector2(-18, -1)
+
+[node name="Fin" type="Sprite2D" parent="SquashAnchor/Shaker/StateHungry/RotHungry/FinRot"]
+texture = ExtResource("6_gkw0k")
+script = ExtResource("5_ok1py")
+main = true
+metadata/_custom_type_script = "uid://dfdb31fe1djno"
+
+[node name="RotEaten" type="Node2D" parent="SquashAnchor/Shaker"]
+visible = false
+
+[node name="Body" type="Sprite2D" parent="SquashAnchor/Shaker/RotEaten"]
+texture = ExtResource("10_r8gdv")
+script = ExtResource("5_ok1py")
+main = true
+metadata/_custom_type_script = "uid://dfdb31fe1djno"
+
+[node name="Eyes" type="Sprite2D" parent="SquashAnchor/Shaker/RotEaten"]
+texture = ExtResource("11_jcino")
+script = ExtResource("5_ok1py")
+metadata/_custom_type_script = "uid://dfdb31fe1djno"

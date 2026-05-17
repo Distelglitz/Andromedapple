@@ -1,3 +1,29 @@
-[gd_scene format=3 uid="uid://5silnys8vbev"]
+[gd_scene load_steps=5 format=3 uid="uid://5silnys8vbev"]
 
-[node name="TransitionEffect" type="Node2D"]
+[ext_resource type="Script" uid="uid://6o18jt8hwt6e" path="res://Scripts/TransitionEffect.gd" id="1_wte46"]
+[ext_resource type="Script" uid="uid://dfdb31fe1djno" path="res://Scripts/MenuColorSprite.gd" id="2_2wxqi"]
+[ext_resource type="Shader" uid="uid://u2q3dvlcx22n" path="res://Shader/CircleMask.gdshader" id="3_iuklu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a6cjj"]
+shader = ExtResource("3_iuklu")
+shader_parameter/prog = 0.0
+shader_parameter/cutoutMode = false
+
+[node name="TransitionEffect" type="Node2D" node_paths=PackedStringArray("rect")]
+process_priority = -100
+z_index = 4096
+script = ExtResource("1_wte46")
+rect = NodePath("MenuColorSprite/ColorRect")
+
+[node name="MenuColorSprite" type="Sprite2D" parent="."]
+script = ExtResource("2_2wxqi")
+main = true
+idx = 3
+metadata/_custom_type_script = "uid://dfdb31fe1djno"
+
+[node name="ColorRect" type="ColorRect" parent="MenuColorSprite"]
+material = SubResource("ShaderMaterial_a6cjj")
+offset_left = -1000.0
+offset_top = -1000.0
+offset_right = 1000.0
+offset_bottom = 1000.0

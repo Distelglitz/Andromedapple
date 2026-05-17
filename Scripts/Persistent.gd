@@ -3,7 +3,7 @@ extends Node2D
 var layoutPacked : PackedScene
 var layoutCords : Vector2i
 var celebrate : bool = false
-var c : ColorScheme = load("res://ColorScheme/col_0.tres")
+var c : ColorScheme = load("res://ColorScheme/col_1.tres")
 
 func LevelCleared():
 	if not Save.clearedLevels.has(layoutCords):
@@ -20,3 +20,10 @@ func TransitionMenu():
 func setupPattern(sp : Sprite2D, offset : Vector2):
 	var mat : ShaderMaterial = sp.material
 	mat.set_shader_parameter("uvOffset", offset)
+
+func cameraUpdate(cam : Camera2D):
+	currentCameraPos = cam.global_position
+	currentCameraZoom = cam.zoom.x
+
+var currentCameraZoom : float = 1
+var currentCameraPos : Vector2

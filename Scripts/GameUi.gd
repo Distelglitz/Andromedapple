@@ -16,6 +16,11 @@ var posVelocity : Vector2
 @export var inputGuideRight : InputGuide
 @export var speedIcon : SmoothModulate
 
+
+func _ready():
+	var node : Node2D = speedIcon.get_child(0)
+	node.modulate = Persistent.c.ui()
+
 func _process(delta):
 	var zoomOffset : float = zoom-cam.camera.zoom.x
 	zoomVelocity+=-zoomSpringRigidity*zoomOffset-(zoomSpringDamp*zoomVelocity)

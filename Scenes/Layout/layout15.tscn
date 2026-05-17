@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c8c7hb5aaqtru" path="res://Scripts/Layout.gd" id="1_0lub7"]
 [ext_resource type="PackedScene" uid="uid://cadkk3oc7vvwk" path="res://Scenes/LevelComponents/Planet.tscn" id="2_i3qq6"]
-[ext_resource type="PackedScene" uid="uid://cp1jkqpjw8wgf" path="res://Scenes/LevelComponents/WhaleBloat.tscn" id="3_i3qq6"]
+[ext_resource type="PackedScene" uid="uid://bcb7mx6bduvo4" path="res://Scenes/LevelComponents/Whale.tscn" id="4_rw3n8"]
 
 [node name="Layout15" type="Node2D" node_paths=PackedStringArray("rect")]
 script = ExtResource("1_0lub7")
@@ -36,6 +36,6 @@ scale = Vector2(2, 2)
 position = Vector2(4301.9253, -2016.9999)
 scale = Vector2(3.5, 3.5)
 
-[node name="WhaleBloat" parent="." instance=ExtResource("3_i3qq6")]
-position = Vector2(-3743.0752, -1109)
+[node name="Whale" parent="." instance=ExtResource("4_rw3n8")]
+position = Vector2(-3743.075, -1109)
 rotation = -1.5707964

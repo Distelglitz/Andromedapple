@@ -1,13 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://dk1pr857ty6xo"]
+[gd_scene load_steps=5 format=3 uid="uid://dk1pr857ty6xo"]
 
+[ext_resource type="Texture2D" uid="uid://c57xdpp8on7qf" path="res://Sprites/Tex_LevelLineCleared.png" id="1_4tg53"]
 [ext_resource type="Script" uid="uid://b4u7maba2usos" path="res://Scripts/MenuLine.gd" id="1_yao8p"]
-
-[sub_resource type="Curve" id="Curve_yao8p"]
-_data = [Vector2(0, 0.853037), 0.0, 0.0, 0, 0, Vector2(1, 0.40616965), 0.0, 0.0, 0, 0]
-point_count = 2
+[ext_resource type="Script" uid="uid://dfdb31fe1djno" path="res://Scripts/MenuColorSprite.gd" id="2_gnpjv"]
+[ext_resource type="Texture2D" uid="uid://dpgnaee7mhhby" path="res://Sprites/Tex_LevelLineUncleared.png" id="3_irpql"]
 
 [node name="MenuLine" type="Line2D"]
+texture_repeat = 2
 points = PackedVector2Array(0, 0, 0, 0)
-width_curve = SubResource("Curve_yao8p")
+width = 40.0
+texture = ExtResource("1_4tg53")
+texture_mode = 1
 script = ExtResource("1_yao8p")
-offset = 100.0
+offset = 50.0
+texCleared = ExtResource("1_4tg53")
+texUncleared = ExtResource("3_irpql")
+
+[node name="MenuColorSprite" type="Sprite2D" parent="."]
+script = ExtResource("2_gnpjv")
+selfMod = true
+targetParent = true
+metadata/_custom_type_script = "uid://dfdb31fe1djno"

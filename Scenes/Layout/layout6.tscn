@@ -75,7 +75,7 @@ scale = Vector2(16.198458, 2.3990378)
 [node name="Debree10" parent="." instance=ExtResource("3_8dv3g")]
 position = Vector2(-2227.9998, -226.99988)
 rotation = 9.948377
-scale = Vector2(29.478043, -1.6521556)
+scale = Vector2(29.478, 1.652)
 
 [node name="Debree7" parent="." instance=ExtResource("3_8dv3g")]
 position = Vector2(-1349.0001, -2293)
@@ -92,10 +92,75 @@ position = Vector2(414.99988, 489.99997)
 rotation = 5.759587
 scale = Vector2(7.5547376, 1.2122334)
 
+[node name="Debree23" parent="." instance=ExtResource("3_8dv3g")]
+position = Vector2(-1086.9999, 259.00006)
+rotation = 5.759587
+scale = Vector2(1.146643, 1.42232)
+
 [node name="Debree3" parent="." instance=ExtResource("3_8dv3g")]
 position = Vector2(-410, 484)
 rotation = 3.51809
 scale = Vector2(4.5545707, 1.1015635)
+
+[node name="Debree14" parent="." instance=ExtResource("3_8dv3g")]
+position = Vector2(-1238, 414)
+rotation = 4.712389
+scale = Vector2(3.1046999, 3.8296986)
+
+[node name="Debree15" parent="." instance=ExtResource("3_8dv3g")]
+position = Vector2(-1934, -158)
+rotation = 5.8842115
+scale = Vector2(3.0077164, 3.725039)
+
+[node name="Debree16" parent="." instance=ExtResource("3_8dv3g")]
+position = Vector2(-2807, -519)
+rotation = 7.853982
+scale = Vector2(3.0077164, 3.725039)
+
+[node name="Debree17" parent="." instance=ExtResource("3_8dv3g")]
+position = Vector2(-3434, -1187)
+rotation = 8.42905
+scale = Vector2(3.1268191, 2.086653)
+
+[node name="Debree20" parent="." instance=ExtResource("3_8dv3g")]
+position = Vector2(-4363.9995, -2351)
+rotation = 9.398561
+scale = Vector2(3.1350505, 3.8035915)
+
+[node name="Debree27" parent="." instance=ExtResource("3_8dv3g")]
+position = Vector2(-504.00024, -4963.0005)
+rotation = 11.455574
+scale = Vector2(3.6346009, 2.7086408)
+
+[node name="Debree28" parent="." instance=ExtResource("3_8dv3g")]
+position = Vector2(-1488, -4920.9995)
+rotation = 10.690446
+scale = Vector2(2.925831, 3.475427)
+
+[node name="Debree24" parent="." instance=ExtResource("3_8dv3g")]
+position = Vector2(-4270.0005, -1679)
+rotation = 12.263213
+scale = Vector2(1.9693276, 1.5266248)
+
+[node name="Debree25" parent="." instance=ExtResource("3_8dv3g")]
+position = Vector2(-3663.0002, -4040.9998)
+rotation = 14.145563
+scale = Vector2(3.449819, 3.9003594)
+
+[node name="Debree26" parent="." instance=ExtResource("3_8dv3g")]
+position = Vector2(-2782, -4142)
+rotation = 14.145563
+scale = Vector2(1.9354774, 1.9155685)
+
+[node name="Debree21" parent="." instance=ExtResource("3_8dv3g")]
+position = Vector2(1653.9999, 535)
+rotation = 10.743883
+scale = Vector2(3.3843007, 9.705624)
+
+[node name="Debree22" parent="." instance=ExtResource("3_8dv3g")]
+position = Vector2(731, 920)
+rotation = 12.042772
+scale = Vector2(-3.2903597, 5.8564463)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -6631.0

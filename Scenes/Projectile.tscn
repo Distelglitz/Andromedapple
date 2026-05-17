@@ -25,6 +25,7 @@ spDetail = NodePath("SquashAnchor/SpriteHolder/spDetail")
 baseRotSpeed = 70.0
 rotSpeedScale = 0.1
 spHolder = NodePath("SquashAnchor/SpriteHolder")
+visualEffectsStart = 0.6
 
 [node name="SquashAnchor" type="Node2D" parent="."]
 script = ExtResource("2_ds7j7")

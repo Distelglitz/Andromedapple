@@ -10,11 +10,32 @@ var accelT : float
 const fov : float = 90
 const dist : float = 450000
 
-var colShape : CollisionShape2D
+var bloated : bool
+const mass : float = 13000000
+const removedEatThreshold : float = 700
+
+@export var colShape : CollisionShape2D
 var shape : CircleShape2D
-var squash : SquashAnchor
-var shaker : Shaker
-var rot : Node2D
+@export var squash : SquashAnchor
+@export var shaker : Shaker
+@export var rotEaten : Node2D
+@export var rotHungry : Node2D
+
+@export var spBody : Sprite2D
+@export var spEyes : Sprite2D
+
+@export var texBodyIdle : Texture2D
+@export var texEyesIdle : Texture2D
+
+@export var texBodyChase : Texture2D
+@export var texEyesChase : Texture2D
+
+
+@export var rotFin : Node2D
+var finT : float
+@export var finSwingSpeedMoving : float
+@export var finSwingSpeedIdle : float
+@export var finSwingMagnitude : float
 
 var level : Level
 var proj : Projectile
@@ -22,14 +43,18 @@ var proj : Projectile
 var velocity : Vector2
 
 var aggro : bool
+var hasEaten : bool
+
+var movingPrev : bool
+var moving : bool
+
+@export var eatenRotSpeed : float
+var eatenRotDir : float
 
 func _enter_tree():
-	colShape=get_child(0)
-	shape=colShape.shape
-	squash=get_child(1)
-	shaker=squash.get_child(0)
-	rot=shaker.get_child(0)
-
+	eatenRotDir = -1 if randf() > 0.5 else 1
+	shape = colShape.shape
+	hasEaten = false
 	level=get_parent().get_parent()
 	level.EV_ProjectileSpawned.connect(onProjectileSpawned)
 	level.EV_ProjectileRemoved.connect(onProjectileRemoved)
@@ -37,24 +62,55 @@ func _enter_tree():
 	area_entered.connect(onAreaEntered)
 	body_entered.connect(onBodyEntered)
 
-	rot.rotation=rotation
+	eatenRotDir = -1 if randf() > 0.5 else 1
+	rotHungry.rotation=rotation
 	rotation=0
 
+func _ready():
+	updateVisuals()
+
 func _physics_process(delta):
-	if movesToTarget():
-		accelT+=delta
-		velocity=position.direction_to(proj.position)*maxSpeed*MathS.Clamp01((accelT-alertDelay)/accelDur)
+	movingPrev = moving
+	if hasEaten:
+		rotEaten.rotation_degrees+=delta*eatenRotDir*eatenRotSpeed
+		velocity = Vector2.ZERO
 	else:
-		accelT=0
-		velocity=Vector2.ZERO
-		if velocity.length()<=20:
+		moving = movesToTarget()
+		var finSpeed : float
+		if moving:
+			finSpeed=finSwingSpeedMoving
+			accelT+=delta
+			velocity=position.direction_to(proj.position)*maxSpeed*MathS.Clamp01((accelT-alertDelay)/accelDur)
+		else:
+			finSpeed=finSwingSpeedIdle
+			accelT=0
 			velocity=Vector2.ZERO
+			if velocity.length()<=20:
+				velocity=Vector2.ZERO
+		finT+=delta*finSpeed
+		rotFin.rotation_degrees = sin(finT)*finSwingMagnitude
 
 
 	if velocity.length()>20:
-		rot.rotation_degrees=MathS.VecToDeg(velocity.normalized())
+		rotHungry.rotation_degrees=MathS.VecToDeg(velocity.normalized())
 
 	position+=velocity*delta
+
+	if moving != movingPrev:
+		shaker.Trigger()
+		squash.TriggerSquash(SquashAnchor.Small)
+		updateVisuals()
+
+
+func _process(delta):
+	if hasEaten:
+		pass
+	else:
+		pass
+
+func updateVisuals():
+	spBody.texture = texBodyChase if moving else texBodyIdle
+	spEyes.texture = texEyesChase if moving else texEyesIdle
 
 func movesToTarget():
 	if proj==null:
@@ -64,11 +120,12 @@ func movesToTarget():
 	if not los:
 		aggro=false
 	elif not aggro:
-		var angleToProj : float = rad_to_deg(position.direction_to(proj.position).angle_to(rot.transform.x))
+		var angleToProj : float = rad_to_deg(position.direction_to(proj.position).angle_to(rotHungry.transform.x))
 		if abs(angleToProj)<=fov/2 and proj.position.distance_to(position)<=dist:
 			aggro=true
 			print("Whale aggro triggered " + str(abs(angleToProj)) + "  " + str(proj.position.distance_to(position)))
 	return aggro
+
 
 func lineOfSight():
 	var colMask = 3
@@ -93,4 +150,12 @@ func onBodyEntered(body : Node2D):
 		eat(body)
 
 func eat(projectile : Projectile):
-	pass
+	if hasEaten:
+		return
+	level.spawnGravitySource(self,Vector2.ZERO,mass, true)
+	hasEaten=true
+	squash.TriggerSquash(SquashAnchor.Large)
+
+	rotHungry.rotation_degrees=randf()*360
+	rotHungry.visible=false
+	rotEaten.visible=true

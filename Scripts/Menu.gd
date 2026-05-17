@@ -6,8 +6,10 @@ var clearedLevels : Array[MenuLevel]
 var unlockedLevels : Array[MenuLevel]
 @export var linePacked : PackedScene
 @export var controlBlock : Control
+@export var cam : Camera2D
 
 func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	controlBlock.mouse_filter=Control.MOUSE_FILTER_IGNORE
 	var cur : MenuLevel
 	for cord : Vector2i in Save.clearedLevels:
@@ -41,6 +43,7 @@ func _ready():
 			line=linePacked.instantiate()
 			add_child(line)
 			line.setup(c,u)
+	Persistent.cameraUpdate(cam)
 
 
 func _process(delta):
@@ -50,6 +53,9 @@ func _process(delta):
 		Persistent.layoutCords=focusedLevel.cord
 		Persistent.layoutPacked=focusedLevel.layout
 		Persistent.TransitionGame()
+		focusedLevel.onPressed()
+	Persistent.cameraUpdate(cam)
+	
 
 func getCordsFromLevel(level : MenuLevel):
 	var result : Vector2i
@@ -92,5 +98,6 @@ func getWorldFromIdx(idx : int):
 var focusedLevel : MenuLevel
 func onMouseEntered(worldLevel : MenuLevel):
 	focusedLevel=worldLevel
+	Persistent.c = worldLevel.getWorld().colors
 func onMouseExited(worldLevel : MenuLevel):
 	focusedLevel=null

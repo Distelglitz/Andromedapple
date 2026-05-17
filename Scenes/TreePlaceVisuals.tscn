@@ -1,15 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://hgygvb26b55n"]
+[gd_scene load_steps=4 format=3 uid="uid://hgygvb26b55n"]
 
-[ext_resource type="Texture2D" uid="uid://danx6j83bau84" path="res://Sprites/Tex_FruitTest.png" id="1_87ow7"]
 [ext_resource type="Script" uid="uid://baejif4gv3sti" path="res://Scripts/TreePlaceVisuals.gd" id="1_k5cxf"]
+[ext_resource type="Script" uid="uid://2jrrh6gpg23n" path="res://TAOFUS/VisualEffects/SmoothToggle.gd" id="2_i8r1r"]
+[ext_resource type="Texture2D" uid="uid://cx0caq8pvhpoc" path="res://Sprites/Tex_TreePlaceVisuals.png" id="2_k5cxf"]
 
-[node name="TreePlaceVisuals" type="Node2D" node_paths=PackedStringArray("point")]
+[node name="TreePlaceVisuals" type="Node2D" node_paths=PackedStringArray("point", "sc")]
 script = ExtResource("1_k5cxf")
 point = NodePath("Point")
+sc = NodePath("Point/SmoothToggle/scale")
+approxSpeed = 15.0
+maxSquash = 0.5
+squashMod = 60.0
 
 [node name="Point" type="Node2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="Point"]
-position = Vector2(41, -1)
-rotation = -3.1415927
-texture = ExtResource("1_87ow7")
+[node name="SmoothToggle" type="Node2D" parent="Point"]
+script = ExtResource("2_i8r1r")
+speedIn = 4.0
+_easeIn = 1
+metadata/_custom_type_script = "uid://2jrrh6gpg23n"
+
+[node name="scale" type="Node2D" parent="Point/SmoothToggle"]
+
+[node name="TexTreePlaceVisuals" type="Sprite2D" parent="Point/SmoothToggle/scale"]
+position = Vector2(136.26, 0)
+rotation = 1.5707964
+scale = Vector2(0.53, 0.53)
+texture = ExtResource("2_k5cxf")

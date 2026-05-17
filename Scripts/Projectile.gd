@@ -28,12 +28,13 @@ var rotDir : int
 @export var rotSpeedScale : float
 @export var spHolder : Node2D
 
+@export var visualEffectsStart : float
+
 func _enter_tree():
 	areaColShape.shape=colShape.shape
 	area.area_entered.connect(onAreaEntered)
-	spMain.modulate=Persistent.c.fruit()
-	spDetail.modulate=Persistent.c.fruitDetail()
 	rotDir=1 if randf()>0.5 else -1
+	fruitColors()
 func _ready():
 	startPos=global_position
 
@@ -64,6 +65,10 @@ var totalGravStep : Vector2
 
 func freezeP():
 	return MathS.Clamp01(_freezeT/timeToFreeze)
+
+func freezePVisual():
+	return (max(freezeP()-visualEffectsStart, 0))/(1-visualEffectsStart)
+
 func resetFreeze():
 	_freezeT=0
 func boost():
@@ -87,8 +92,8 @@ func _physics_process(delta):
 		level.removeProjectile(self,true,null)
 
 func _process(delta):
-	modulate=Color(1,1,1,1).lerp(Color(0,0,1,1),freezeP())
 	spHolder.rotation_degrees+=rotDir*(baseRotSpeed+rotSpeedScale*linear_velocity.length())*delta
+	fruitColors()
 
 func _onGravitySourceEntered(gravitySource:GravitySource):
 	print("Gravity Source Enter")
@@ -120,3 +125,8 @@ func _onProjectileRemoved(projectile : Projectile, destroyed, other):
 
 func gravStep(amount : Vector2, delta : float, gravSource : GravitySource):
 	totalGravStep+=amount*delta
+
+func fruitColors():
+	var p = freezePVisual()
+	spMain.modulate=Persistent.c.fruit().lerp(Persistent.c.freezing(), p)
+	spDetail.modulate=Persistent.c.fruitDetail().lerp(Persistent.c.freezing(), p)

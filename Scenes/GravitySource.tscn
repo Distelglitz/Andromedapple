@@ -1,14 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://dc8c8ldwg2tv5"]
+[gd_scene load_steps=7 format=3 uid="uid://dc8c8ldwg2tv5"]
 
 [ext_resource type="Script" uid="uid://dri6xvyl76ldr" path="res://Scripts/GravitySource.gd" id="1_ij20m"]
+[ext_resource type="Script" uid="uid://lbjv0cttoeh" path="res://TAOFUS/SmoothModulate.gd" id="2_6bjvn"]
+[ext_resource type="Texture2D" uid="uid://q0bw3tajs1gr" path="res://Sprites/Tex_GravityAffectedLine.png" id="2_lfbwj"]
 [ext_resource type="Script" uid="uid://cskx3cnrbphx1" path="res://TAOFUS/VisualEffects/DrawCircle.gd" id="2_sxdvd"]
+[ext_resource type="Texture2D" uid="uid://mq62amjddbhf" path="res://Sprites/Tex_GravityAffectedLineAlt.png" id="3_6wy2b"]
+[ext_resource type="Texture2D" uid="uid://cg13t0g72gwgt" path="res://Sprites/Tex_GravityUnaffectedLine.png" id="3_yp07a"]
 
-[node name="GravitySource" type="Node2D" node_paths=PackedStringArray("circ")]
+[node name="GravitySource" type="Node2D" node_paths=PackedStringArray("circ", "smoothMod")]
 z_index = -200
 z_as_relative = false
 script = ExtResource("1_ij20m")
-circ = NodePath("DrawCircle")
+circ = NodePath("SmoothModulate/DrawCircle")
+texAffected = ExtResource("2_lfbwj")
+texAffectedAlt = ExtResource("3_6wy2b")
+texUnaffected = ExtResource("3_yp07a")
+smoothMod = NodePath("SmoothModulate")
+affectTexFlipDur = 0.1
+rotSpeed = 4.0
 
-[node name="DrawCircle" type="Line2D" parent="."]
+[node name="SmoothModulate" type="Node2D" parent="."]
+script = ExtResource("2_6bjvn")
+metadata/_custom_type_script = "uid://lbjv0cttoeh"
+
+[node name="DrawCircle" type="Line2D" parent="SmoothModulate"]
+texture_repeat = 2
+width = 250.0
+texture_mode = 1
 script = ExtResource("2_sxdvd")
 metadata/_custom_type_script = "uid://cskx3cnrbphx1"

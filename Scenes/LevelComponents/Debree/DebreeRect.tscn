@@ -1,14 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcsujg1vnnwgj"]
+[gd_scene load_steps=6 format=3 uid="uid://bcsujg1vnnwgj"]
 
 [ext_resource type="Script" uid="uid://cyrr8mqlfocx5" path="res://Scripts/Debree.gd" id="1_o145f"]
 [ext_resource type="Script" uid="uid://3uow3ihp353v" path="res://TAOFUS/VisualEffects/Shaker.gd" id="2_hrqnf"]
 [ext_resource type="Texture2D" uid="uid://k3hgmr5i4af8" path="res://Sprites/Tex_Rect.png" id="3_o145f"]
+[ext_resource type="Script" uid="uid://dfdb31fe1djno" path="res://Scripts/MenuColorSprite.gd" id="4_l140x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hrqnf"]
 size = Vector2(200, 200)
 
 [node name="Debree" type="Area2D"]
 script = ExtResource("1_o145f")
+outineWidth = 0.4
 metadata/_custom_type_script = "uid://cyrr8mqlfocx5"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -18,6 +20,12 @@ shape = SubResource("RectangleShape2D_hrqnf")
 script = ExtResource("2_hrqnf")
 metadata/_custom_type_script = "uid://3uow3ihp353v"
 
-[node name="Sprite2D" type="Sprite2D" parent="Shaker"]
-modulate = Color(0, 0, 0, 1)
+[node name="SpriteMain" type="Sprite2D" parent="Shaker"]
 texture = ExtResource("3_o145f")
+
+[node name="SpriteOutline" type="Sprite2D" parent="Shaker"]
+z_index = -1
+texture = ExtResource("3_o145f")
+script = ExtResource("4_l140x")
+idx = 6
+metadata/_custom_type_script = "uid://dfdb31fe1djno"

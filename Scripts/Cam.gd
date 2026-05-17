@@ -23,15 +23,15 @@ const padding : Vector2 = Vector2(400,400)
 func _enter_tree():
 	maxZoomBounds=Vector2(1920,1080)/minZoom/2
 	layoutZoomBounds=level.layout.boundsDim/2
-
-
-func _ready():
+	
 	_layoutZoomMode=true
 	camera.zoom.x=float(1920)/level.layout.boundsDim.x
 	camera.zoom.y=camera.zoom.x
 	position=level.layout.boundsCenter
 	
 	clampBounds=maxZoomBounds+level.layout.boundsDim*0.5
+	Persistent.cameraUpdate(camera)
+
 
 
 func setZoomT(newT : float, instant : bool = false):
@@ -77,6 +77,8 @@ func _process(delta):
 	
 	position.x=clamp(position.x,-clampBounds.x,clampBounds.x)
 	position.y=clamp(position.y,-clampBounds.y,clampBounds.y)
+
+	Persistent.cameraUpdate(camera)
 
 
 var _layoutZoomMode : bool

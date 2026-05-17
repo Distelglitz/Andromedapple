@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://b44qd16p07vcq"]
+[gd_scene load_steps=38 format=3 uid="uid://b44qd16p07vcq"]
 
 [ext_resource type="Script" uid="uid://dijj1sm15hano" path="res://Scripts/Game.gd" id="1_r150o"]
 [ext_resource type="PackedScene" uid="uid://bj1gbp4tnts84" path="res://Scenes/FruitTree.tscn" id="2_pbw6q"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cxlscnfmux7n0" path="res://Scenes/InputGuide.tscn" id="7_vy5pj"]
 [ext_resource type="Script" uid="uid://bia7cibytvky8" path="res://Scripts/GameUi.gd" id="8_50glp"]
 [ext_resource type="Script" uid="uid://lbjv0cttoeh" path="res://TAOFUS/SmoothModulate.gd" id="8_bmxlf"]
-[ext_resource type="Texture2D" uid="uid://k3hgmr5i4af8" path="res://Sprites/Tex_Rect.png" id="9_4kpch"]
+[ext_resource type="Texture2D" uid="uid://dyx38fufh1s0k" path="res://Sprites/Tex_Speedup.png" id="9_3tgeq"]
 [ext_resource type="Script" uid="uid://ckf0kw5suq1w3" path="res://Scripts/GameBg.gd" id="12_grg3l"]
 [ext_resource type="PackedScene" uid="uid://d18blnn6jqd2i" path="res://Scenes/BgDetail.tscn" id="13_346fj"]
 [ext_resource type="Shader" uid="uid://bxemqiadchccn" path="res://Shader/Gradient.gdshader" id="13_frkhe"]
@@ -24,6 +24,9 @@
 [ext_resource type="Texture2D" uid="uid://qhm6i6vlpjbu" path="res://Sprites/BgDetail/Tex_BgDetail_Earth.png" id="17_hwpts"]
 [ext_resource type="Texture2D" uid="uid://dq35ljgxuinm3" path="res://Sprites/BgDetail/Tex_BgDetail_Galaxy.png" id="18_jyqft"]
 [ext_resource type="Texture2D" uid="uid://2vetb7idh16v" path="res://Sprites/BgDetail/Tex_BgDetail_BlackHole.png" id="20_c4ay3"]
+[ext_resource type="Script" uid="uid://dfdb31fe1djno" path="res://Scripts/MenuColorSprite.gd" id="25_aht7i"]
+[ext_resource type="Script" uid="uid://ey1w2afaseok" path="res://Scripts/FreezeVignette.gd" id="25_c4ay3"]
+[ext_resource type="Shader" uid="uid://dv7b37dj6vl46" path="res://Shader/Vignette.gdshader" id="26_5jffn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1p5hy"]
 shader = ExtResource("13_frkhe")
@@ -61,6 +64,10 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 [sub_resource type="Gradient" id="Gradient_sxkr1"]
 resource_local_to_scene = true
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kpo4j"]
+shader = ExtResource("26_5jffn")
+shader_parameter/p = 0.999999977648
 
 [node name="Main" type="Node2D"]
 
@@ -108,9 +115,11 @@ inputGuideRight = NodePath("InputGuideRight")
 speedIcon = NodePath("SpeedUpIcon")
 
 [node name="InputGuideLeft" parent="Level/GameUi" instance=ExtResource("7_vy5pj")]
+visible = false
 position = Vector2(-560, 394)
 
 [node name="InputGuideRight" parent="Level/GameUi" instance=ExtResource("7_vy5pj")]
+visible = false
 position = Vector2(560, 394)
 
 [node name="SpeedUpIcon" type="Node2D" parent="Level/GameUi"]
@@ -124,7 +133,8 @@ metadata/_custom_type_script = "uid://lbjv0cttoeh"
 
 [node name="Sprite2D" type="Sprite2D" parent="Level/GameUi/SpeedUpIcon"]
 position = Vector2(-3, -2)
-texture = ExtResource("9_4kpch")
+scale = Vector2(0.54, 0.54)
+texture = ExtResource("9_3tgeq")
 
 [node name="Cam" type="Node2D" parent="." node_paths=PackedStringArray("game", "level", "camera")]
 script = ExtResource("5_pbw6q")
@@ -175,6 +185,7 @@ offset_left = -1008.0
 offset_top = -572.0
 offset_right = 992.0
 offset_bottom = 588.0
+mouse_filter = 2
 
 [node name="StarHolder" type="Node2D" parent="Cam/GameBg"]
 z_index = -1900
@@ -248,3 +259,21 @@ colorIdxB = 3
 sizeMod = 1.5
 
 [node name="BgDetailHolder" type="Node2D" parent="Cam/GameBg"]
+
+[node name="MenuColorSprite" type="Sprite2D" parent="."]
+script = ExtResource("25_aht7i")
+main = true
+metadata/_custom_type_script = "uid://dfdb31fe1djno"
+
+[node name="ColorRect" type="ColorRect" parent="MenuColorSprite" node_paths=PackedStringArray("game")]
+modulate = Color(1, 1, 1, 0.33333334)
+z_index = 2000
+material = SubResource("ShaderMaterial_kpo4j")
+offset_left = -1000.0
+offset_top = -580.0
+offset_right = 1000.0
+offset_bottom = 580.0
+mouse_filter = 2
+script = ExtResource("25_c4ay3")
+game = NodePath("../../Game")
+decaySpeed = 0.6

@@ -37,6 +37,11 @@ func _ready():
 	for b in bgDetails:
 		b.setup(selectedBounds, cam.maxZoomBounds, bgDetailTex.pick_random(), 0 if randf()>0.5 else 1)
 
+	
+	var mat : ShaderMaterial = rect.material
+	mat.set_shader_parameter("top", Persistent.c.bgGradient(true))
+	mat.set_shader_parameter("bottom", Persistent.c.bgGradient(false))
+
 
 func _process(delta):
 	zoomScaler.scale=Vector2.ONE/cam.camera.zoom.x
