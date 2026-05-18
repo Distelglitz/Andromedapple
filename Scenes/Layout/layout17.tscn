@@ -118,21 +118,21 @@ position = Vector2(38, 2487)
 position = Vector2(2109, 2233)
 
 [node name="Booster6" parent="." instance=ExtResource("5_idwpj")]
-position = Vector2(5800, -2732)
+position = Vector2(6079, -3581)
 
 [node name="Booster4" parent="." instance=ExtResource("5_idwpj")]
-position = Vector2(7134, 1196)
+position = Vector2(7016, 972)
 
 [node name="Booster3" parent="." instance=ExtResource("5_idwpj")]
 position = Vector2(-2223, 2715)
 
 [node name="Reflector" parent="." instance=ExtResource("6_tx61i")]
-position = Vector2(6816.0005, -529)
+position = Vector2(6915, -772)
 rotation = 1.5707964
 scale = Vector2(2.5843043, 1.701965)
 
 [node name="Reflector2" parent="." instance=ExtResource("6_tx61i")]
-position = Vector2(8900.001, -1338.9998)
+position = Vector2(8900.001, -1713)
 rotation = 1.5707964
 scale = Vector2(4.915293, 2.0759754)
 

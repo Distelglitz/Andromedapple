@@ -157,7 +157,7 @@ func onProjectileRemoved(projectile : Projectile, destroyed : bool, other : Node
 
 func onAreaEntered(area : Area2D):
 	if area is Planet:
-		if not area.moving:
+		if area.moving:
 			die()
 func onBodyEntered(body : Node2D):
 	if body is Projectile:

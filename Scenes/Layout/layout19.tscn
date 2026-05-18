@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtjy3rklenx3j"]
+[gd_scene load_steps=5 format=3 uid="uid://dtjy3rklenx3j"]
 
 [ext_resource type="Script" uid="uid://c8c7hb5aaqtru" path="res://Scripts/Layout.gd" id="1_h04qw"]
 [ext_resource type="PackedScene" uid="uid://cadkk3oc7vvwk" path="res://Scenes/LevelComponents/Planet.tscn" id="2_ttn8u"]
+[ext_resource type="PackedScene" uid="uid://bcsujg1vnnwgj" path="res://Scenes/LevelComponents/Debree/DebreeRect.tscn" id="3_ttn8u"]
+[ext_resource type="PackedScene" uid="uid://bcb7mx6bduvo4" path="res://Scenes/LevelComponents/Whale.tscn" id="4_hd3uf"]
 
 [node name="Layout19" type="Node2D" node_paths=PackedStringArray("rect")]
 script = ExtResource("1_h04qw")
@@ -9,11 +11,45 @@ rect = NodePath("ColorRect")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -7842.0
-offset_top = -4867.0
+offset_top = -7923.0005
 offset_right = -6191.547
-offset_bottom = -3938.6206
+offset_bottom = -6994.621
 scale = Vector2(9.269917, 9.269917)
 color = Color(1, 0, 0, 0.1764706)
 
 [node name="Planet" parent="." instance=ExtResource("2_ttn8u")]
 scale = Vector2(2, 2)
+
+[node name="Planet2" parent="." instance=ExtResource("2_ttn8u")]
+position = Vector2(0, -3465.9998)
+scale = Vector2(2.735201, 2.7856371)
+
+[node name="Planet3" parent="." instance=ExtResource("2_ttn8u")]
+position = Vector2(0, -6457)
+scale = Vector2(3.654568, 3.7219572)
+
+[node name="Debree" parent="." instance=ExtResource("3_ttn8u")]
+position = Vector2(-1028, -172)
+scale = Vector2(1, 5.8900013)
+
+[node name="Debree3" parent="." instance=ExtResource("3_ttn8u")]
+position = Vector2(1028, -172)
+scale = Vector2(1, 5.8900013)
+
+[node name="Debree2" parent="." instance=ExtResource("3_ttn8u")]
+position = Vector2(0, -1852)
+rotation = 1.5707964
+scale = Vector2(1, 4)
+
+[node name="Debree4" parent="." instance=ExtResource("3_ttn8u")]
+position = Vector2(0, -4750)
+rotation = 1.5707964
+scale = Vector2(1, 5.280002)
+
+[node name="Whale" parent="." instance=ExtResource("4_hd3uf")]
+position = Vector2(-2029.9998, -145.99997)
+rotation = -1.15882
+
+[node name="Whale2" parent="." instance=ExtResource("4_hd3uf")]
+position = Vector2(2030, -146)
+rotation = 4.3004913
