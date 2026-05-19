@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://deq17ni0k5y2t"]
+
+[ext_resource type="Script" uid="uid://c8c7hb5aaqtru" path="res://Scripts/Layout.gd" id="1_vr4dr"]
+[ext_resource type="PackedScene" uid="uid://cadkk3oc7vvwk" path="res://Scenes/LevelComponents/Planet.tscn" id="2_hbmsp"]
+[ext_resource type="PackedScene" uid="uid://bl6s2d2ov8no3" path="res://Scenes/LevelComponents/Asteroid/Asteroid.tscn" id="3_hbmsp"]
+[ext_resource type="PackedScene" uid="uid://bcsujg1vnnwgj" path="res://Scenes/LevelComponents/Debree/DebreeRect.tscn" id="4_m6j61"]
+
+[node name="Layout21" type="Node2D" node_paths=PackedStringArray("rect")]
+script = ExtResource("1_vr4dr")
+rect = NodePath("ColorRect")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -10157.0
+offset_top = -4785.0005
+offset_right = -8444.026
+offset_bottom = -3821.4536
+scale = Vector2(9.269917, 9.269917)
+color = Color(1, 0, 0, 0.1764706)
+
+[node name="Planet" parent="." instance=ExtResource("2_hbmsp")]
+position = Vector2(-4299, 81)
+scale = Vector2(2, 2)
+
+[node name="Planet2" parent="." instance=ExtResource("2_hbmsp")]
+position = Vector2(-3122, 2450)
+scale = Vector2(2.982077, 2.982077)
+
+[node name="Planet4" parent="." instance=ExtResource("2_hbmsp")]
+position = Vector2(-4266.9995, -3681)
+scale = Vector2(2.4068775, 2.4068775)
+
+[node name="Asteroid" parent="." instance=ExtResource("3_hbmsp")]
+position = Vector2(-31, -1006)
+scale = Vector2(6.298208, 6.298208)
+
+[node name="Asteroid2" parent="." instance=ExtResource("3_hbmsp")]
+position = Vector2(-6225, -1703)
+scale = Vector2(3.8220527, 3.8220527)
+
+[node name="Debree" parent="." instance=ExtResource("4_m6j61")]
+position = Vector2(-3492.0002, 825.0001)
+rotation = -0.59905887
+scale = Vector2(5.0224137, 1)

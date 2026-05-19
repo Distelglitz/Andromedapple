@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cew01kmmnyve5"]
+[gd_scene load_steps=36 format=3 uid="uid://cew01kmmnyve5"]
 
 [ext_resource type="Script" uid="uid://c2o5r133q1hpu" path="res://Scripts/Menu.gd" id="1_3kf3n"]
 [ext_resource type="PackedScene" uid="uid://dk1pr857ty6xo" path="res://Scenes/MenuLine.tscn" id="2_aobxe"]
@@ -31,7 +31,9 @@
 [ext_resource type="PackedScene" uid="uid://qruk4sbxj5m2" path="res://Scenes/Layout/layout18.tscn" id="26_qwkn0"]
 [ext_resource type="PackedScene" uid="uid://dtjy3rklenx3j" path="res://Scenes/Layout/layout19.tscn" id="27_4fp51"]
 [ext_resource type="Shader" uid="uid://bxemqiadchccn" path="res://Shader/Gradient.gdshader" id="27_ka6xg"]
+[ext_resource type="PackedScene" uid="uid://dl2bpprjsmynt" path="res://Scenes/Layout/layout20.tscn" id="28_30swk"]
 [ext_resource type="Script" uid="uid://che1t7ay258ev" path="res://Scripts/MenuBgRect.gd" id="28_cdx8w"]
+[ext_resource type="PackedScene" uid="uid://deq17ni0k5y2t" path="res://Scenes/Layout/layout21.tscn" id="29_ckbj2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_08kpj"]
 shader = ExtResource("27_ka6xg")
@@ -207,12 +209,28 @@ offset_bottom = 264.0
 layout = ExtResource("26_qwkn0")
 unlocks = [NodePath("../2_MenuLevel7")]
 
-[node name="2_MenuLevel7" parent="WorldHolder/MenuWorld2" instance=ExtResource("3_syfuq")]
+[node name="2_MenuLevel7" parent="WorldHolder/MenuWorld2" node_paths=PackedStringArray("unlocks") instance=ExtResource("3_syfuq")]
 offset_left = 717.0
 offset_top = 140.0
 offset_right = 817.0
 offset_bottom = 240.0
 layout = ExtResource("27_4fp51")
+unlocks = [NodePath("../2_MenuLevel8")]
+
+[node name="2_MenuLevel8" parent="WorldHolder/MenuWorld2" node_paths=PackedStringArray("unlocks") instance=ExtResource("3_syfuq")]
+offset_left = 558.0
+offset_top = 109.0
+offset_right = 658.0
+offset_bottom = 209.0
+layout = ExtResource("28_30swk")
+unlocks = [NodePath("../2_MenuLevel9")]
+
+[node name="2_MenuLevel9" parent="WorldHolder/MenuWorld2" instance=ExtResource("3_syfuq")]
+offset_left = 324.0
+offset_top = 175.0
+offset_right = 424.0
+offset_bottom = 275.0
+layout = ExtResource("29_ckbj2")
 
 [node name="MenuWorld3" type="Node2D" parent="WorldHolder"]
 position = Vector2(-1171, 526)
