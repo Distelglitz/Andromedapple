@@ -48,6 +48,9 @@ func rock(idx : int):
 
 func lineOrbit():
     return secondary[6]
+func lineOrbitFrozen():
+    return main[0]
+
 
 func lineGravity(inside : bool):
     if inside:

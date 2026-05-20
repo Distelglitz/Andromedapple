@@ -9,7 +9,7 @@ var cycleT : float
 
 @export var satellites : Array[Node2D]
 var satelliteOffsets : Array[Vector2]
-var circles : Array[DrawCircle]
+var circles : Array[OrbitCircle]
 var distances : Array[float]
 
 func _enter_tree():
@@ -17,6 +17,7 @@ func _enter_tree():
 	satellites.clear()
 	for s in temp:
 		addSatellite(s)
+	add_to_group("orbit")
 func addSatellite(child : Node2D):
 	if satellites.has(child):
 		return
@@ -31,13 +32,14 @@ func addSatellite(child : Node2D):
 		if not clockwise:
 			circ.scale*=Vector2(-1,1)
 		add_child(circ)
-		circ.modulate=Persistent.c.lineOrbit()
-		circ.modulate.a=opacity
+		#circ.modulate=Persistent.c.lineOrbit()
+		#circ.modulate.a=opacity
 		circles.append(circ)
 		distances.append(dist)
 
 func _physics_process(delta):
-	cycleT+=delta
+	if not frozen:
+		cycleT+=delta
 	if cycleT>cycleDuration:
 		cycleT-=cycleDuration
 	var rad
@@ -49,3 +51,13 @@ func _physics_process(delta):
 		c.rotation=rad*1
 	for i in range(satellites.size()):
 		satellites[i].position=position+satelliteOffsets[i].rotated(rad)
+
+var frozen : bool = false
+func freeze():
+	frozen = true
+	for c in circles:
+		c.setFreeze(frozen)
+func unfreeze():
+	frozen = false
+	for c in circles:
+		c.setFreeze(frozen)

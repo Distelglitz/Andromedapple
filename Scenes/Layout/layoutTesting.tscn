@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcvunestvmuap"]
+[gd_scene load_steps=8 format=3 uid="uid://dcvunestvmuap"]
 
 [ext_resource type="Script" uid="uid://c8c7hb5aaqtru" path="res://Scripts/Layout.gd" id="1_606uh"]
 [ext_resource type="PackedScene" uid="uid://cadkk3oc7vvwk" path="res://Scenes/LevelComponents/Planet.tscn" id="2_k8k6l"]
 [ext_resource type="PackedScene" uid="uid://qd5ytovhj6af" path="res://Scenes/LevelComponents/Reflector.tscn" id="3_k8k6l"]
 [ext_resource type="PackedScene" uid="uid://bmfrh80s51fly" path="res://Scenes/LevelComponents/Booster.tscn" id="4_dn2ii"]
 [ext_resource type="PackedScene" uid="uid://bcb7mx6bduvo4" path="res://Scenes/LevelComponents/Whale.tscn" id="5_v45ah"]
+[ext_resource type="PackedScene" uid="uid://dlpc1lpc70r87" path="res://Scenes/LevelComponents/TimeStop.tscn" id="6_n6ebu"]
+[ext_resource type="Script" uid="uid://cdeael837cko" path="res://Scripts/Orbit.gd" id="7_ls13b"]
 
 [node name="Layout7" type="Node2D" node_paths=PackedStringArray("rect")]
 script = ExtResource("1_606uh")
@@ -42,3 +44,18 @@ position = Vector2(-463, 633)
 [node name="Whale" parent="." instance=ExtResource("5_v45ah")]
 position = Vector2(-1449, 796.99994)
 rotation = -1.5707964
+
+[node name="TimeStop" parent="." instance=ExtResource("6_n6ebu")]
+position = Vector2(-2462, -235)
+
+[node name="Orbit" type="Node2D" parent="." node_paths=PackedStringArray("satellites")]
+position = Vector2(545, -1123)
+script = ExtResource("7_ls13b")
+satellites = [NodePath("../Planet")]
+metadata/_custom_type_script = "uid://cdeael837cko"
+
+[node name="Orbit2" type="Node2D" parent="." node_paths=PackedStringArray("satellites")]
+position = Vector2(-5803, -1481)
+script = ExtResource("7_ls13b")
+satellites = [NodePath("../Planet3")]
+metadata/_custom_type_script = "uid://cdeael837cko"

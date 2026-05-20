@@ -83,7 +83,7 @@ packedAimVisuals = ExtResource("3_jw32o")
 packedTreePlaceVisuals = ExtResource("4_50glp")
 gameUi = NodePath("../Level/GameUi")
 
-[node name="Level" type="Node2D" parent="." node_paths=PackedStringArray("testLog", "game", "holderProjectile")]
+[node name="Level" type="Node2D" parent="." node_paths=PackedStringArray("testLog", "game", "holderProjectile") groups=["level"]]
 script = ExtResource("2_rgh2o")
 testLog = NodePath("../Cam/Camera2D/TestLog")
 game = NodePath("../Game")
