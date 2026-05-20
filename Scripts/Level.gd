@@ -75,13 +75,8 @@ func spawnFruit(fruitPacked : PackedScene, tree : FruitTree, position : Vector2)
 	EV_FruitSpawned.emit(fruit)
 	return fruit
 
-var orbitsFrozen : bool
 func orbitFreezeToggle():
-	if orbitsFrozen:
-		get_tree().call_group("orbit","unfreeze")
-	else:
-		get_tree().call_group("orbit","freeze")
-	orbitsFrozen = not orbitsFrozen
+	get_tree().call_group("orbit","freezeSwitch")
 
 func spawnProjectile(fruit : Fruit, position : Vector2, direction : Vector2):
 	var packedProj : PackedScene = load(packedProjectilePath)

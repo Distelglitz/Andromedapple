@@ -11,6 +11,8 @@ var cycleT : float
 var satelliteOffsets : Array[Vector2]
 var circles : Array[OrbitCircle]
 var distances : Array[float]
+@export var startFrozen : bool
+
 
 func _enter_tree():
 	var temp : Array[Node2D] = satellites.duplicate()
@@ -18,6 +20,12 @@ func _enter_tree():
 	for s in temp:
 		addSatellite(s)
 	add_to_group("orbit")
+	
+	if startFrozen:
+		freeze()
+	else:
+		unfreeze()
+
 func addSatellite(child : Node2D):
 	if satellites.has(child):
 		return
@@ -61,3 +69,8 @@ func unfreeze():
 	frozen = false
 	for c in circles:
 		c.setFreeze(frozen)
+func freezeSwitch():
+	if frozen:
+		unfreeze()
+	else:
+		freeze()

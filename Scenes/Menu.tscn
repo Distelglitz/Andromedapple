@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cew01kmmnyve5"]
+[gd_scene load_steps=37 format=3 uid="uid://cew01kmmnyve5"]
 
 [ext_resource type="Script" uid="uid://c2o5r133q1hpu" path="res://Scripts/Menu.gd" id="1_3kf3n"]
 [ext_resource type="PackedScene" uid="uid://dk1pr857ty6xo" path="res://Scenes/MenuLine.tscn" id="2_aobxe"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://ny3cp514qm1k" path="res://Scenes/Layout/layout6.tscn" id="10_sjh0l"]
 [ext_resource type="PackedScene" uid="uid://2jbtc00iouf8" path="res://Scenes/Layout/layout7.tscn" id="11_qki4b"]
 [ext_resource type="Script" uid="uid://6psc0r0nkxgi" path="res://Scripts/MenuWorld.gd" id="11_sjh0l"]
-[ext_resource type="PackedScene" uid="uid://dcvunestvmuap" path="res://Scenes/Layout/layoutTesting.tscn" id="12_qki4b"]
 [ext_resource type="PackedScene" uid="uid://bg2iw84xca8ey" path="res://Scenes/Layout/layout8.tscn" id="13_a8aa6"]
 [ext_resource type="Resource" uid="uid://dxs34030pkmtu" path="res://ColorScheme/col_1.tres" id="14_c0stj"]
 [ext_resource type="PackedScene" uid="uid://bulrqbjtfg6vv" path="res://Scenes/Layout/layout9.tscn" id="14_x0ao6"]
@@ -34,6 +33,8 @@
 [ext_resource type="PackedScene" uid="uid://dl2bpprjsmynt" path="res://Scenes/Layout/layout20.tscn" id="28_30swk"]
 [ext_resource type="Script" uid="uid://che1t7ay258ev" path="res://Scripts/MenuBgRect.gd" id="28_cdx8w"]
 [ext_resource type="PackedScene" uid="uid://deq17ni0k5y2t" path="res://Scenes/Layout/layout21.tscn" id="29_ckbj2"]
+[ext_resource type="PackedScene" uid="uid://b56tyvdm8jobv" path="res://Scenes/Layout/layout22.tscn" id="30_ckbj2"]
+[ext_resource type="PackedScene" uid="uid://dqplfob3d5u7f" path="res://Scenes/Layout/layout23.tscn" id="31_nuh2c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_08kpj"]
 shader = ExtResource("27_ka6xg")
@@ -243,8 +244,15 @@ offset_left = 66.0
 offset_top = 2.0
 offset_right = 166.0
 offset_bottom = 102.0
-layout = ExtResource("12_qki4b")
-unlocks = [null]
+layout = ExtResource("30_ckbj2")
+unlocks = [NodePath("../3_MenuLevel2")]
+
+[node name="3_MenuLevel2" parent="WorldHolder/MenuWorld3" instance=ExtResource("3_syfuq")]
+offset_left = 316.0
+offset_top = -67.0
+offset_right = 416.0
+offset_bottom = 33.0
+layout = ExtResource("31_nuh2c")
 
 [node name="ControlBlock" type="Control" parent="."]
 layout_mode = 3

@@ -28,12 +28,14 @@ func _enter_tree():
 
 var eventConnected : bool
 
+var collectedOnce : bool
+
 func onBodyEntered(other : Node2D):
 	if not other is Projectile:
 		return
 	var p : Projectile = other
 	p.resetFreeze()
-	
+	collectedOnce = true
 	level.orbitFreezeToggle()
 
 	tog.TriggerOff()
@@ -48,6 +50,8 @@ func onBodyEntered(other : Node2D):
 		eventConnected=true
 
 func onProjectileRemoved(projectile:Projectile,destroyed:bool,other:Node2D):
+	if collectedOnce:
+		return
 	tog.TriggerOn()
 	area.monitoring=true
 
