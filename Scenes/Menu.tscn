@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cew01kmmnyve5"]
+[gd_scene load_steps=40 format=3 uid="uid://cew01kmmnyve5"]
 
 [ext_resource type="Script" uid="uid://c2o5r133q1hpu" path="res://Scripts/Menu.gd" id="1_3kf3n"]
 [ext_resource type="PackedScene" uid="uid://dk1pr857ty6xo" path="res://Scenes/MenuLine.tscn" id="2_aobxe"]
@@ -37,6 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://dqplfob3d5u7f" path="res://Scenes/Layout/layout23.tscn" id="31_nuh2c"]
 [ext_resource type="PackedScene" uid="uid://drhy5dqevq1th" path="res://Scenes/Layout/layout24.tscn" id="32_ou2h3"]
 [ext_resource type="PackedScene" uid="uid://vroc6dufd2dd" path="res://Scenes/Layout/layout25.tscn" id="33_rh0jc"]
+[ext_resource type="PackedScene" uid="uid://cm2ofpvwgvr3u" path="res://Scenes/Layout/layout26.tscn" id="34_v0ovw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_08kpj"]
 shader = ExtResource("27_ka6xg")
@@ -257,20 +258,28 @@ offset_bottom = 33.0
 layout = ExtResource("31_nuh2c")
 unlocks = [NodePath("../3_MenuLevel3")]
 
-[node name="3_MenuLevel3" parent="WorldHolder/MenuWorld3" instance=ExtResource("3_syfuq")]
+[node name="3_MenuLevel3" parent="WorldHolder/MenuWorld3" node_paths=PackedStringArray("unlocks") instance=ExtResource("3_syfuq")]
 offset_left = 553.0
 offset_top = -37.0
 offset_right = 653.0
 offset_bottom = 63.0
 layout = ExtResource("32_ou2h3")
+unlocks = [NodePath("../3_MenuLevel4")]
 
 [node name="3_MenuLevel4" parent="WorldHolder/MenuWorld3" node_paths=PackedStringArray("unlocks") instance=ExtResource("3_syfuq")]
-offset_left = 810.0
-offset_top = 14.0
-offset_right = 910.0
-offset_bottom = 114.0
+offset_left = 874.0
+offset_top = 17.0
+offset_right = 974.0
+offset_bottom = 117.0
 layout = ExtResource("33_rh0jc")
-unlocks = [NodePath("../3_MenuLevel3")]
+unlocks = [NodePath("../3_MenuLevel5")]
+
+[node name="3_MenuLevel5" parent="WorldHolder/MenuWorld3" instance=ExtResource("3_syfuq")]
+offset_left = 1158.0
+offset_top = 120.0
+offset_right = 1258.0
+offset_bottom = 220.0
+layout = ExtResource("34_v0ovw")
 
 [node name="ControlBlock" type="Control" parent="."]
 layout_mode = 3
