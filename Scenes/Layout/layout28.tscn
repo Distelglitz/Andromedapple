@@ -1,0 +1,104 @@
+[gd_scene load_steps=7 format=3 uid="uid://ch2x5prd5mj6c"]
+
+[ext_resource type="Script" uid="uid://c8c7hb5aaqtru" path="res://Scripts/Layout.gd" id="1_53yoh"]
+[ext_resource type="PackedScene" uid="uid://cadkk3oc7vvwk" path="res://Scenes/LevelComponents/Planet.tscn" id="2_hhf6s"]
+[ext_resource type="Script" uid="uid://cdeael837cko" path="res://Scripts/Orbit.gd" id="3_hhf6s"]
+[ext_resource type="PackedScene" uid="uid://bl6s2d2ov8no3" path="res://Scenes/LevelComponents/Asteroid/Asteroid.tscn" id="4_in1kq"]
+[ext_resource type="PackedScene" uid="uid://bcsujg1vnnwgj" path="res://Scenes/LevelComponents/Debree/DebreeRect.tscn" id="5_dp7cs"]
+[ext_resource type="PackedScene" uid="uid://dlpc1lpc70r87" path="res://Scenes/LevelComponents/TimeStop.tscn" id="6_ysv5u"]
+
+[node name="Layout28" type="Node2D" node_paths=PackedStringArray("rect")]
+script = ExtResource("1_53yoh")
+rect = NodePath("ColorRect")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -14277.0
+offset_top = -7083.0005
+offset_right = -11614.633
+offset_bottom = -5585.42
+rotation = -0.0001550591
+scale = Vector2(9.269917, 9.269917)
+color = Color(1, 0, 0, 0.1764706)
+
+[node name="Planet" parent="." instance=ExtResource("2_hhf6s")]
+scale = Vector2(2, 2)
+
+[node name="Planet6" parent="." instance=ExtResource("2_hhf6s")]
+position = Vector2(1365, 714)
+scale = Vector2(2, 2)
+
+[node name="Planet7" parent="." instance=ExtResource("2_hhf6s")]
+position = Vector2(4975, -4331)
+scale = Vector2(3.0132258, 3.0132258)
+
+[node name="Planet2" parent="." instance=ExtResource("2_hhf6s")]
+position = Vector2(-5831.0005, -2276.0002)
+scale = Vector2(2.5, 2.5)
+
+[node name="Planet4" parent="." instance=ExtResource("2_hhf6s")]
+position = Vector2(-5632, 1583)
+scale = Vector2(2.5, 2.5)
+
+[node name="Planet5" parent="." instance=ExtResource("2_hhf6s")]
+position = Vector2(-206.99997, 4798)
+scale = Vector2(2.5, 2.5)
+
+[node name="Orbit" type="Node2D" parent="." node_paths=PackedStringArray("satellites")]
+script = ExtResource("3_hhf6s")
+satellites = [NodePath("../Asteroid"), NodePath("../Asteroid2")]
+startFrozen = true
+metadata/_custom_type_script = "uid://cdeael837cko"
+
+[node name="Asteroid" parent="." instance=ExtResource("4_in1kq")]
+position = Vector2(-2262.7417, -2262.7417)
+scale = Vector2(2.5, 2.5)
+
+[node name="Asteroid2" parent="." instance=ExtResource("4_in1kq")]
+position = Vector2(2262.7417, 2262.7417)
+scale = Vector2(2.5, 2.5)
+
+[node name="Orbit2" type="Node2D" parent="." node_paths=PackedStringArray("satellites")]
+position = Vector2(-10119, -3472)
+script = ExtResource("3_hhf6s")
+clockwise = false
+cycleDuration = 5.0
+satellites = [NodePath("../Planet3")]
+metadata/_custom_type_script = "uid://cdeael837cko"
+
+[node name="Planet3" parent="." instance=ExtResource("2_hhf6s")]
+position = Vector2(-9324, -1936)
+scale = Vector2(2, 2)
+
+[node name="Debree" parent="." instance=ExtResource("5_dp7cs")]
+position = Vector2(-6928.0005, -3861)
+scale = Vector2(1.7130795, 9.958614)
+
+[node name="Debree5" parent="." instance=ExtResource("5_dp7cs")]
+position = Vector2(4948, -2384)
+rotation = 2.6179938
+scale = Vector2(1.7130795, 9.958614)
+
+[node name="Debree6" parent="." instance=ExtResource("5_dp7cs")]
+position = Vector2(3209.0002, -5376)
+rotation = 2.6179938
+scale = Vector2(1.7130795, 9.958614)
+
+[node name="Debree4" parent="." instance=ExtResource("5_dp7cs")]
+position = Vector2(-1380.0001, 4795)
+scale = Vector2(1.7130795, 9.958614)
+
+[node name="Debree2" parent="." instance=ExtResource("5_dp7cs")]
+position = Vector2(-7092.0005, -692.99976)
+rotation = -0.7853982
+scale = Vector2(1.7130795, 9.958614)
+
+[node name="Debree3" parent="." instance=ExtResource("5_dp7cs")]
+position = Vector2(-5435, -49.000015)
+rotation = -1.5707964
+scale = Vector2(1.7130795, 9.958614)
+
+[node name="TimeStop" parent="." instance=ExtResource("6_ysv5u")]
+position = Vector2(-7315, -2176)
+
+[node name="TimeStop2" parent="." instance=ExtResource("6_ysv5u")]
+position = Vector2(-7595, -161)
