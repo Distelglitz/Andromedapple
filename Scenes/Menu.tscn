@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cew01kmmnyve5"]
+[gd_scene load_steps=45 format=3 uid="uid://cew01kmmnyve5"]
 
 [ext_resource type="Script" uid="uid://c2o5r133q1hpu" path="res://Scripts/Menu.gd" id="1_3kf3n"]
 [ext_resource type="PackedScene" uid="uid://dk1pr857ty6xo" path="res://Scenes/MenuLine.tscn" id="2_aobxe"]
@@ -34,6 +34,7 @@
 [ext_resource type="Script" uid="uid://che1t7ay258ev" path="res://Scripts/MenuBgRect.gd" id="28_cdx8w"]
 [ext_resource type="PackedScene" uid="uid://deq17ni0k5y2t" path="res://Scenes/Layout/layout21.tscn" id="29_ckbj2"]
 [ext_resource type="PackedScene" uid="uid://b56tyvdm8jobv" path="res://Scenes/Layout/layout22.tscn" id="30_ckbj2"]
+[ext_resource type="Resource" uid="uid://b4sxalbbgdy43" path="res://ColorScheme/col_3.tres" id="30_dml4c"]
 [ext_resource type="PackedScene" uid="uid://dqplfob3d5u7f" path="res://Scenes/Layout/layout23.tscn" id="31_nuh2c"]
 [ext_resource type="PackedScene" uid="uid://drhy5dqevq1th" path="res://Scenes/Layout/layout24.tscn" id="32_ou2h3"]
 [ext_resource type="PackedScene" uid="uid://vroc6dufd2dd" path="res://Scenes/Layout/layout25.tscn" id="33_rh0jc"]
@@ -243,7 +244,7 @@ layout = ExtResource("29_ckbj2")
 [node name="MenuWorld3" type="Node2D" parent="WorldHolder"]
 position = Vector2(-1171, 526)
 script = ExtResource("11_sjh0l")
-colors = ExtResource("4_du1yi")
+colors = ExtResource("30_dml4c")
 metadata/_custom_type_script = "uid://6psc0r0nkxgi"
 
 [node name="3_MenuLevel" parent="WorldHolder/MenuWorld3" node_paths=PackedStringArray("unlocks") instance=ExtResource("3_syfuq")]
