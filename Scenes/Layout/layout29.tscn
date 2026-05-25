@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://ik548xvvbtmt"]
+[gd_scene load_steps=5 format=3 uid="uid://ik548xvvbtmt"]
 
 [ext_resource type="Script" uid="uid://c8c7hb5aaqtru" path="res://Scripts/Layout.gd" id="1_wudbs"]
 [ext_resource type="PackedScene" uid="uid://cadkk3oc7vvwk" path="res://Scenes/LevelComponents/Planet.tscn" id="2_yysiq"]
+[ext_resource type="Script" uid="uid://cdeael837cko" path="res://Scripts/Orbit.gd" id="3_yysiq"]
+[ext_resource type="PackedScene" uid="uid://bl6s2d2ov8no3" path="res://Scenes/LevelComponents/Asteroid/Asteroid.tscn" id="4_6eb57"]
 
 [node name="Layout29" type="Node2D" node_paths=PackedStringArray("rect")]
 script = ExtResource("1_wudbs")
@@ -17,3 +19,20 @@ color = Color(1, 0, 0, 0.1764706)
 
 [node name="Planet" parent="." instance=ExtResource("2_yysiq")]
 scale = Vector2(2, 2)
+
+[node name="Orbit" type="Node2D" parent="." node_paths=PackedStringArray("satellites")]
+script = ExtResource("3_yysiq")
+satellites = [NodePath("../Planet2"), NodePath("../Planet3")]
+metadata/_custom_type_script = "uid://cdeael837cko"
+
+[node name="Planet2" parent="." instance=ExtResource("2_yysiq")]
+position = Vector2(0, -3885)
+scale = Vector2(2.5, 2.5)
+
+[node name="Planet3" parent="." instance=ExtResource("2_yysiq")]
+position = Vector2(0, 3885)
+scale = Vector2(2.5, 2.5)
+
+[node name="Asteroid3" parent="." instance=ExtResource("4_6eb57")]
+position = Vector2(0, 1796)
+scale = Vector2(2.5078228, 2.5078228)

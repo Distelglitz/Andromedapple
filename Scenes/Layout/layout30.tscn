@@ -1,19 +1,160 @@
-[gd_scene load_steps=3 format=3 uid="uid://x8esjsal7kqx"]
+[gd_scene load_steps=6 format=3 uid="uid://x8esjsal7kqx"]
 
 [ext_resource type="Script" uid="uid://c8c7hb5aaqtru" path="res://Scripts/Layout.gd" id="1_njllc"]
 [ext_resource type="PackedScene" uid="uid://cadkk3oc7vvwk" path="res://Scenes/LevelComponents/Planet.tscn" id="2_g154m"]
+[ext_resource type="PackedScene" uid="uid://bcsujg1vnnwgj" path="res://Scenes/LevelComponents/Debree/DebreeRect.tscn" id="3_qu0ue"]
+[ext_resource type="PackedScene" uid="uid://bmfrh80s51fly" path="res://Scenes/LevelComponents/Booster.tscn" id="4_y80xk"]
+[ext_resource type="PackedScene" uid="uid://bl6s2d2ov8no3" path="res://Scenes/LevelComponents/Asteroid/Asteroid.tscn" id="5_y80xk"]
 
 [node name="Layout30" type="Node2D" node_paths=PackedStringArray("rect")]
 script = ExtResource("1_njllc")
 rect = NodePath("ColorRect")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -12220.0
-offset_top = -6959.0
-offset_right = -9691.963
-offset_bottom = -5536.9805
+offset_left = -3139.0
+offset_top = -2027.0
+offset_right = -396.3623
+offset_bottom = -484.2677
 scale = Vector2(9.269917, 9.269917)
 color = Color(1, 0, 0, 0.1764706)
 
 [node name="Planet" parent="." instance=ExtResource("2_g154m")]
+scale = Vector2(2.5, 2.5)
+
+[node name="Planet2" parent="." instance=ExtResource("2_g154m")]
+position = Vector2(6000, 0)
+scale = Vector2(2.5, 2.5)
+
+[node name="Planet3" parent="." instance=ExtResource("2_g154m")]
+position = Vector2(12000, 0)
+scale = Vector2(2.5, 2.5)
+
+[node name="Planet4" parent="." instance=ExtResource("2_g154m")]
+position = Vector2(18000, 0)
+scale = Vector2(2.5, 2.5)
+
+[node name="Planet9" parent="." instance=ExtResource("2_g154m")]
+position = Vector2(0, 10000)
+scale = Vector2(2.5, 2.5)
+
+[node name="Planet10" parent="." instance=ExtResource("2_g154m")]
+position = Vector2(6000, 10000)
+scale = Vector2(2.5, 2.5)
+
+[node name="Planet11" parent="." instance=ExtResource("2_g154m")]
+position = Vector2(12000, 10000)
+scale = Vector2(2.5, 2.5)
+
+[node name="Planet12" parent="." instance=ExtResource("2_g154m")]
+position = Vector2(18000, 10000)
+scale = Vector2(2.5, 2.5)
+
+[node name="Planet5" parent="." instance=ExtResource("2_g154m")]
+position = Vector2(0, 5000)
+scale = Vector2(2.5, 2.5)
+
+[node name="Planet6" parent="." instance=ExtResource("2_g154m")]
+position = Vector2(6000, 5000)
+scale = Vector2(2.5, 2.5)
+
+[node name="Planet7" parent="." instance=ExtResource("2_g154m")]
+position = Vector2(12000, 5000)
+scale = Vector2(2.5, 2.5)
+
+[node name="Planet8" parent="." instance=ExtResource("2_g154m")]
+position = Vector2(18000, 5000)
+scale = Vector2(2.5, 2.5)
+
+[node name="Debree" parent="." instance=ExtResource("3_qu0ue")]
+position = Vector2(1004, 2500)
+scale = Vector2(162.76001, 1)
+
+[node name="Debree2" parent="." instance=ExtResource("3_qu0ue")]
+position = Vector2(28711, 2500)
+scale = Vector2(100, 1)
+
+[node name="Debree3" parent="." instance=ExtResource("3_qu0ue")]
+position = Vector2(-16941, 7500)
+scale = Vector2(162.76001, 1)
+
+[node name="Debree4" parent="." instance=ExtResource("3_qu0ue")]
+position = Vector2(18301, 7500)
+scale = Vector2(176.56, 1)
+
+[node name="Booster" parent="." instance=ExtResource("4_y80xk")]
+position = Vector2(18000, 2500)
+
+[node name="Booster2" parent="." instance=ExtResource("4_y80xk")]
+position = Vector2(0, 7500)
+
+[node name="Asteroid" parent="." instance=ExtResource("5_y80xk")]
+position = Vector2(3039, -805.99994)
 scale = Vector2(2, 2)
+
+[node name="Asteroid2" parent="." instance=ExtResource("5_y80xk")]
+position = Vector2(9186, 680.00006)
+scale = Vector2(2, 2)
+
+[node name="Asteroid3" parent="." instance=ExtResource("5_y80xk")]
+position = Vector2(14645, -745.99994)
+scale = Vector2(2, 2)
+
+[node name="Asteroid4" parent="." instance=ExtResource("5_y80xk")]
+position = Vector2(14826, 3840)
+scale = Vector2(2, 2)
+
+[node name="Asteroid5" parent="." instance=ExtResource("5_y80xk")]
+position = Vector2(9304, 4112)
+scale = Vector2(2, 2)
+
+[node name="Asteroid6" parent="." instance=ExtResource("5_y80xk")]
+position = Vector2(2998, 4474)
+scale = Vector2(2, 2)
+
+[node name="Asteroid7" parent="." instance=ExtResource("5_y80xk")]
+position = Vector2(3305, 10503)
+scale = Vector2(2, 2)
+
+[node name="Asteroid8" parent="." instance=ExtResource("5_y80xk")]
+position = Vector2(8993, 9958)
+scale = Vector2(2, 2)
+
+[node name="Asteroid9" parent="." instance=ExtResource("5_y80xk")]
+position = Vector2(14750, 8894)
+scale = Vector2(2, 2)
+
+[node name="Debree5" parent="." instance=ExtResource("3_qu0ue")]
+position = Vector2(3011.0002, 5557)
+scale = Vector2(2.3333025, 3.1012633)
+
+[node name="Debree6" parent="." instance=ExtResource("3_qu0ue")]
+position = Vector2(4306, 9362)
+scale = Vector2(2.3333025, 3.1012633)
+
+[node name="Debree7" parent="." instance=ExtResource("3_qu0ue")]
+position = Vector2(4306.0005, 32)
+scale = Vector2(2.3333025, 3.1012633)
+
+[node name="Debree8" parent="." instance=ExtResource("3_qu0ue")]
+position = Vector2(9252, -137)
+scale = Vector2(2.3333025, 3.1012633)
+
+[node name="Debree9" parent="." instance=ExtResource("3_qu0ue")]
+position = Vector2(16013, -184)
+scale = Vector2(2.3333025, 3.1012633)
+
+[node name="Debree10" parent="." instance=ExtResource("3_qu0ue")]
+position = Vector2(14832, 4731)
+scale = Vector2(2.3333025, 3.1012633)
+
+[node name="Debree11" parent="." instance=ExtResource("3_qu0ue")]
+position = Vector2(8655.002, 4801)
+scale = Vector2(2.3333025, 3.1012633)
+
+[node name="Debree12" parent="." instance=ExtResource("3_qu0ue")]
+position = Vector2(8349.001, 9212)
+scale = Vector2(2.3333025, 3.1012633)
+
+[node name="Debree13" parent="." instance=ExtResource("3_qu0ue")]
+position = Vector2(14734, 10082)
+scale = Vector2(2.3333025, 3.1012633)
