@@ -1,0 +1,574 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8fmb0griw2ak"]
+
+[ext_resource type="Script" uid="uid://c8c7hb5aaqtru" path="res://Scripts/Layout.gd" id="1_d0xbw"]
+[ext_resource type="PackedScene" uid="uid://cadkk3oc7vvwk" path="res://Scenes/LevelComponents/Planet.tscn" id="2_xsfud"]
+[ext_resource type="Script" uid="uid://cdeael837cko" path="res://Scripts/Orbit.gd" id="3_d0xbw"]
+[ext_resource type="PackedScene" uid="uid://dlpc1lpc70r87" path="res://Scenes/LevelComponents/TimeStop.tscn" id="4_xsfud"]
+[ext_resource type="PackedScene" uid="uid://bcsujg1vnnwgj" path="res://Scenes/LevelComponents/Debree/DebreeRect.tscn" id="5_xsfud"]
+
+[node name="Layout32" type="Node2D" node_paths=PackedStringArray("rect")]
+script = ExtResource("1_d0xbw")
+rect = NodePath("ColorRect")
+metadata/_edit_horizontal_guides_ = [-6913.0]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -12494.001
+offset_top = -9977.001
+offset_right = -9707.637
+offset_bottom = -8409.673
+scale = Vector2(9.269917, 9.269917)
+color = Color(1, 0, 0, 0.1764706)
+
+[node name="Planet" parent="." instance=ExtResource("2_xsfud")]
+scale = Vector2(2, 2)
+
+[node name="Planet7" parent="." instance=ExtResource("2_xsfud")]
+position = Vector2(-2780, 408)
+scale = Vector2(2, 2)
+
+[node name="Orbit" type="Node2D" parent="." node_paths=PackedStringArray("satellites")]
+position = Vector2(4100, 0)
+script = ExtResource("3_d0xbw")
+satellites = [NodePath("../Planet2")]
+metadata/_custom_type_script = "uid://cdeael837cko"
+
+[node name="TimeStop" parent="." instance=ExtResource("4_xsfud")]
+position = Vector2(4100, 0)
+
+[node name="Planet2" parent="." instance=ExtResource("2_xsfud")]
+position = Vector2(2652, 57)
+scale = Vector2(2, 2)
+
+[node name="Orbit2" type="Node2D" parent="." node_paths=PackedStringArray("satellites")]
+position = Vector2(6343, -3285)
+script = ExtResource("3_d0xbw")
+clockwise = false
+satellites = [NodePath("../Planet3")]
+startFrozen = true
+metadata/_custom_type_script = "uid://cdeael837cko"
+
+[node name="TimeStop2" parent="." instance=ExtResource("4_xsfud")]
+position = Vector2(6343, -3285)
+
+[node name="Planet3" parent="." instance=ExtResource("2_xsfud")]
+position = Vector2(7389, -2940)
+scale = Vector2(2, 2)
+
+[node name="Orbit3" type="Node2D" parent="." node_paths=PackedStringArray("satellites")]
+position = Vector2(4080, -6654)
+script = ExtResource("3_d0xbw")
+cycleDuration = 5.0
+satellites = [NodePath("../Planet4")]
+metadata/_custom_type_script = "uid://cdeael837cko"
+
+[node name="TimeStop3" parent="." instance=ExtResource("4_xsfud")]
+position = Vector2(4080, -6654)
+
+[node name="Planet4" parent="." instance=ExtResource("2_xsfud")]
+position = Vector2(5234, -6913)
+scale = Vector2(2, 2)
+
+[node name="Orbit4" type="Node2D" parent="." node_paths=PackedStringArray("satellites")]
+position = Vector2(79, -7346)
+script = ExtResource("3_d0xbw")
+cycleDuration = 5.0
+satellites = [NodePath("../Planet5")]
+startFrozen = true
+metadata/_custom_type_script = "uid://cdeael837cko"
+
+[node name="TimeStop4" parent="." instance=ExtResource("4_xsfud")]
+position = Vector2(79, -7346)
+
+[node name="Planet5" parent="." instance=ExtResource("2_xsfud")]
+position = Vector2(1125, -7001)
+scale = Vector2(2, 2)
+
+[node name="Orbit5" type="Node2D" parent="." node_paths=PackedStringArray("satellites")]
+position = Vector2(-2908, -5129)
+script = ExtResource("3_d0xbw")
+clockwise = false
+cycleDuration = 5.0
+satellites = [NodePath("../Planet6")]
+metadata/_custom_type_script = "uid://cdeael837cko"
+
+[node name="TimeStop5" parent="." instance=ExtResource("4_xsfud")]
+position = Vector2(-2908, -5129)
+
+[node name="Planet6" parent="." instance=ExtResource("2_xsfud")]
+position = Vector2(-1606, -5075)
+scale = Vector2(2, 2)
+
+[node name="Debree" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(1442.9999, -1102)
+rotation = 0.23556253
+scale = Vector2(1.9787838, 3.7880342)
+
+[node name="Debree61" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-181.99991, -1332.9999)
+rotation = 2.0943952
+scale = Vector2(1.9787838, 3.7880342)
+
+[node name="Debree24" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(3524, -2211.9998)
+rotation = 1.8821605
+scale = Vector2(1.9787838, 3.7880342)
+
+[node name="Debree29" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(5019.9995, -4594)
+rotation = 0.74706185
+scale = Vector2(1.9787838, 3.7880342)
+
+[node name="Debree25" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(3026.0005, -2483.0002)
+rotation = 2.8494425
+scale = Vector2(1.9787838, 3.7880342)
+
+[node name="Debree42" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(2940.0002, -4694.0005)
+rotation = 2.8494425
+scale = Vector2(1.9787838, 3.7880342)
+
+[node name="Debree4" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(1675.0001, -1812)
+rotation = 0.47952303
+scale = Vector2(2.1404335, 6.9814734)
+
+[node name="Debree26" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(4189.9995, -2899.0002)
+rotation = 0.23767224
+scale = Vector2(2.8645802, 4.182511)
+
+[node name="Debree36" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(7903, -5832)
+rotation = 2.0943952
+scale = Vector2(2.8645802, 4.182511)
+
+[node name="Debree71" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-2197, -8559.999)
+rotation = 3.53409
+scale = Vector2(2.8645802, 4.182511)
+
+[node name="Debree68" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-92, -9216)
+rotation = 1.9447174
+scale = Vector2(2.8645802, 4.182511)
+
+[node name="Debree27" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(4232.0005, -3594.0002)
+rotation = -0.30026868
+scale = Vector2(-2.5307586, 6.8374543)
+
+[node name="Debree89" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(37, -4129)
+rotation = 0.039165005
+scale = Vector2(-2.5307586, 6.8374543)
+
+[node name="Debree72" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-2441, -8078)
+rotation = -0.30026868
+scale = Vector2(-2.5307586, 6.8374543)
+
+[node name="Debree40" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(3640.9998, -4203)
+rotation = -1.332313
+scale = Vector2(-3.1076493, -3.3947158)
+
+[node name="Debree39" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(2249, -6576)
+rotation = -0.14068168
+scale = Vector2(-2.4747512, 5.7050624)
+
+[node name="Debree44" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(2211.0002, -8516)
+rotation = 0.14905463
+scale = Vector2(-2.4747512, 5.7050624)
+
+[node name="Debree48" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(5495, -8358.999)
+rotation = 2.0943952
+scale = Vector2(-2.4747512, 5.7050624)
+
+[node name="Debree34" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(8466, -5025)
+rotation = -0.41388032
+scale = Vector2(-2.5307586, 6.8374543)
+
+[node name="Debree50" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(4139, -8634)
+rotation = 1.5707964
+scale = Vector2(-2.5307586, 6.8374543)
+
+[node name="Debree69" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(797.0002, -9121.001)
+rotation = 1.7225902
+scale = Vector2(-2.5307586, 6.8374543)
+
+[node name="Debree28" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(4452, -4304)
+rotation = 0.5447137
+scale = Vector2(-2.4575298, 3.9666078)
+
+[node name="Debree43" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(2442.9998, -5884)
+rotation = 1.8991181
+scale = Vector2(-2.4575298, 3.9666078)
+
+[node name="Debree18" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(2337.9998, 2158.9998)
+rotation = 2.2944505
+scale = Vector2(2.1404335, 6.9814734)
+
+[node name="Debree19" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(2876, 2813)
+rotation = 1.556423
+scale = Vector2(3.6702852, 3.457645)
+
+[node name="Debree20" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(1838.0001, 1419)
+rotation = 2.8498178
+scale = Vector2(2.238356, 7.256061)
+
+[node name="Debree81" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-4369.0005, -1267.0002)
+rotation = 3.9934871
+scale = Vector2(4.79737, 3.9725606)
+
+[node name="Debree53" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(847, 1302.9999)
+rotation = 4.4505897
+scale = Vector2(2.238356, 7.256061)
+
+[node name="Debree21" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(3673, 2546)
+rotation = 4.712389
+scale = Vector2(2.238356, 7.256061)
+
+[node name="Debree5" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(2396, -2254.9998)
+rotation = 1.2635852
+scale = Vector2(2.1404335, 6.9814734)
+
+[node name="Debree41" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(3110.9998, -4329.0005)
+rotation = 2.5778415
+scale = Vector2(3.9662309, 3.46384)
+
+[node name="Debree56" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(2576.0002, -5295)
+rotation = 1.9773166
+scale = Vector2(3.9662309, 3.46384)
+
+[node name="Debree85" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-4487, -6700.0005)
+rotation = 1.9773166
+scale = Vector2(3.9662309, 3.46384)
+
+[node name="Debree63" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(153.00024, -4947)
+rotation = 3.6651917
+scale = Vector2(3.9662309, 3.46384)
+
+[node name="Debree95" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(100.00006, -1700.0001)
+rotation = 3.6651917
+scale = Vector2(6.2289667, 5.991488)
+
+[node name="Debree70" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(1696.9993, -8670)
+rotation = 3.6651917
+scale = Vector2(3.9662309, 3.46384)
+
+[node name="Debree49" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(4868, -8979)
+rotation = 3.2540562
+scale = Vector2(3.9662309, 3.46384)
+
+[node name="Debree32" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(8271, -1615)
+rotation = 0.94601744
+scale = Vector2(2.1404335, 6.9814734)
+
+[node name="Debree30" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(6700.0005, -5797.9995)
+rotation = 1.1026547
+scale = Vector2(2.1404335, 6.9814734)
+
+[node name="Debree6" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(4740, -1863.9998)
+rotation = 1.9415466
+scale = Vector2(2.1404335, 2.658946)
+
+[node name="Debree64" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(517.9995, -4753)
+rotation = 2.6410837
+scale = Vector2(2.1404335, 2.658946)
+
+[node name="Debree66" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-2214, -7274.001)
+rotation = 2.416301
+scale = Vector2(2.0457544, 4.352389)
+
+[node name="Debree65" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-1024, -6039)
+rotation = 3.727245
+scale = Vector2(2.1404335, 2.658946)
+
+[node name="Debree94" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(2360.0002, -8070)
+rotation = 3.727245
+scale = Vector2(2.1404335, 2.658946)
+
+[node name="Debree92" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-1811.0002, -6946.0005)
+rotation = 4.4677606
+scale = Vector2(2.1404335, 2.658946)
+
+[node name="Debree11" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(6270, -1091.9996)
+rotation = 2.1928
+scale = Vector2(2.4989421, 1.6078103)
+
+[node name="Debree10" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(5249, -1514.0001)
+rotation = 1.5792104
+scale = Vector2(2.2590203, 1.6362647)
+
+[node name="Debree38" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(5400, -4716.9995)
+rotation = 2.137806
+scale = Vector2(2.2590203, 1.6362647)
+
+[node name="Debree8" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(5285.9995, -1976)
+rotation = 2.3443823
+scale = Vector2(2.835453, 3.7792373)
+
+[node name="Debree7" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(6953, -1365)
+rotation = 1.6849785
+scale = Vector2(2.1404335, 6.9814734)
+
+[node name="Debree31" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(8745, -3586.9998)
+rotation = 3.19417
+scale = Vector2(1.8696848, 9.829967)
+
+[node name="Debree84" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-3309.0002, -7042)
+rotation = 4.2686434
+scale = Vector2(1.8696848, 9.829967)
+
+[node name="Debree87" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-5090, -5282.0005)
+rotation = 6.2831855
+scale = Vector2(1.8696848, 9.829967)
+
+[node name="Debree73" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-1783, -1331)
+rotation = 2.9415395
+scale = Vector2(1.8696848, 9.829967)
+
+[node name="Debree74" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-1678, -2343)
+rotation = 3.5503364
+scale = Vector2(4.0006866, 4.8390913)
+
+[node name="Debree88" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-5169, -3919)
+rotation = 3.5503364
+scale = Vector2(4.0006866, 4.8390913)
+
+[node name="Debree79" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-4364, 808.0002)
+rotation = 4.117936
+scale = Vector2(4.0006866, 4.8390913)
+
+[node name="Debree51" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-1456.0001, 131.00002)
+rotation = 2.9733882
+scale = Vector2(2.5013957, 8.567287)
+
+[node name="Debree58" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-956, -1197)
+rotation = 3.6651917
+scale = Vector2(2.124021, 9.614864)
+
+[node name="Debree82" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-4625, -2551.0002)
+rotation = 3.0579083
+scale = Vector2(2.124021, 9.614864)
+
+[node name="Debree57" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-759, -5413)
+rotation = 2.405489
+scale = Vector2(1.7694814, 6.516001)
+
+[node name="Debree60" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(1109, -1514)
+rotation = 1.1796962
+scale = Vector2(2.5013957, 8.567287)
+
+[node name="Debree77" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-2910.0002, 1574.0002)
+rotation = 1.6476213
+scale = Vector2(2.5013957, 8.567287)
+
+[node name="Debree52" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-754.99994, 1120.9999)
+rotation = 2.1794596
+scale = Vector2(3.2821057, 5.4098406)
+
+[node name="Debree76" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-1674.0001, 1364.0001)
+rotation = 1.3089969
+scale = Vector2(3.2821057, 5.4098406)
+
+[node name="Debree46" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(6272.0005, -6720)
+rotation = 2.8157425
+scale = Vector2(2.1969156, 10.055114)
+
+[node name="Debree59" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(1577, -5249)
+rotation = 4.4505897
+scale = Vector2(2.1969156, 10.055114)
+
+[node name="Debree90" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-210, -2912.0002)
+rotation = 3.214023
+scale = Vector2(2.1969156, 10.055114)
+
+[node name="Debree45" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(2845.0005, -8642)
+rotation = 4.4505897
+scale = Vector2(1.8696848, 9.829967)
+
+[node name="Debree67" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-1258, -8875)
+rotation = 4.4505897
+scale = Vector2(1.8696848, 9.829967)
+
+[node name="Debree12" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(6803, -219.99985)
+rotation = 3.2498167
+scale = Vector2(2.1404335, 6.9814734)
+
+[node name="Debree80" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-4301.0005, -273.00003)
+rotation = 3.1233423
+scale = Vector2(2.1404335, 6.9814734)
+
+[node name="Debree13" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(4668, 2539.0002)
+rotation = 4.319489
+scale = Vector2(3.3754354, 4.9167113)
+
+[node name="Debree23" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(4283.9995, -2259)
+rotation = 4.6794696
+scale = Vector2(3.3754354, 4.9167113)
+
+[node name="Debree14" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(5447, 1932.9995)
+rotation = 4.066929
+scale = Vector2(1.6012819, 6.4293494)
+
+[node name="Debree15" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(6726, 1019.9999)
+rotation = 3.8056052
+scale = Vector2(4.290304, 5.902355)
+
+[node name="Debree16" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(7044, 683.0001)
+rotation = 4.774394
+scale = Vector2(3.2203405, -2.642674)
+
+[node name="Debree9" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(6844.9995, -1086.9999)
+rotation = 1.6849785
+scale = Vector2(2.980421, 3.9194903)
+
+[node name="Debree86" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-4996.0005, -6389)
+rotation = 1.6849785
+scale = Vector2(2.980421, 3.9194903)
+
+[node name="Debree33" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(8916, -2320)
+rotation = 1.6849785
+scale = Vector2(2.980421, 3.9194903)
+
+[node name="Debree93" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(6120.0005, -5616.9995)
+rotation = 2.3364573
+scale = Vector2(2.980421, 3.9194903)
+
+[node name="Debree35" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(8692, -4581)
+rotation = 2.3025765
+scale = Vector2(2.4081738, 2.5549486)
+
+[node name="Debree37" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(7327, -5939)
+rotation = 2.3025765
+scale = Vector2(2.4081738, 2.5549486)
+
+[node name="Debree47" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(5937, -7832)
+rotation = 2.3025765
+scale = Vector2(3.1013474, 2.8606086)
+
+[node name="Debree2" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(1268, 246)
+rotation = 0.073651515
+scale = Vector2(2.6991513, 2.926162)
+
+[node name="Debree62" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(91.000244, -1263.9999)
+rotation = 0.073651515
+scale = Vector2(2.6991513, 2.926162)
+
+[node name="Debree75" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-1748.9998, -587.00006)
+rotation = 0.073651515
+scale = Vector2(2.6991513, 2.926162)
+
+[node name="Debree91" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-1706.9999, -2346)
+rotation = 2.0663867
+scale = Vector2(2.6991513, 11.485283)
+
+[node name="Debree83" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-4995.9995, -3283.9998)
+rotation = 0.073651515
+scale = Vector2(2.6991513, 2.926162)
+
+[node name="Debree78" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-3717, 1252.0001)
+rotation = 0.073651515
+scale = Vector2(2.6991513, 2.926162)
+
+[node name="Debree3" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(1454.0001, 771.0001)
+rotation = 0.73324853
+scale = Vector2(2.6991513, 2.926162)
+
+[node name="Debree54" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(-46.000008, 1473)
+rotation = 1.3845587
+scale = Vector2(2.6991513, 2.926162)
+
+[node name="Debree17" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(6213.0005, 1627)
+rotation = 1.538681
+scale = Vector2(2.6991513, 2.926162)
+
+[node name="Debree22" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(2035.001, 1853.9999)
+rotation = 1.7778269
+scale = Vector2(2.6991513, 2.926162)
+
+[node name="Debree55" parent="." instance=ExtResource("5_xsfud")]
+position = Vector2(1141, 1488)
+rotation = 1.7778269
+scale = Vector2(2.3000937, 2.1026483)

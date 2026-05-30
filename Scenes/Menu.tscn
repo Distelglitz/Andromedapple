@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cew01kmmnyve5"]
+[gd_scene load_steps=48 format=3 uid="uid://cew01kmmnyve5"]
 
 [ext_resource type="Script" uid="uid://c2o5r133q1hpu" path="res://Scripts/Menu.gd" id="1_3kf3n"]
 [ext_resource type="PackedScene" uid="uid://dk1pr857ty6xo" path="res://Scenes/MenuLine.tscn" id="2_aobxe"]
@@ -43,6 +43,9 @@
 [ext_resource type="PackedScene" uid="uid://ch2x5prd5mj6c" path="res://Scenes/Layout/layout28.tscn" id="35_2nbq4"]
 [ext_resource type="PackedScene" uid="uid://x8esjsal7kqx" path="res://Scenes/Layout/layout30.tscn" id="35_b7pwh"]
 [ext_resource type="PackedScene" uid="uid://b07vm14qjtmlf" path="res://Scenes/Layout/layout27.tscn" id="35_jmv5b"]
+[ext_resource type="PackedScene" uid="uid://k565gwfh83x0" path="res://Scenes/Layout/layout31.tscn" id="40_atlfk"]
+[ext_resource type="PackedScene" uid="uid://c8fmb0griw2ak" path="res://Scenes/Layout/layout32.tscn" id="40_easgd"]
+[ext_resource type="PackedScene" uid="uid://cn3pqbnlpsu0o" path="res://Scenes/Layout/layout33.tscn" id="40_usc8s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_08kpj"]
 shader = ExtResource("27_ka6xg")
@@ -120,7 +123,7 @@ layout = ExtResource("6_3jcrr")
 unlocks = [NodePath("../../MenuWorld1/1_MenuLevel")]
 
 [node name="MenuWorld1" type="Node2D" parent="WorldHolder"]
-position = Vector2(533, 311)
+position = Vector2(502, 127)
 script = ExtResource("11_sjh0l")
 colors = ExtResource("14_c0stj")
 metadata/_custom_type_script = "uid://6psc0r0nkxgi"
@@ -165,7 +168,7 @@ offset_bottom = -81.0
 layout = ExtResource("18_n3nbb")
 
 [node name="MenuWorld2" type="Node2D" parent="WorldHolder"]
-position = Vector2(-1174, -380)
+position = Vector2(-1186, -512)
 script = ExtResource("11_sjh0l")
 colors = ExtResource("20_c0stj")
 metadata/_custom_type_script = "uid://6psc0r0nkxgi"
@@ -242,81 +245,105 @@ offset_bottom = 275.0
 layout = ExtResource("29_ckbj2")
 
 [node name="MenuWorld3" type="Node2D" parent="WorldHolder"]
-position = Vector2(-1171, 526)
+position = Vector2(-1186, 446)
 script = ExtResource("11_sjh0l")
 colors = ExtResource("30_dml4c")
 metadata/_custom_type_script = "uid://6psc0r0nkxgi"
 
 [node name="3_MenuLevel" parent="WorldHolder/MenuWorld3" node_paths=PackedStringArray("unlocks") instance=ExtResource("3_syfuq")]
-offset_left = 66.0
-offset_top = 2.0
-offset_right = 166.0
-offset_bottom = 102.0
+offset_left = -34.0
+offset_top = -62.0
+offset_right = 66.0
+offset_bottom = 38.0
 layout = ExtResource("30_ckbj2")
 unlocks = [NodePath("../3_MenuLevel2")]
 
 [node name="3_MenuLevel2" parent="WorldHolder/MenuWorld3" node_paths=PackedStringArray("unlocks") instance=ExtResource("3_syfuq")]
-offset_left = 316.0
-offset_top = -67.0
-offset_right = 416.0
-offset_bottom = 33.0
+offset_left = 216.0
+offset_top = -131.0
+offset_right = 316.0
+offset_bottom = -31.0
 layout = ExtResource("31_nuh2c")
 unlocks = [NodePath("../3_MenuLevel3")]
 
 [node name="3_MenuLevel3" parent="WorldHolder/MenuWorld3" node_paths=PackedStringArray("unlocks") instance=ExtResource("3_syfuq")]
-offset_left = 553.0
-offset_top = -37.0
-offset_right = 653.0
-offset_bottom = 63.0
+offset_left = 453.0
+offset_top = -101.0
+offset_right = 553.0
+offset_bottom = -1.0
 layout = ExtResource("32_ou2h3")
 unlocks = [NodePath("../3_MenuLevel4")]
 
 [node name="3_MenuLevel4" parent="WorldHolder/MenuWorld3" node_paths=PackedStringArray("unlocks") instance=ExtResource("3_syfuq")]
-offset_left = 874.0
-offset_top = 17.0
-offset_right = 974.0
-offset_bottom = 117.0
+offset_left = 774.0
+offset_top = -47.0
+offset_right = 874.0
+offset_bottom = 53.0
 layout = ExtResource("33_rh0jc")
 unlocks = [NodePath("../3_MenuLevel5")]
 
 [node name="3_MenuLevel5" parent="WorldHolder/MenuWorld3" node_paths=PackedStringArray("unlocks") instance=ExtResource("3_syfuq")]
-offset_left = 1158.0
-offset_top = 120.0
-offset_right = 1258.0
-offset_bottom = 220.0
+offset_left = 1058.0
+offset_top = 56.0
+offset_right = 1158.0
+offset_bottom = 156.0
 layout = ExtResource("34_v0ovw")
 unlocks = [NodePath("../3_MenuLevel6")]
 
 [node name="3_MenuLevel6" parent="WorldHolder/MenuWorld3" node_paths=PackedStringArray("unlocks") instance=ExtResource("3_syfuq")]
-offset_left = 1456.0
-offset_top = 107.0
-offset_right = 1556.0
-offset_bottom = 207.0
+offset_left = 1356.0
+offset_top = 43.0
+offset_right = 1456.0
+offset_bottom = 143.0
 layout = ExtResource("35_jmv5b")
 unlocks = [NodePath("../3_MenuLevel7")]
 
 [node name="3_MenuLevel7" parent="WorldHolder/MenuWorld3" node_paths=PackedStringArray("unlocks") instance=ExtResource("3_syfuq")]
-offset_left = 1724.0
-offset_top = 124.0
-offset_right = 1824.0
-offset_bottom = 224.0
+offset_left = 1624.0
+offset_top = 60.0
+offset_right = 1724.0
+offset_bottom = 160.0
 layout = ExtResource("35_2nbq4")
 unlocks = [NodePath("../3_MenuLevel8")]
 
 [node name="3_MenuLevel8" parent="WorldHolder/MenuWorld3" node_paths=PackedStringArray("unlocks") instance=ExtResource("3_syfuq")]
-offset_left = 2035.0
-offset_top = 130.0
-offset_right = 2135.0
-offset_bottom = 230.0
+offset_left = 1935.0
+offset_top = 66.0
+offset_right = 2035.0
+offset_bottom = 166.0
 layout = ExtResource("35_2grpp")
 unlocks = [NodePath("../3_MenuLevel9")]
 
-[node name="3_MenuLevel9" parent="WorldHolder/MenuWorld3" instance=ExtResource("3_syfuq")]
-offset_left = 2314.0
-offset_top = 119.0
-offset_right = 2414.0
-offset_bottom = 219.0
+[node name="3_MenuLevel9" parent="WorldHolder/MenuWorld3" node_paths=PackedStringArray("unlocks") instance=ExtResource("3_syfuq")]
+offset_left = 2214.0
+offset_top = 55.0
+offset_right = 2314.0
+offset_bottom = 155.0
 layout = ExtResource("35_b7pwh")
+unlocks = [NodePath("../3_MenuLevel10")]
+
+[node name="3_MenuLevel10" parent="WorldHolder/MenuWorld3" node_paths=PackedStringArray("unlocks") instance=ExtResource("3_syfuq")]
+offset_left = 2208.0
+offset_top = 237.0
+offset_right = 2308.0
+offset_bottom = 337.0
+layout = ExtResource("40_atlfk")
+unlocks = [NodePath("../3_MenuLevel11")]
+
+[node name="3_MenuLevel11" parent="WorldHolder/MenuWorld3" node_paths=PackedStringArray("unlocks") instance=ExtResource("3_syfuq")]
+offset_left = 1931.0
+offset_top = 238.0
+offset_right = 2031.0
+offset_bottom = 338.0
+layout = ExtResource("40_easgd")
+unlocks = [NodePath("../3_MenuLevel12")]
+
+[node name="3_MenuLevel12" parent="WorldHolder/MenuWorld3" instance=ExtResource("3_syfuq")]
+offset_left = 1625.0
+offset_top = 267.0
+offset_right = 1725.0
+offset_bottom = 367.0
+layout = ExtResource("40_usc8s")
 
 [node name="ControlBlock" type="Control" parent="."]
 layout_mode = 3
